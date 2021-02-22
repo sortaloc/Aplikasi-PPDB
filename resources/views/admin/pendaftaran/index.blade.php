@@ -75,7 +75,7 @@
                         {{ $p->asal_sekolah }}
                     </td>
                     <td>
-                        <img alt="image" src="{{ asset('images/'. $p->foto) }}" class="img-thumbnail" width="50" data-toggle="tooltip">
+                        <img alt="image" src="{{ asset('images/'. $p->foto) }}" class="img-fluid" data-toggle="tooltip">
                     </td>
                     <td>
                         <?php

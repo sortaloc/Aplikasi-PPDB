@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminGuruController;
 use App\Http\Controllers\AdminPendaftaranController;
 use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\DokumenController;
@@ -19,6 +20,7 @@ Route::post('registeradmin', [RegisterController::class, 'RegisterAdmin']);
 Route::resource('admin', AdminController::class);
 Route::resource('adminpendaftaran', AdminPendaftaranController::class);
 Route::post('adminpendaftaran/cari', [AdminPendaftaranController::class, 'cariData']);
+Route::resource('adminguru', AdminGuruController::class);
 
 
 

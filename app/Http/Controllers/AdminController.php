@@ -10,10 +10,12 @@ class AdminController extends Controller
     
     public function index()
     {
-        if (Auth::check()) {
+        if ( Auth::guard('admin')->check() ) {
             return view('admin.admin');
+        } else {
+            return redirect('loginadmin');
         }
-        return redirect('loginadmin');
+        
     }
 
     

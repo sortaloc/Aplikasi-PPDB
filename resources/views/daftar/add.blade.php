@@ -43,7 +43,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tempat Lahir</label>
                 <div class="col-sm-12 col-md-7">
-                    <input maxlength="40" pattern="[A-Za-z0-9 ,.]+" placeholder="masukan tempat lahir.." type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" required name="tempat_lahir" autocomplete="tempat_lahir">
+                    <input maxlength="40" pattern="[A-Za-z0-9 ,.]+" placeholder="masukan tempat lahir.." type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" required name="tempat_lahir" value="{{ old('tempat_lahir') }}" autocomplete="tempat_lahir">
                     @error('tempat_lahir')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
@@ -54,7 +54,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tanggal Lahir</label>
                 <div class="col-sm-12 col-md-7">
-                    <input placeholder="masukan tanggal lahir.." type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" required name="tanggal_lahir" autocomplete="tanggal_lahir">
+                    <input placeholder="masukan tanggal lahir.." type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" required name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" autocomplete="tanggal_lahir">
                     @error('tanggal_lahir')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
@@ -75,7 +75,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Agama</label>
                 <div class="col-sm-12 col-md-7">
-                    <input maxlength="40" pattern="[A-Za-z0-9 ,.]+" placeholder="masukan agama.." type="text" class="form-control @error('agama') is-invalid @enderror" required name="agama" autocomplete="agama">
+                    <input maxlength="40" pattern="[A-Za-z0-9 ,.]+" placeholder="masukan agama.." type="text" class="form-control @error('agama') is-invalid @enderror" required name="agama" value="{{ old('agama') }}" autocomplete="agama">
                     @error('agama')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
@@ -92,7 +92,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Ayah</label>
                 <div class="col-sm-12 col-md-7">
-                    <input maxlength="40" pattern="[A-Za-z ,.]+" placeholder="masukan nama ayah.." type="text" class="form-control @error('nama_ayah') is-invalid @enderror" required name="nama_ayah" autocomplete="nama_ayah">
+                    <input maxlength="40" pattern="[A-Za-z ,.]+" placeholder="masukan nama ayah.." type="text" class="form-control @error('nama_ayah') is-invalid @enderror" required name="nama_ayah" value="{{ old('nama_ayah') }}" autocomplete="nama_ayah">
                     @error('nama_ayah')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
@@ -103,7 +103,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Ibu</label>
                 <div class="col-sm-12 col-md-7">
-                    <input maxlength="40" pattern="[A-Za-z ,.]+" placeholder="masukan nama ibu.." type="text" class="form-control @error('nama_ibu') is-invalid @enderror" required name="nama_ibu" autocomplete="nama_ibu">
+                    <input maxlength="40" pattern="[A-Za-z ,.]+" placeholder="masukan nama ibu.." type="text" class="form-control @error('nama_ibu') is-invalid @enderror" required name="nama_ibu" value="{{ old('nama_ibu') }}" autocomplete="nama_ibu">
                     @error('nama_ibu')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
@@ -114,7 +114,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Pekerjaan Ayah</label>
                 <div class="col-sm-12 col-md-7">
-                    <input maxlength="40" pattern="[A-Za-z0-9 ,.]+" placeholder="masukan pekerjaan ayah.." type="text" class="form-control @error('pekerjaan_ayah') is-invalid @enderror" required name="pekerjaan_ayah" autocomplete="pekerjaan_ayah">
+                    <input maxlength="40" pattern="[A-Za-z0-9 ,.]+" placeholder="masukan pekerjaan ayah.." type="text" class="form-control @error('pekerjaan_ayah') is-invalid @enderror" required name="pekerjaan_ayah" value="{{ old('pekerjaan_ayah') }}" autocomplete="pekerjaan_ayah">
                     @error('pekerjaan_ayah')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
@@ -125,7 +125,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Pekerjaan Ibu</label>
                 <div class="col-sm-12 col-md-7">
-                    <input maxlength="40" pattern="[A-Za-z0-9 ,.]+" placeholder="masukan pekerjaan ibu.." type="text" class="form-control @error('pekerjaan_ibu') is-invalid @enderror" required name="pekerjaan_ibu" autocomplete="pekerjaan_ibu">
+                    <input maxlength="40" pattern="[A-Za-z0-9 ,.]+" placeholder="masukan pekerjaan ibu.." type="text" class="form-control @error('pekerjaan_ibu') is-invalid @enderror" required name="pekerjaan_ibu" value="{{ old('pekerjaan_ibu') }}" autocomplete="pekerjaan_ibu">
                     @error('pekerjaan_ibu')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
@@ -133,7 +133,7 @@
                     @enderror
                 </div>
             </div>
-            
+
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tempat Tinggal</label>
                 <div class="col-sm-12 col-md-7">
@@ -148,7 +148,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Asal Sekolah</label>
                 <div class="col-sm-12 col-md-7">
-                    <input maxlength="60" pattern="[A-Za-z0-9 ,.]+" placeholder="masukan asal sekolah.." type="text" class="form-control @error('asal_sekolah') is-invalid @enderror" required name="asal_sekolah" autocomplete="asal_sekolah">
+                    <input maxlength="60" pattern="[A-Za-z0-9 ,.]+" placeholder="masukan asal sekolah.." type="text" class="form-control @error('asal_sekolah') is-invalid @enderror" required name="asal_sekolah" value="{{ old('asal_sekolah') }}" autocomplete="asal_sekolah">
                     @error('asal_sekolah')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
