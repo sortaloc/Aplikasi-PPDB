@@ -17,7 +17,7 @@ class AdminPendaftaranController extends Controller
         if (Auth::guard('admin')->check()) {
             $pendaftaran = Pendaftaran::join('dokumens', 'pendaftarans.id_user', '=', 'dokumens.id_user')
                 ->select('pendaftarans.*', 'dokumens.*')
-                ->orderBy('tahun_pendaftaran', 'DESC')
+                ->orderBy('tanggal_pendaftaran', 'DESC')
                 ->orderBy('nama', 'ASC')
                 ->simplePaginate(10);
 
@@ -56,11 +56,15 @@ class AdminPendaftaranController extends Controller
     public function update(Request $request, $id)
     {
         if (Auth::guard('admin')->check()) {
-            Pendaftaran::whereId($id)->update([
-                'status' => 'Diterima'
-            ]);
 
-            return redirect('adminpendaftaran')->with('terima', 'Siswa telah diterima');
+            Pendaftaran::where('id_user', $id)->update([
+                'status' => $request['status']
+            ]);
+            if ($request['status'] == 'Diterima') {
+                return redirect('adminpendaftaran')->with('terima', 'Siswa telah diterima');
+            } else {
+                return redirect('adminpendaftaran')->with('tolak', 'Siswa telah ditolak');
+            }
         } else {
             return redirect('loginadmin');
         }
@@ -129,10 +133,10 @@ class AdminPendaftaranController extends Controller
             $cari = $request['cari'];
             $pendaftaran = Pendaftaran::join('dokumens', 'pendaftarans.id_user', '=', 'dokumens.id_user')
                 ->select('pendaftarans.*', 'dokumens.*')
-                ->orderBy('tahun_pendaftaran', 'DESC')
+                ->orderBy('tanggal_pendaftaran', 'DESC')
                 ->orderBy('nama', 'ASC')
                 ->orwhere('nisn', 'like', "%" . $cari . "%")
-                ->orwhere('tahun_pendaftaran', 'like', "%" . $cari . "%")
+                ->orwhere('tanggal_pendaftaran', 'like', "%" . $cari . "%")
                 ->orwhere('nama', 'like', "%" . $cari . "%")
                 ->orwhere('tempat_lahir', 'like', "%" . $cari . "%")
                 ->orwhere('tanggal_lahir', 'like', "%" . $cari . "%")

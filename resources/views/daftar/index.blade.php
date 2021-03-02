@@ -106,10 +106,10 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <span>Tahun Pendaftaran</span>
+                        <span>Tanggal Pendaftaran</span>
                     </div>
                     <div class="col-md-9">
-                        <span>: {{ $pendaftaran->tahun_pendaftaran }}</span>
+                        <span>: {{ $tanggal_pendaftaran }}</span>
                     </div>
                 </div>
                 <div class="row">

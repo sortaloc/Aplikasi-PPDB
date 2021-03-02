@@ -54,7 +54,39 @@ class DaftarController extends Controller
             }
 
             $tanggal_lahir = $hari . " " . $bulan . " " . $tahun;
-            return view('daftar.index', compact('pendaftaran', 'tanggal_lahir'));
+
+            $tanggal_pendaftaran = $pendaftaran['tanggal_pendaftaran'];
+            $hari_pendaftaran = substr($tanggal_pendaftaran, 8, 2);
+            $bulan_pendaftaran = substr($tanggal_pendaftaran, 5, 2);
+            $tahun_pendaftaran = substr($tanggal_pendaftaran, 0, 4);
+            if ($bulan_pendaftaran == '01') {
+                $bulan_pendaftaran = 'Januari';
+            } elseif ($bulan_pendaftaran == '02') {
+                $bulan_pendaftaran = 'Februari';
+            } elseif ($bulan_pendaftaran == '03') {
+                $bulan_pendaftaran = 'Maret';
+            } elseif ($bulan_pendaftaran == '04') {
+                $bulan_pendaftaran = 'April';
+            } elseif ($bulan_pendaftaran == '05') {
+                $bulan_pendaftaran = 'Mei';
+            } elseif ($bulan_pendaftaran == '06') {
+                $bulan_pendaftaran = 'Juni';
+            } elseif ($bulan_pendaftaran == '07') {
+                $bulan_pendaftaran = 'Juli';
+            } elseif ($bulan_pendaftaran == '08') {
+                $bulan_pendaftaran = 'Agustus';
+            } elseif ($bulan_pendaftaran == '09') {
+                $bulan_pendaftaran = 'September';
+            } elseif ($bulan_pendaftaran == '10') {
+                $bulan_pendaftaran = 'Oktober';
+            } elseif ($bulan_pendaftaran == '11') {
+                $bulan_pendaftaran = 'November';
+            } elseif ($bulan_pendaftaran == '12') {
+                $bulan_pendaftaran = 'Desember';
+            }
+
+            $tanggal_pendaftaran = $hari_pendaftaran . " " . $bulan_pendaftaran . " " . $tahun_pendaftaran;
+            return view('daftar.index', compact('pendaftaran', 'tanggal_lahir', 'tanggal_pendaftaran'));
         }
     }
 
@@ -94,7 +126,7 @@ class DaftarController extends Controller
 
         //atur tahun pelajaran
         date_default_timezone_set('Asia/Jakarta');
-        $tahun = date('Y');
+        $now = date("Y-m-d");
 
         //ambil waktu buat nama foto
         $waktu = date('His');
@@ -141,7 +173,7 @@ class DaftarController extends Controller
         Pendaftaran::create([
             'id_user' => $id_user,
             'nisn' => $request['nisn'],
-            'tahun_pendaftaran' => $tahun,
+            'tanggal_pendaftaran' => $now,
             'nama' => $request['nama'],
             'tempat_lahir' => $request['tempat_lahir'],
             'tanggal_lahir' => $request['tanggal_lahir'],

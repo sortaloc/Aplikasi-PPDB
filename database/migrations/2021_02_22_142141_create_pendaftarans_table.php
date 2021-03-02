@@ -17,7 +17,7 @@ class CreatePendaftaransTable extends Migration
             $table->id();
             $table->integer('id_user');
             $table->integer('nisn')->unique();
-            $table->string('tahun_pendaftaran');
+            $table->date('tanggal_pendaftaran');
             $table->string('nama');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');

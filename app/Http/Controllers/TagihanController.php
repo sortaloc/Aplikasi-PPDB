@@ -2,21 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Nilai;
-use App\Models\Pendaftaran;
+use App\Models\Tagihan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class PengumumanController extends Controller
+class TagihanController extends Controller
 {
-   
+    
     public function index()
     {
-        $id_user = Auth::user()->id;
-        $nilai = Nilai::orderBy('tanggal_ujian')->where('id_user', $id_user)->simplePaginate(10);
-        $ambil_pendaftaran = Pendaftaran::where('id_user', $id_user)->first();
-        $status = $ambil_pendaftaran['status'];
-        return view('pengumuman.index', compact('nilai', 'status'));
+        $tagihan = Tagihan::orderBy('batas', 'DESC')->simplePaginate(10);
+        return view('tagihan.index', compact('tagihan'));
     }
 
     
@@ -31,7 +27,7 @@ class PengumumanController extends Controller
         //
     }
 
-   
+  
     public function show($id)
     {
         //
@@ -49,7 +45,7 @@ class PengumumanController extends Controller
         //
     }
 
-   
+    
     public function destroy($id)
     {
         //

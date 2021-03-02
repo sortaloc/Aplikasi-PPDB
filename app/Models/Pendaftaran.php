@@ -11,7 +11,7 @@ class Pendaftaran extends Model
     protected $fillable = [
         'id_user',
         'nisn',
-        'tahun_pendaftaran',
+        'tanggal_pendaftaran',
         'nama',
         'tempat_lahir',
         'tanggal_lahir',

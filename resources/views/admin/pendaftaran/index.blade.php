@@ -10,6 +10,16 @@
     })
 </script>
 @endif
+@if (Session::has('tolak'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Siswa telah ditolak!',
+        showConfirmButton: false,
+        timer: 2000
+    })
+</script>
+@endif
 @if (Session::has('hapus'))
 <script>
     Swal.fire({
@@ -60,7 +70,40 @@
                         {{ $no }}
                     </td>
                     <td>
-                        {{ $p->tahun_pendaftaran }}
+                        <?php
+                        $tanggal = $p->tanggal_pendaftaran;
+                        $hari = substr($tanggal, 8, 2);
+                        $bulan = substr($tanggal, 5, 2);
+                        $tahun = substr($tanggal, 0, 4);
+                        if ($bulan == '01') {
+                            $bulan = 'Januari';
+                        } elseif ($bulan == '02') {
+                            $bulan = 'Februari';
+                        } elseif ($bulan == '03') {
+                            $bulan = 'Maret';
+                        } elseif ($bulan == '04') {
+                            $bulan = 'April';
+                        } elseif ($bulan == '05') {
+                            $bulan = 'Mei';
+                        } elseif ($bulan == '06') {
+                            $bulan = 'Juni';
+                        } elseif ($bulan == '07') {
+                            $bulan = 'Juli';
+                        } elseif ($bulan == '08') {
+                            $bulan = 'Agustus';
+                        } elseif ($bulan == '09') {
+                            $bulan = 'September';
+                        } elseif ($bulan == '10') {
+                            $bulan = 'Oktober';
+                        } elseif ($bulan == '11') {
+                            $bulan = 'November';
+                        } elseif ($bulan == '12') {
+                            $bulan = 'Desember';
+                        }
+
+                        $tanggal_pendaftaran = $hari . " " . $bulan . " " . $tahun;
+                        echo $tanggal_pendaftaran;
+                        ?>
                     </td>
                     <td>
                         {{ $p->nisn }}
@@ -78,34 +121,38 @@
                         <img alt="image" src="{{ asset('images/'. $p->foto) }}" class="img-thumbnail" width="100" data-toggle="tooltip">
                     </td>
                     <td>
-                        <?php
-                        if ($p->status == 'Proses') {
-                        ?>
-                            <div class="badge badge-warning">{{ $p->status }}</div>
-                        <?php
-                        } elseif ($p->status == 'Diterima') {
-                        ?>
-                            <div class="badge badge-success">{{ $p->status }}</div>
-                        <?php
-                        }
-                        ?>
-
+                        @if ($p->status == 'Proses')
+                        <div class="badge badge-warning">{{ $p->status }}</div>
+                        @elseif ($p->status == 'Diterima')
+                        <div class="badge badge-success">{{ $p->status }}</div>
+                        @elseif ($p->status == 'Ditolak')
+                        <div class="badge badge-danger">{{ $p->status }}</div>
+                        @endif
                     </td>
+
                     <td>
                         <form id="terima-{{ $p->id_user }}" action="{{ route('adminpendaftaran.update', $p->id_user)}}" method="post">
                             @csrf
                             @method('PUT')
+                            <input type="hidden" name="status" value="Diterima">
+                        </form>
+                        <form id="tolak-{{ $p->id_user }}" action="{{ route('adminpendaftaran.update', $p->id_user)}}" method="post">
+                            @csrf
+                            @method('PUT')
+                            <input type="hidden" name="status" value="Ditolak">
                         </form>
                         <form id="data-{{ $p->id_user }}" action="{{ route('adminpendaftaran.destroy', $p->id_user)}}" method="post">
                             @csrf
                             @method('DELETE')
                         </form>
+
+
                         <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Pilih
                         </button>
                         <div class="dropdown-menu">
                             <button data-id="{{ $p->id_user }}" class="dropdown-item btn-sm has-icon btn-edit" onclick="detailData( <?php echo $p->nisn; ?>, 
-                            <?php echo $p->tahun_pendaftaran; ?>, 
+                            <?php echo $p->tanggal_pendaftaran; ?>, 
                             '{{ $p->nama }}',
                              '{{ $p->tempat_lahir }}',
                              '{{ $p->tanggal_lahir }}',
@@ -130,13 +177,10 @@
                              '{{ $p->kps }}',
                              '{{ $p->id_user }}'
                              )">Detail</button>
-                            <?php
-                            if ($p->status == 'Proses') {
-                            ?>
-                                <button class="dropdown-item has-icon btn-sm" onclick="terimaSiswa( <?php echo $p->id_user; ?> )">Diterima</button>
-                            <?php
-                            }
-                            ?>
+                            @if ( $p->status == 'Proses')
+                            <button class="dropdown-item has-icon btn-sm" onclick="terimaSiswa( <?php echo $p->id_user; ?> )">Diterima</button>
+                            <button class="dropdown-item has-icon btn-sm" onclick="tolakSiswa( <?php echo $p->id_user; ?> )">Ditolak</button>
+                            @endif
                             <button class="dropdown-item has-icon btn-sm" onclick="hapusData( <?php echo $p->id_user; ?> )">Hapus</button>
                         </div>
                     </td>
@@ -212,10 +256,10 @@
 
                             <div class="row">
                                 <div class="col-md-3">
-                                    <span>Tahun Pendaftaran</span>
+                                    <span>Tanggal Pendaftaran</span>
                                 </div>
                                 <div class="col-md-9">
-                                    : <span id="tahun_pendaftaran"></span>
+                                    : <span id="tanggal_pendaftaran"></span>
                                 </div>
                             </div>
                             <div class="row">
@@ -365,7 +409,7 @@
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
-
+                            <th>Tanggal Ujian</th>
                             <th>Nama Mapel</th>
                             <th>KKM</th>
                             <th>Nilai</th>
@@ -391,12 +435,67 @@
                             method: "GET",
                             success: function(data) {
                                 $.each(data, function(index, item) {
-                                    if (item.kkm > item.nilai) {
-                                        var status = '<div class="badge badge-danger">Tidak Tuntas</div>';
-                                    } else {
+                                    if (item.kkm <= item.nilai) {
                                         var status = '<div class="badge badge-success">Tuntas</div>';
+                                    } else {
+                                        var status = '<div class="badge badge-danger">Tidak Tuntas</div>';
                                     }
+
+                                    var tanggal = item.tanggal_ujian;
+                                    var hari = tanggal.substr(8, 2);
+                                    var bulan = tanggal.substr(5, 2);
+                                    var tahun = tanggal.substr(0, 4);
+                                    if (bulan == '01') {
+                                        bulan = 'Januari';
+                                    }
+                                    if(bulan == '02') {
+                                       var bulan = 'Februari';
+                                    }
+                                    
+                                    if(bulan == '03') {
+                                       var bulan = 'Maret';
+                                    }
+                                    
+                                    if(bulan == '04') {
+                                       var bulan = 'April';
+                                    }
+                                    
+                                    if(bulan == '05') {
+                                       var bulan = 'Mei';
+                                    }
+                                    
+                                    if(bulan == '06') {
+                                      var bulan = 'Juni';
+                                    }
+                                    
+                                    if(bulan == '07') {
+                                       var bulan = 'Juli';
+                                    }
+                                    
+                                    if(bulan == '08') {
+                                       var bulan = 'Agustus';
+                                    }
+                                    
+                                    if(bulan == '09') {
+                                       var bulan = 'September';
+                                    }
+                                    
+                                    if(bulan == '10') {
+                                       var bulan = 'Oktober';
+                                    }
+                                    
+                                    if(bulan == '11') {
+                                       var bulan = 'November';
+                                    } 
+                                    
+                                    if(bulan == '12') {
+                                       var bulan = 'Desember';
+                                    }
+
+                                    var tanggal_ujian = hari + " " + bulan + " " + tahun;
+
                                     x = x + '<tr>' +
+                                        '<td>' + tanggal_ujian + '</td>' +
                                         '<td>' + item.nama_mapel + '</td>' +
                                         '<td>' + item.kkm + '</td>' +
                                         '<td>' + item.nilai + '</td>' +
@@ -418,11 +517,11 @@
 </div>
 
 <script type="text/javascript">
-    function detailData(nisn, tahun_pendaftaran, nama, tempat_lahir, tanggal_lahir, jk, agama, alamat, nama_ayah, nama_ibu, pekerjaan_ayah, pekerjaan_ibu, tempat_tinggal, asal_sekolah, transportasi, foto, akta, skhun, ijazah, kk, ktp, pkh, kip, kps, id_user) {
+    function detailData(nisn, tanggal_pendaftaran, nama, tempat_lahir, tanggal_lahir, jk, agama, alamat, nama_ayah, nama_ibu, pekerjaan_ayah, pekerjaan_ibu, tempat_tinggal, asal_sekolah, transportasi, foto, akta, skhun, ijazah, kk, ktp, pkh, kip, kps, id_user) {
 
         document.getElementById("card_detail").style.display = "block";
         document.getElementById("nisn").innerHTML = nisn;
-        document.getElementById("tahun_pendaftaran").innerHTML = tahun_pendaftaran;
+        document.getElementById("tanggal_pendaftaran").innerHTML = tanggal_pendaftaran;
         document.getElementById("nama").innerHTML = nama;
         document.getElementById("tempat_lahir").innerHTML = tempat_lahir;
         document.getElementById("tanggal_lahir").innerHTML = tanggal_lahir;
@@ -502,7 +601,22 @@
                 $('#terima-' + id_user).submit();
             }
         })
+    }
 
+    function tolakSiswa(id_user) {
+        Swal.fire({
+            title: 'Tolak siswa sebagai Peserta Didik Baru?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#6777ef',
+            cancelButtonColor: '#fc544b',
+            confirmButtonText: 'Iya',
+            cancelButtonText: 'Tidak'
+        }).then((result) => {
+            if (result.value) {
+                $('#tolak-' + id_user).submit();
+            }
+        })
     }
 </script>
 

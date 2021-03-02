@@ -35,6 +35,10 @@ class UjianController extends Controller
         $soal = Soal::where('id_mapel', $id_mapel)->get();
         $jumlahsoal = $soal->count();
 
+         //atur tahun pelajaran
+         date_default_timezone_set('Asia/Jakarta');
+         $now = date("Y-m-d");
+
         if ($soal->count() > 0) {
             $nomor = 0;
 
@@ -61,6 +65,7 @@ class UjianController extends Controller
         }
         Nilai::create([
             'id_user' => $id_user,
+            'tanggal_ujian' => $now,
             'id_mapel' => $id_mapel,
             'nama_mapel' => $nama_mapel,
             'kkm' => $kkm,
