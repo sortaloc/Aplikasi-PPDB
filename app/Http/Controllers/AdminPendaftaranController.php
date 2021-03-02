@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pendaftaran;
 use App\Models\Dokumen;
+use App\Models\Nilai;
 use File;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,7 @@ class AdminPendaftaranController extends Controller
                 ->select('pendaftarans.*', 'dokumens.*')
                 ->orderBy('tahun_pendaftaran', 'DESC')
                 ->orderBy('nama', 'ASC')
-                ->paginate(10);
+                ->simplePaginate(10);
 
             return view('admin.pendaftaran.index', compact('pendaftaran'));
         } else {
@@ -47,7 +48,8 @@ class AdminPendaftaranController extends Controller
 
     public function edit($id)
     {
-        //
+        $nilai = Nilai::where('id_user', $id)->get();
+        return response()->json($nilai);
     }
 
 
@@ -107,8 +109,13 @@ class AdminPendaftaranController extends Controller
             File::delete('files/' . $kk);
             File::delete('files/' . $ktp);
 
-            Dokumen::where('id_user', $id)->delete();
+            $pendaftaran = Pendaftaran::where('id_user', $id)->first();
+            $foto = $pendaftaran['foto'];
+            File::delete('images/' . $foto);
+            $dokumen_hapus = Dokumen::where('id_user', $id)->first();
+            $dokumen_hapus->delete();
             Pendaftaran::where('id_user', $id)->delete();
+            Nilai::where('id_user', $id)->delete();
 
             return redirect('adminpendaftaran')->with('hapus', 'Data telah dihapus!');
         } else {
@@ -139,7 +146,7 @@ class AdminPendaftaranController extends Controller
                 ->orwhere('tempat_tinggal', 'like', "%" . $cari . "%")
                 ->orwhere('asal_sekolah', 'like', "%" . $cari . "%")
                 ->orwhere('transportasi', 'like', "%" . $cari . "%")
-                ->paginate(10);
+                ->simplePaginate(10);
 
             return view('admin.pendaftaran.index', compact('pendaftaran'));
         } else {

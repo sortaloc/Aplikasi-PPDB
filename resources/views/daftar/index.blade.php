@@ -34,9 +34,7 @@
 <script>
     Swal.fire({
         icon: 'error',
-        title: 'NISN telah terdaftar di akun lain!',
-        showConfirmButton: false,
-        timer: 2000
+        title: 'NISN telah terdaftar di akun lain!'
     })
 </script>
 @endif

@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <!-- CSS Libraries -->
+    
+    <link rel="stylesheet" href="{{ asset('template/assets/css/selectric.css') }}">
+    
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('template/assets/css/style.css') }}">
@@ -46,12 +49,12 @@
                             <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->guard('admin')->user()->nama }}</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="features-settings.html" class="dropdown-item has-icon">
-                                <i class="fas fa-cog"></i> Settings
+                            <a href="{{ route('admin.edit', auth()->guard('admin')->user()->id ) }}" class="dropdown-item has-icon">
+                                <i class="fas fa-cog"></i> Pengaturan
                             </a>
                             <div class="dropdown-divider"></div>
                             <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger" onclick="event.preventDefault();  document.getElementById('logout-form').submit();">
-                                <i class="fas fa-sign-out-alt"></i> Logout
+                                <i class="fas fa-sign-out-alt"></i> Keluar
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
@@ -94,6 +97,10 @@
     <script src="{{ asset('template/assets/js/stisla.js') }}"></script>
 
     <!-- JS Libraies -->
+    
+    <script src="{{ asset('template/assets/js/jquery.selectric.min.js') }}"></script>
+    
+    
 
     <!-- Template JS File -->
     <script src="{{ asset('template/assets/js/scripts.js') }}"></script>

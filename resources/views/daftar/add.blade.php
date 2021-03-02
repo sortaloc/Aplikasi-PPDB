@@ -65,7 +65,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Jenis Kelamin</label>
                 <div class="col-sm-12 col-md-7">
-                    <select name="jk" class="form-control selectric">
+                    <select name="jk" class="form-control selectric" required>
                         <option value="">-- Pilih --</option>
                         <option value="Laki-laki">Laki-laki</option>
                         <option value="Perempuan">Perempuan</option>
@@ -214,7 +214,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                 <div class="col-sm-12 col-md-7">
-                    <button class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </div>
         </form>

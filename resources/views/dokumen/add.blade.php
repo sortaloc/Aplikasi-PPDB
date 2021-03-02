@@ -29,51 +29,51 @@
 
         <div class="row">
             <div class="col-md-3 text-center">
-                <span>Program Keluarga Harapan (PKH) jika ada</span>
-                <br>
-                <button id="btn_pkh" class="btn btn-round btn-outline-success">Upload</button>
-            </div>
-            <div class="col-md-3 text-center">
-                <span>Kartu Indonesia Pintar (KIP) jika ada</span>
-                <br>
-                <br>
-                <button id="btn_kip" class="btn btn-round btn-outline-info">Upload</button>
-            </div>
-            <div class="col-md-3 text-center">
-                <span>Kartu Pelayanan Sosial (KPS) jika ada</span>
-                <br>
-                <button id="btn_kps" class="btn btn-round btn-outline-dark">Upload</button>
-            </div>
-            <div class="col-md-3 text-center">
                 <span>Akta Kelahiran</span>
                 <br>
                 <br>
-                <button id="btn_akta" class="btn btn-round btn-outline-primary">Upload</button>
+                <a id="btn_akta" class="btn btn-round btn-outline-primary">Upload</a>
             </div>
-        </div>
-        <br>
-        <div class="row">
             <div class="col-md-3 text-center">
                 <span>Surat Keterangan Hasil Ujian Nasional (SKHUN)</span>
                 <br>
-                <button id="btn_skhun" class="btn btn-round btn-outline-secondary">Upload</button>
+                <a id="btn_skhun" class="btn btn-round btn-outline-secondary">Upload</a>
             </div>
             <div class="col-md-3 text-center">
                 <span>Ijazah</span>
                 <br>
                 <br>
-                <button id="btn_ijazah" class="btn btn-round btn-outline-info">Upload</button>
+                <a id="btn_ijazah" class="btn btn-round btn-outline-info">Upload</a>
             </div>
             <div class="col-md-3 text-center">
                 <span>Kartu Keluarga</span>
                 <br>
                 <br>
-                <button id="btn_kk" class="btn btn-round btn-outline-warning">Upload</button>
+                <a id="btn_kk" class="btn btn-round btn-outline-warning">Upload</a>
             </div>
+        </div>
+        <br>
+        <div class="row">
             <div class="col-md-3 text-center">
                 <span>Kartu Tanda Penduduk (KTP) salah satu keluarga</span>
                 <br>
-                <button id="btn_ktp" class="btn btn-round btn-outline-danger">Upload</button>
+                <a id="btn_ktp" class="btn btn-round btn-outline-danger">Upload</a>
+            </div>
+            <div class="col-md-3 text-center">
+                <span>Program Keluarga Harapan (PKH) jika ada</span>
+                <br>
+                <a id="btn_pkh" class="btn btn-round btn-outline-success">Upload</a>
+            </div>
+            <div class="col-md-3 text-center">
+                <span>Kartu Indonesia Pintar (KIP) jika ada</span>
+                <br>
+                <br>
+                <a id="btn_kip" class="btn btn-round btn-outline-info">Upload</a>
+            </div>
+            <div class="col-md-3 text-center">
+                <span>Kartu Perlindungan Sosial (KPS) jika ada</span>
+                <br>
+                <a id="btn_kps" class="btn btn-round btn-outline-dark">Upload</a>
             </div>
         </div>
 
@@ -104,32 +104,11 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-3 text-center">
-                <span id="span_pkh" style="display: none;">Program Keluarga Harapan (PKH)</span>
-                <br>
-                <br>
-                <img id="gambar_pkh" style="width: 230px; height: 300px; display: none;" class="img-thumbnail mx-auto" src="" alt="">
-            </div>
-            <div class="col-md-3 text-center">
-                <span id="span_kip" style="display: none;">Kartu Indonesia Pintar (KIP)</span>
-                <br>
-                <br>
-                <img id="gambar_kip" style="width: 230px; height: 300px; display: none;" class="img-thumbnail mx-auto" src="" alt="">
-            </div>
-            <div class="col-md-3 text-center">
-                <span id="span_kps" style="display: none;">Kartu Pelayanan Sosial (KPS)</span>
-                <br>
-                <br>
-                <img id="gambar_kps" style="width: 230px; height: 300px; display: none;" class="img-thumbnail mx-auto" src="" alt="">
-            </div>
-            <div class="col-md-3 text-center">
                 <span id="span_akta" style="display: none;">Akta Kelahiran</span>
                 <br>
                 <br>
                 <img id="gambar_akta" style="width: 230px; height: 300px; display: none;" class="img-thumbnail mx-auto" src="" alt="">
             </div>
-        </div>
-        <br>
-        <div class="row">
             <div class="col-md-3 text-center">
                 <span id="span_skhun" style="display: none;">Surat Keterangan Hasil Ujian Nasional (SKHUN)</span>
                 <br>
@@ -147,10 +126,31 @@
                 <br>
                 <img id="gambar_kk" style="width: 230px; height: 300px; display: none;" class="img-thumbnail mx-auto" src="" alt="">
             </div>
+        </div>
+        <br>
+        <div class="row">
             <div class="col-md-3 text-center">
                 <span id="span_ktp" style="display: none;">Kartu Tanda Penduduk (KTP) salah satu keluarga</span>
                 <br>
                 <img id="gambar_ktp" style="width: 230px; height: 300px; display: none;" class="img-thumbnail mx-auto" src="" alt="">
+            </div>
+            <div class="col-md-3 text-center">
+                <span id="span_pkh" style="display: none;">Program Keluarga Harapan (PKH)</span>
+                <br>
+                <br>
+                <img id="gambar_pkh" style="width: 230px; height: 300px; display: none;" class="img-thumbnail mx-auto" src="" alt="">
+            </div>
+            <div class="col-md-3 text-center">
+                <span id="span_kip" style="display: none;">Kartu Indonesia Pintar (KIP)</span>
+                <br>
+                <br>
+                <img id="gambar_kip" style="width: 230px; height: 300px; display: none;" class="img-thumbnail mx-auto" src="" alt="">
+            </div>
+            <div class="col-md-3 text-center">
+                <span id="span_kps" style="display: none;">Kartu Perlindungan Sosial (KPS)</span>
+                <br>
+                <br>
+                <img id="gambar_kps" style="width: 230px; height: 300px; display: none;" class="img-thumbnail mx-auto" src="" alt="">
             </div>
         </div>
     </div>

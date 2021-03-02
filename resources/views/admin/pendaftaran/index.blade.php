@@ -36,7 +36,7 @@
             </form>
         </div>
     </div>
-    <div class="card-body p-0">
+    <div class="card-body">
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -55,7 +55,7 @@
                     <?php $no = 0; ?>
                     @foreach($pendaftaran as $p)
                     <?php $no++; ?>
-                <tr>
+
                     <td>
                         {{ $no }}
                     </td>
@@ -75,7 +75,7 @@
                         {{ $p->asal_sekolah }}
                     </td>
                     <td>
-                        <img alt="image" src="{{ asset('images/'. $p->foto) }}" class="img-fluid" data-toggle="tooltip">
+                        <img alt="image" src="{{ asset('images/'. $p->foto) }}" class="img-thumbnail" width="100" data-toggle="tooltip">
                     </td>
                     <td>
                         <?php
@@ -104,7 +104,7 @@
                             Pilih
                         </button>
                         <div class="dropdown-menu">
-                            <button class="dropdown-item btn-sm has-icon" onclick="detailData( <?php echo $p->nisn; ?>, 
+                            <button data-id="{{ $p->id_user }}" class="dropdown-item btn-sm has-icon btn-edit" onclick="detailData( <?php echo $p->nisn; ?>, 
                             <?php echo $p->tahun_pendaftaran; ?>, 
                             '{{ $p->nama }}',
                              '{{ $p->tempat_lahir }}',
@@ -128,6 +128,7 @@
                              '{{ $p->pkh }}',
                              '{{ $p->kip }}',
                              '{{ $p->kps }}',
+                             '{{ $p->id_user }}'
                              )">Detail</button>
                             <?php
                             if ($p->status == 'Proses') {
@@ -179,12 +180,12 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="home-tab5" data-toggle="tab" href="#home5" role="tab" aria-controls="home" aria-selected="true">
-                    <i class="fas fa-home"></i> Berkas</a>
+                    <i class="fas fa-folder-open"></i> Berkas</a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" id="contact-tab5" data-toggle="tab" href="#contact5" role="tab" aria-controls="contact" aria-selected="false">
-                    <i class="fas fa-mail-bulk"></i> Hasil Ujian</a>
+                    <i class="fas fa-braille"></i> Hasil Ujian</a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent5">
@@ -354,21 +355,70 @@
                         <img id="kip" style="width: 230px; height: 300px;" class="img-thumbnail mx-auto" src="" alt="" style="display: none;">
                     </div>
                     <div class="col-md-3 text-center">
-                        <span style="display: none;" id="span_kps">Kartu Pelayanan Sosial (KPS)</span>
+                        <span style="display: none;" id="span_kps">Kartu Perlindungan Sosial (KPS)</span>
                         <br>
                         <img id="kps" style="width: 230px; height: 300px;" class="img-thumbnail mx-auto" src="" alt="" style="display: none;">
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="contact5" role="tabpanel" aria-labelledby="contact-tab5">
-                Hasil Ujian
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+
+                            <th>Nama Mapel</th>
+                            <th>KKM</th>
+                            <th>Nilai</th>
+                            <th>Status</th>
+
+                        </thead>
+
+                        <tbody id="tujuan">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+                <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+                <script type="text/javascript">
+                    $('.btn-edit').on('click', function() {
+
+                        var id = $(this).data('id');
+                        var x = '';
+                        $.ajax({
+                            url: `/adminpendaftaran/${id}/edit`,
+                            method: "GET",
+                            success: function(data) {
+                                $.each(data, function(index, item) {
+                                    if (item.kkm > item.nilai) {
+                                        var status = '<div class="badge badge-danger">Tidak Tuntas</div>';
+                                    } else {
+                                        var status = '<div class="badge badge-success">Tuntas</div>';
+                                    }
+                                    x = x + '<tr>' +
+                                        '<td>' + item.nama_mapel + '</td>' +
+                                        '<td>' + item.kkm + '</td>' +
+                                        '<td>' + item.nilai + '</td>' +
+                                        '<td>' + status + '</td>' +
+                                        '</tr>';
+                                })
+                                $("#tujuan").html(x);
+
+                            },
+                            error: function(data) {
+                                console.log(error)
+                            }
+                        })
+                    })
+                </script>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    function detailData(nisn, tahun_pendaftaran, nama, tempat_lahir, tanggal_lahir, jk, agama, alamat, nama_ayah, nama_ibu, pekerjaan_ayah, pekerjaan_ibu, tempat_tinggal, asal_sekolah, transportasi, foto, akta, skhun, ijazah, kk, ktp, pkh, kip, kps) {
+<script type="text/javascript">
+    function detailData(nisn, tahun_pendaftaran, nama, tempat_lahir, tanggal_lahir, jk, agama, alamat, nama_ayah, nama_ibu, pekerjaan_ayah, pekerjaan_ibu, tempat_tinggal, asal_sekolah, transportasi, foto, akta, skhun, ijazah, kk, ktp, pkh, kip, kps, id_user) {
 
         document.getElementById("card_detail").style.display = "block";
         document.getElementById("nisn").innerHTML = nisn;

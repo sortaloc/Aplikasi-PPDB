@@ -44,7 +44,7 @@
                 <?php
                 if ($dokumen->pkh != '-') {
                 ?>
-                    <button onclick="hapusPKH( <?php echo $dokumen->id; ?> )" class="dropdown-item">PKH</button>
+                    <a onclick="hapusPKH( <?php echo $dokumen->id; ?> )" class="dropdown-item">PKH</a>
                     <form id="pkh-{{ $dokumen->id }}" action="{{ route('dokumen.destroy', $dokumen->id)}}" method="post">
                         @csrf
                         @method('DELETE')
@@ -55,7 +55,7 @@
 
                 if ($dokumen['kip'] != '-') {
                 ?>
-                    <button onclick="hapusKIP( <?php echo $dokumen->id; ?> )" class="dropdown-item">KIP</button>
+                    <a onclick="hapusKIP( <?php echo $dokumen->id; ?> )" class="dropdown-item">KIP</a>
                     <form id="kip-{{ $dokumen->id }}" action="{{ route('dokumen.destroy', $dokumen->id)}}" method="post">
                         @csrf
                         @method('DELETE')
@@ -66,7 +66,7 @@
 
                 if ($dokumen['kps'] != '-') {
                 ?>
-                    <button onclick="hapusKPS( <?php echo $dokumen->id; ?> )" class="dropdown-item">KPS</button>
+                    <a onclick="hapusKPS( <?php echo $dokumen->id; ?> )" class="dropdown-item">KPS</a>
                     <form id="kps-{{ $dokumen->id }}" action="{{ route('dokumen.destroy', $dokumen->id)}}" method="post">
                         @csrf
                         @method('DELETE')
@@ -202,7 +202,7 @@
                 <?php
                 } else {
                 ?>
-                    <span id="span_kps">Kartu Pelayanan Sosial (KPS)</span>
+                    <span id="span_kps">Kartu Perlindungan Sosial (KPS)</span>
                     <br>
                     <br>
                     <img id="gambar_kps" style="width: 230px; height: 300px;" class="img-thumbnail mx-auto" src="{{ asset('files/'.$dokumen->kps) }}" alt="">

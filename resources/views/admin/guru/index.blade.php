@@ -35,25 +35,23 @@
 <div class="card">
     <div class="card-header">
         <h4>Tabel Data Guru</h4>
-
-        <div class="card-header-form">
+    </div>
+    <div class="card-body">
+        <div class="float-left">
+            <a href="{{ route('adminguru.create') }}" class="btn btn-primary">Tambah Data</a>
+        </div>
+        <div class="float-right">
             <form action="{{ url('adminguru/cari') }}" method="post">
-                @csrf
+            @csrf
                 <div class="input-group">
-                    <input type="text" class="form-control" name="cari" placeholder="Cari.." value="{{ old('cari') }}">
-                    <div class="input-group-btn">
+                    <input type="text" class="form-control" name="cari" placeholder="cari..">
+                    <div class="input-group-append">
                         <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
                     </div>
                 </div>
             </form>
         </div>
-    </div>
-    <div class="col-md-6" style="padding: 10px; margin-left: 15px;">
-        <a href="{{ route('adminguru.create') }}" class="btn btn-primary">Tambah Data</a>
-    </div>
-
-    <div class="card-body p-0">
-
+        <div class="clearfix mb-3"></div>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
