@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h4>Tambah Data Mapel Ujian</h4>
+        <h4>Sunting Data Mapel Ujian</h4>
     </div>
     <div class="card-body">
         <form action="{{ route('adminmapelujian.update', $mapelujian->id ) }}" method="POST" enctype="multipart/form-data">
@@ -12,7 +12,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Mapel</label>
                 <div class="col-sm-12 col-md-7">
-                    <select name="id_mapel" class="form-control selectric" required>
+                    <select name="id_mapel" class="form-control select2" required>
                         <?php
 
                         foreach ($array_mapel as $key => $val) {

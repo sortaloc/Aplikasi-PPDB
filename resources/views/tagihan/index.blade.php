@@ -13,13 +13,13 @@
                     <th>Nama Tagihan</th>
                     <th>Jumlah Tagihan</th>
                     <th>Batas Pembayaran</th>
-                 
+
                 </thead>
-                <tr>
-                    @if ($tagihan->count() > 0)
-                    <?php $no = 0; ?>
-                    @foreach($tagihan as $t)
-                    <?php $no++; ?>
+
+                @if ($tagihan->count() > 0)
+                <?php $no = 0; ?>
+                @foreach($tagihan as $t)
+                <?php $no++; ?>
                 <tr>
                     <td>
                         {{ $no }}
@@ -31,7 +31,7 @@
                         Rp. {{ $t->jumlah_tagihan }}
                     </td>
                     <td>
-                    <?php
+                        <?php
                         $batas = $t->batas;
                         $hari = substr($batas, 8, 2);
                         $bulan = substr($batas, 5, 2);
@@ -65,9 +65,9 @@
                         $batas = $hari . " " . $bulan . " " . $tahun;
                         echo $batas;
                         ?>
-                        
+
                     </td>
-                   
+
                 </tr>
                 @endforeach
                 @else
@@ -76,7 +76,7 @@
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
-                    
+
                 </tr>
                 @endif
             </table>

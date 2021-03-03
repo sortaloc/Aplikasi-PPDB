@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h4>Tambah Data Mapel</h4>
+        <h4>Sunting Data Mapel</h4>
     </div>
     <div class="card-body">
         <form action="{{ route('adminmapel.update', $mapel->id ) }}" method="POST">
@@ -34,7 +34,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Guru Mapel</label>
                 <div class="col-sm-12 col-md-7">
-                    <select name="guru_mapel" class="form-control selectric" required>
+                    <select name="guru_mapel" class="form-control select2" required>
                         <?php
                         foreach ($array as $key => $val) {
                             $selected = $mapel['guru_mapel'] == $val ? ' selected = "selected" ' : '';

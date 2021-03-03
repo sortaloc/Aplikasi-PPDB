@@ -8,7 +8,9 @@ use App\Http\Controllers\AdminGuruController;
 use App\Http\Controllers\AdminKelasController;
 use App\Http\Controllers\AdminMapelController;
 use App\Http\Controllers\AdminMapelUjianController;
+use App\Http\Controllers\AdminPembagianController;
 use App\Http\Controllers\AdminPendaftaranController;
+use App\Http\Controllers\AdminSiswaController;
 use App\Http\Controllers\AdminSoalController;
 use App\Http\Controllers\AdminTagihanController;
 use App\Http\Controllers\AdminWaktuController;
@@ -41,6 +43,9 @@ Route::resource('adminmapelujian', AdminMapelUjianController::class);
 Route::post('adminmapelujian/cari', [AdminMapelUjianController::class, 'cariData']);
 Route::resource('admintagihan', AdminTagihanController::class);
 Route::post('admintagihan/cari', [AdminTagihanController::class, 'cariData']);
+Route::resource('adminsiswa', AdminSiswaController::class);
+Route::post('adminsiswa/cari', [AdminSiswaController::class, 'cariData']);
+Route::resource('adminpembagian', AdminPembagianController::class);
 
 Route::middleware('auth')->group(function () {
     Route::resource('home', HomeController::class);

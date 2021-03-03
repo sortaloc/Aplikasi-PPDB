@@ -31,20 +31,27 @@
     })
 </script>
 @endif
-
+<style>
+    .overflo {
+        width: 150px;
+        height: 100px;
+        overflow: auto;
+        padding: 10px;
+    }
+</style>
 
 <div class="card">
     <div class="card-header">
-        <h4>Tabel Data Tagihan</h4>
+        <h4>Tabel Data Siswa</h4>
     </div>
 
 
     <div class="card-body">
         <div class="float-left">
-            <a href="{{ route('admintagihan.create') }}" class="btn btn-primary">Tambah Data</a>
+            <a href="{{ route('adminsiswa.create') }}" class="btn btn-primary">Tambah Data</a>
         </div>
         <div class="float-right">
-            <form action="{{ url('admintagihan/cari') }}" method="post">
+            <form action="{{ url('adminsiswa/cari') }}" method="post">
                 @csrf
                 <div class="input-group">
                     <input type="text" class="form-control" name="cari" placeholder="cari..">
@@ -59,32 +66,42 @@
             <table class="table table-striped">
                 <thead>
                     <th>No.</th>
-                    <th>Nama Tagihan</th>
-                    <th>Jumlah Tagihan</th>
-                    <th>Batas Pembayaran</th>
+                    <th>NISN</th>
+                    <th>NIS</th>
+                    <th>Nama</th>
+                    <th>Kelas</th>
+                    <th>Tempat, Tanggal Lahir</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Alamat</th>
                     <th>Aksi</th>
                 </thead>
 
-                @if ($tagihan->count() > 0)
+                @if ($siswa->count() > 0)
                 <?php $no = 0; ?>
-                @foreach($tagihan as $t)
+                @foreach($siswa as $s)
                 <?php $no++; ?>
                 <tr>
                     <td>
                         {{ $no }}
                     </td>
                     <td>
-                        {{ $t->nama_tagihan }}
+                        {{ $s->nisn }}
                     </td>
                     <td>
-                        Rp. {{ $t->jumlah_tagihan }}
+                        {{ $s->nis }}
+                    </td>
+                    <td>
+                        {{ $s->nama }}
+                    </td>
+                    <td>
+                        {{ $s->kelas }}
                     </td>
                     <td>
                         <?php
-                        $batas = $t->batas;
-                        $hari = substr($batas, 8, 2);
-                        $bulan = substr($batas, 5, 2);
-                        $tahun = substr($batas, 0, 4);
+                        $tanggal = $s->tanggal_lahir;
+                        $hari = substr($tanggal, 8, 2);
+                        $bulan = substr($tanggal, 5, 2);
+                        $tahun = substr($tanggal, 0, 4);
                         if ($bulan == '01') {
                             $bulan = 'Januari';
                         } elseif ($bulan == '02') {
@@ -111,14 +128,34 @@
                             $bulan = 'Desember';
                         }
 
-                        $batas = $hari . " " . $bulan . " " . $tahun;
-                        echo $batas;
+                        $tanggal_lahir = $hari . " " . $bulan . " " . $tahun;
+                        echo $s->tempat_lahir . ', ' . $tanggal_lahir;
+                        ?>
+
+                    </td>
+                    <td>
+                        {{ $s->jk }}
+                    </td>
+                    <td>
+                        <?php
+                        $hitung_alamat = strlen($s->alamat);
+                        if ($hitung_alamat > 50) {
+                        ?>
+                            <div class="overflo">
+                                {{ $s->alamat }}
+                            </div>
+                        <?php
+                        } else {
+                        ?>
+                            {{ $s->alamat }}
+                        <?php
+                        }
                         ?>
                     </td>
                     <td>
-                        <a href="{{ route('admintagihan.edit', $t->id)}}" class="btn btn-icon btn-info"><i class="fas fa-pencil-alt"></i></a>
-                        <button class="btn btn-icon btn-danger" onclick="hapusData( <?php echo $t->id; ?> )"><i class="fas fa-trash"></i></button>
-                        <form id="data-{{ $t->id }}" action="{{ route('admintagihan.destroy', $t->id)}}" method="post">
+                        <a href="{{ route('adminsiswa.edit', $s->id)}}" class="btn btn-icon btn-info"><i class="fas fa-pencil-alt"></i></a>
+                        <button class="btn btn-icon btn-danger" onclick="hapusData( <?php echo $s->id; ?> )"><i class="fas fa-trash"></i></button>
+                        <form id="data-{{ $s->id }}" action="{{ route('adminsiswa.destroy', $s->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                         </form>
@@ -128,6 +165,9 @@
                 @else
                 <tr>
                     <td></td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
@@ -142,7 +182,7 @@
     <div class="card-footer text-right">
         <nav class="d-inline-block">
             <ul class="pagination mb-0">
-                {{ $tagihan->links() }}
+                {{ $siswa->links() }}
             </ul>
         </nav>
     </div>

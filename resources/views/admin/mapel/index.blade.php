@@ -64,11 +64,11 @@
                     <th>Guru Mapel</th>
                     <th>Aksi</th>
                 </thead>
-                <tr>
-                    @if ($mapel->count() > 0)
-                    <?php $no = 0; ?>
-                    @foreach($mapel as $m)
-                    <?php $no++; ?>
+
+                @if ($mapel->count() > 0)
+                <?php $no = 0; ?>
+                @foreach($mapel as $m)
+                <?php $no++; ?>
                 <tr>
                     <td>
                         {{ $no }}

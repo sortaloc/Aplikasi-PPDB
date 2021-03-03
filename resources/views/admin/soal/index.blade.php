@@ -87,11 +87,11 @@
                     <th>Jawaban</th>
                     <th>Aksi</th>
                 </thead>
-                <tr>
-                    @if ($soal->count() > 0)
-                    <?php $no = 0; ?>
-                    @foreach($soal as $s)
-                    <?php $no++; ?>
+
+                @if ($soal->count() > 0)
+                <?php $no = 0; ?>
+                @foreach($soal as $s)
+                <?php $no++; ?>
                 <tr>
                     <td>
                         {{ $no }}

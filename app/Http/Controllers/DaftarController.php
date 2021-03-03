@@ -105,7 +105,7 @@ class DaftarController extends Controller
             'tanggal_lahir' => ['required', 'date'],
             'jk' => ['required', 'in:Laki-laki,Perempuan'],
             'agama' => ['required', 'string'],
-            'alamat' => ['required', 'string'],
+            'alamat' => ['required'],
             'nama_ayah' => ['required', 'string'],
             'nama_ibu' => ['required', 'string'],
             'pekerjaan_ayah' => ['required', 'string'],
@@ -218,7 +218,7 @@ class DaftarController extends Controller
             'agama' => ['required', 'string'],
             'nama_ayah' => ['required', 'string'],
             'nama_ibu' => ['required', 'string'],
-            'alamat' => ['required', 'string'],
+            'alamat' => ['required'],
             'tempat_tinggal' => ['required', 'string'],
             'asal_sekolah' => ['required', 'string'],
             'transportasi' => ['required', 'string']

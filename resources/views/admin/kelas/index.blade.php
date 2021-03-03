@@ -70,11 +70,11 @@
                     <th>Wali Kelas</th>
                     <th>Aksi</th>
                 </thead>
-                <tr>
-                    @if ($kelas->count() > 0)
-                    <?php $no = 0; ?>
-                    @foreach($kelas as $k)
-                    <?php $no++; ?>
+
+                @if ($kelas->count() > 0)
+                <?php $no = 0; ?>
+                @foreach($kelas as $k)
+                <?php $no++; ?>
                 <tr>
                     <td>
                         {{ $no }}

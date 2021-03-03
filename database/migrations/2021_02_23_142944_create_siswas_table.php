@@ -23,7 +23,6 @@ class CreateSiswasTable extends Migration
             $table->date('tanggal_lahir');
             $table->enum('jk', ['Laki-laki', 'Perempuan']);
             $table->text('alamat');
-            $table->string('foto');
             $table->timestamps();
         });
     }

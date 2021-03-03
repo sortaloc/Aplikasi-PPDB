@@ -43,7 +43,7 @@ class AdminGuruController extends Controller
             'tanggal_lahir' => ['required', 'date'],
             'jk' => ['required', 'in:Laki-laki,Perempuan'],
             'agama' => ['required', 'string'],
-            'alamat' => ['required', 'string'],
+            'alamat' => ['required'],
             'no_hp' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'unique:gurus'],
             'foto' => ['required', 'max:1024', 'file', 'image', 'mimes:jpeg,png,jpg']
@@ -116,7 +116,7 @@ class AdminGuruController extends Controller
             'tanggal_lahir' => ['required', 'date'],
             'jk' => ['required', 'in:Laki-laki,Perempuan'],
             'agama' => ['required', 'string'],
-            'alamat' => ['required', 'string'],
+            'alamat' => ['required'],
             'no_hp' => ['required', 'string'],
             'email' => ['required', 'string', 'email']
         ]);

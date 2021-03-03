@@ -31,7 +31,14 @@
     })
 </script>
 @endif
-
+<style>
+    .overflo {
+        width: 200px;
+        height: 100px;
+        overflow: auto;
+        padding: 10px;
+    }
+</style>
 <div class="card">
     <div class="card-header">
         <h4>Tabel Data Guru</h4>
@@ -42,7 +49,7 @@
         </div>
         <div class="float-right">
             <form action="{{ url('adminguru/cari') }}" method="post">
-            @csrf
+                @csrf
                 <div class="input-group">
                     <input type="text" class="form-control" name="cari" placeholder="cari..">
                     <div class="input-group-append">
@@ -70,11 +77,11 @@
                     <th>Foto</th>
                     <th>Aksi</th>
                 </thead>
-                <tr>
-                    @if ($guru->count() > 0)
-                    <?php $no = 0; ?>
-                    @foreach($guru as $g)
-                    <?php $no++; ?>
+
+                @if ($guru->count() > 0)
+                <?php $no = 0; ?>
+                @foreach($guru as $g)
+                <?php $no++; ?>
                 <tr>
                     <td>
                         {{ $no }}
@@ -91,8 +98,24 @@
                     <td>
                         {{ $g->tahun_masuk }}
                     </td>
-                    <td style="overflow-y: scroll; display:block; height:80px;">
-                        {{ $g->pendidikan }}
+                    <td>
+                        <?php
+                        $hitungpendidikan = strlen($g->pendidikan);
+                        if ($hitungpendidikan > 50) {
+                        ?>
+                            <div class="overflo">
+                                
+                                {{ $g->pendidikan }}
+
+                            </div>
+                        <?php
+                        } else {
+                        ?>
+                            {{ $g->pendidikan }}
+                        <?php
+                        }
+                        ?>
+
                     </td>
                     <td>
                         {{ $g->tempat_lahir }}, {{ $g->tanggal_lahir }}
@@ -103,8 +126,22 @@
                     <td>
                         {{ $g->agama }}
                     </td>
-                    <td style="overflow-y: scroll; display:block; height:80px;">
-                        {{ $g->alamat }}
+                    <td>
+                        <?php
+                        $hitungalamat = strlen($g->alamat);
+                        if ($hitungalamat > 50) {
+                        ?>
+                            <div class="overflo">
+                                {{ $g->alamat }}
+                            </div>
+                        <?php
+                        } else {
+                        ?>
+                            {{ $g->alamat }}
+                        <?php
+                        }
+                        ?>
+                       
                     </td>
                     <td>
                         {{ $g->no_hp }}
@@ -124,6 +161,7 @@
                         </form>
                     </td>
                 </tr>
+
                 @endforeach
                 @else
                 <tr>

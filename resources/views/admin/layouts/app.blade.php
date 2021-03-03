@@ -13,6 +13,7 @@
     <!-- CSS Libraries -->
     
     <link rel="stylesheet" href="{{ asset('template/assets/css/selectric.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/assets/css/select2.min.css') }}">
     
 
     <!-- Template CSS -->
@@ -99,6 +100,7 @@
     <!-- JS Libraies -->
     
     <script src="{{ asset('template/assets/js/jquery.selectric.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/select2.full.min.js') }}"></script>
     
     
 

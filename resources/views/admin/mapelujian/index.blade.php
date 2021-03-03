@@ -63,11 +63,11 @@
                     <th>Foto</th>
                     <th>Aksi</th>
                 </thead>
-                <tr>
-                    @if ($mapelujian->count() > 0)
-                    <?php $no = 0; ?>
-                    @foreach($mapelujian as $mu)
-                    <?php $no++; ?>
+
+                @if ($mapelujian->count() > 0)
+                <?php $no = 0; ?>
+                @foreach($mapelujian as $mu)
+                <?php $no++; ?>
                 <tr>
                     <td>
                         {{ $no }}

@@ -32,11 +32,11 @@
                     <th>Nilai</th>
                     <th>Status</th>
                 </thead>
-                <tr>
-                    @if ($nilai->count() > 0)
-                    <?php $no = 0; ?>
-                    @foreach($nilai as $n)
-                    <?php $no++; ?>
+
+                @if ($nilai->count() > 0)
+                <?php $no = 0; ?>
+                @foreach($nilai as $n)
+                <?php $no++; ?>
                 <tr>
                     <td>
                         {{ $no }}

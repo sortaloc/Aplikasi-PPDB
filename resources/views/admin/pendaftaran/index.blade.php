@@ -60,12 +60,12 @@
                     <th>Status</th>
                     <th>Aksi</th>
                 </thead>
-                <tr>
-                    @if ($pendaftaran->count() > 0)
-                    <?php $no = 0; ?>
-                    @foreach($pendaftaran as $p)
-                    <?php $no++; ?>
 
+                @if ($pendaftaran->count() > 0)
+                <?php $no = 0; ?>
+                @foreach($pendaftaran as $p)
+                <?php $no++; ?>
+                <tr>
                     <td>
                         {{ $no }}
                     </td>
@@ -448,48 +448,48 @@
                                     if (bulan == '01') {
                                         bulan = 'Januari';
                                     }
-                                    if(bulan == '02') {
-                                       var bulan = 'Februari';
+                                    if (bulan == '02') {
+                                        var bulan = 'Februari';
                                     }
-                                    
-                                    if(bulan == '03') {
-                                       var bulan = 'Maret';
+
+                                    if (bulan == '03') {
+                                        var bulan = 'Maret';
                                     }
-                                    
-                                    if(bulan == '04') {
-                                       var bulan = 'April';
+
+                                    if (bulan == '04') {
+                                        var bulan = 'April';
                                     }
-                                    
-                                    if(bulan == '05') {
-                                       var bulan = 'Mei';
+
+                                    if (bulan == '05') {
+                                        var bulan = 'Mei';
                                     }
-                                    
-                                    if(bulan == '06') {
-                                      var bulan = 'Juni';
+
+                                    if (bulan == '06') {
+                                        var bulan = 'Juni';
                                     }
-                                    
-                                    if(bulan == '07') {
-                                       var bulan = 'Juli';
+
+                                    if (bulan == '07') {
+                                        var bulan = 'Juli';
                                     }
-                                    
-                                    if(bulan == '08') {
-                                       var bulan = 'Agustus';
+
+                                    if (bulan == '08') {
+                                        var bulan = 'Agustus';
                                     }
-                                    
-                                    if(bulan == '09') {
-                                       var bulan = 'September';
+
+                                    if (bulan == '09') {
+                                        var bulan = 'September';
                                     }
-                                    
-                                    if(bulan == '10') {
-                                       var bulan = 'Oktober';
+
+                                    if (bulan == '10') {
+                                        var bulan = 'Oktober';
                                     }
-                                    
-                                    if(bulan == '11') {
-                                       var bulan = 'November';
-                                    } 
-                                    
-                                    if(bulan == '12') {
-                                       var bulan = 'Desember';
+
+                                    if (bulan == '11') {
+                                        var bulan = 'November';
+                                    }
+
+                                    if (bulan == '12') {
+                                        var bulan = 'Desember';
                                     }
 
                                     var tanggal_ujian = hari + " " + bulan + " " + tahun;

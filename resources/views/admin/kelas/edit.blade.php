@@ -57,7 +57,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Wali Kelas</label>
                 <div class="col-sm-12 col-md-6">
-                    <select name="id_guru" class="form-control selectric" required>
+                    <select name="id_guru" class="form-control select2" required>
                         <?php
 
                         foreach ($array as $key => $val) {
