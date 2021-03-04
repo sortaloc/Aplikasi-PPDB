@@ -48,7 +48,7 @@
 
     <div class="card-body">
         <div class="float-left">
-            <a href="{{ route('adminkelas.create') }}" class="btn btn-primary">Tambah Data</a>
+            <a href="{{ route('adminkelas.create') }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
         </div>
         <div class="float-right">
             <form action="{{ url('adminkelas/cari') }}" method="post">

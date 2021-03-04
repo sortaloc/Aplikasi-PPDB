@@ -48,7 +48,7 @@
 
     <div class="card-body">
         <div class="float-left">
-            <a href="{{ route('adminsiswa.create') }}" class="btn btn-primary">Tambah Data</a>
+            <a href="{{ route('adminsiswa.create') }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
         </div>
         <div class="float-right">
             <form action="{{ url('adminsiswa/cari') }}" method="post">
@@ -165,6 +165,7 @@
                 @else
                 <tr>
                     <td></td>
+                    <td>-</td>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>

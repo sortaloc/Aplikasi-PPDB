@@ -55,7 +55,7 @@
 
                 <div class="clearfix mb-3"></div>
                 <div class="article-cta">
-                    <a href="{{ route('ujian.show', $mu->id_mapel) }}" class="btn btn-primary">Mulai Ujian</a>
+                    <a href="{{ route('ujian.show', $mu->id_mapel) }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-play"></i> Mulai</a>
                 </div>
             </div>
         </article>

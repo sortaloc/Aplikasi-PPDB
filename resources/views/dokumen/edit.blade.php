@@ -32,24 +32,24 @@
                 <span>Akta Kelahiran</span>
                 <br>
                 <br>
-                <a id="btn_akta" class="btn btn-round btn-outline-primary">Upload</a>
+                <a id="btn_akta" class="btn btn-icon icon-left btn-round btn-outline-primary"><i class="fas fa-upload"></i> Upload</a>
             </div>
             <div class="col-md-3 text-center">
                 <span>Surat Keterangan Hasil Ujian Nasional (SKHUN)</span>
                 <br>
-                <a id="btn_skhun" class="btn btn-round btn-outline-secondary">Upload</a>
+                <a id="btn_skhun" class="btn btn-icon icon-left btn-round btn-outline-secondary"><i class="fas fa-upload"></i> Upload</a>
             </div>
             <div class="col-md-3 text-center">
                 <span>Ijazah</span>
                 <br>
                 <br>
-                <a id="btn_ijazah" class="btn btn-round btn-outline-info">Upload</a>
+                <a id="btn_ijazah" class="btn btn-icon icon-left btn-round btn-outline-info"><i class="fas fa-upload"></i> Upload</a>
             </div>
             <div class="col-md-3 text-center">
                 <span>Kartu Keluarga</span>
                 <br>
                 <br>
-                <a id="btn_kk" class="btn btn-round btn-outline-warning">Upload</a>
+                <a id="btn_kk" class="btn btn-round btn-icon icon-left btn-outline-warning"><i class="fas fa-upload"></i> Upload</a>
             </div>
         </div>
         <br>
@@ -57,23 +57,23 @@
             <div class="col-md-3 text-center">
                 <span>Kartu Tanda Penduduk (KTP) salah satu keluarga</span>
                 <br>
-                <a id="btn_ktp" class="btn btn-round btn-outline-danger">Upload</a>
+                <a id="btn_ktp" class="btn btn-icon icon-left btn-round btn-outline-danger"><i class="fas fa-upload"></i> Upload</a>
             </div>
             <div class="col-md-3 text-center">
                 <span>Program Keluarga Harapan (PKH) jika ada</span>
                 <br>
-                <a id="btn_pkh" class="btn btn-round btn-outline-success">Upload</a>
+                <a id="btn_pkh" class="btn btn-icon icon-left btn-round btn-outline-success"><i class="fas fa-upload"></i> Upload</a>
             </div>
             <div class="col-md-3 text-center">
                 <span>Kartu Indonesia Pintar (KIP) jika ada</span>
                 <br>
                 <br>
-                <a id="btn_kip" class="btn btn-round btn-outline-info">Upload</a>
+                <a id="btn_kip" class="btn btn-icon icon-left btn-round btn-outline-info"><i class="fas fa-upload"></i> Upload</a>
             </div>
             <div class="col-md-3 text-center">
                 <span>Kartu Perlindungan Sosial (KPS) jika ada</span>
                 <br>
-                <a id="btn_kps" class="btn btn-round btn-outline-dark">Upload</a>
+                <a id="btn_kps" class="btn btn-icon icon-left btn-round btn-outline-dark"><i class="fas fa-upload"></i> Upload</a>
             </div>
         </div>
 
@@ -92,7 +92,7 @@
             <div class="card-footer row">
                 <div class="col-md-10"></div>
                 <div class="col-md-2 text-center">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-save"></i> Simpan</button>
                 </div>
             </div>
         </form>

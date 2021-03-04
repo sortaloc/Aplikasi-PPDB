@@ -42,7 +42,8 @@
     <div class="card-header">
         <h4>Formulir</h4>
         <div class="card-header-action">
-            <a href="{{ route('daftar.edit', $pendaftaran->id)}}" class="btn btn-outline-info">
+            <a href="{{ route('daftar.edit', $pendaftaran->id)}}" class="btn btn-info btn-icon icon-left">
+            <i class="far fa-edit"></i>
                 Edit Formulir
             </a>
         </div>
@@ -51,7 +52,7 @@
         <div class="col-md-3">
             <img id="gambar_foto" alt="image" src="{{ url('images/'. $pendaftaran->foto) }}" style="width: 210px; height: 280px" class="img-thumbnail mx-auto d-block">
             <div class="clearfix"></div>
-            <button id="btn_foto" style="width: 90%;" class="btn btn-icon icon-left btn-info mt-3 mx-auto d-block"><i class="far fa-edit"></i> Ganti Foto</button>
+            <button id="btn_foto" style="width: 90%;" class="btn btn-icon icon-left btn-outline-info mt-3 mx-auto d-block"><i class="fas fa-camera"></i> Ganti Foto</button>
 
             <form method="POST" action="{{ url('daftar/updatefoto', $pendaftaran->id) }}" enctype="multipart/form-data">
                 @csrf
@@ -94,7 +95,6 @@
             <div class="author-box-name">
                 <h5 class="text-primary">{{ $pendaftaran->nama }}</h5>
             </div>
-            <div class="author-box-job">Calon Peserta Didik Baru</div>
             <div class="author-box-description">
                 <div class="row">
                     <div class="col-md-3">
@@ -205,7 +205,15 @@
                         <span>Status</span>
                     </div>
                     <div class="col-md-9">
+                        @if ($pendaftaran->status == 'Proses')
                         : <span class="badge badge-warning">{{ $pendaftaran->status }}</span>
+                        @endif
+                        @if ($pendaftaran->status == 'Diterima')
+                        : <span class="badge badge-success">{{ $pendaftaran->status }}</span>
+                        @endif
+                        @if ($pendaftaran->status == 'Ditolak')
+                        : <span class="badge badge-danger">{{ $pendaftaran->status }}</span>
+                        @endif
                     </div>
                 </div>
             </div>

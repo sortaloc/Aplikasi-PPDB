@@ -6,7 +6,7 @@
     </div>
     <div class="card-body text-center">
         <h4>Selamat Datang, {{ Auth::user()->name }}!</h4>
-        <p>Status hasil ujian anda </p>
+        <p>Status pendaftaran anda </p>
         @if ($status == 'Proses')
         <h3><span class="badge badge-warning">Sedang dalam proses</span></h3>
         @endif

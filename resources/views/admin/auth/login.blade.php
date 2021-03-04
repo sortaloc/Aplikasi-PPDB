@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>PPDB</title>
-    <link rel="icon" href="{{ asset('logo/logomts.png') }}" type="image/gif" sizes="16x16">
+    <link rel="icon" href="{{ asset('logo/favicon.png') }}" type="image/gif" sizes="16x16">
     <!-- General CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -32,7 +32,7 @@
 
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h4>Login Admin</h4>
+                                <h4>PPDB</h4>
                             </div>
 
                             <div class="card-body">

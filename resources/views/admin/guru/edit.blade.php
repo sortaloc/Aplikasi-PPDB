@@ -149,7 +149,7 @@
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Foto</label>
                 <div class="col-sm-12 col-md-7">
                     <input name="foto" id="input_foto" type="file" accept="image/jpeg,image/jpg,image/png," class="form-control @error('foto') is-invalid @enderror" style="display: none;">
-                    <button type="button" id="btn_foto" class="btn btn-outline-info btn-sm">Upload Foto</button>
+                    <button type="button" id="btn_foto" class="btn btn-icon icon-left btn-outline-info btn-sm"><i class="fas fa-camera"></i> Upload Foto</button>
                     @error('foto')
                     <span class="invalid-feedback">
                         <strong>{{ $message }}</strong>
@@ -190,7 +190,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                 <div class="col-sm-12 col-md-7">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-save"></i> Simpan</button>
                 </div>
             </div>
         </form>

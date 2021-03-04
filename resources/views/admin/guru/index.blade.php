@@ -45,7 +45,7 @@
     </div>
     <div class="card-body">
         <div class="float-left">
-            <a href="{{ route('adminguru.create') }}" class="btn btn-primary">Tambah Data</a>
+            <a href="{{ route('adminguru.create') }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
         </div>
         <div class="float-right">
             <form action="{{ url('adminguru/cari') }}" method="post">
@@ -104,7 +104,7 @@
                         if ($hitungpendidikan > 50) {
                         ?>
                             <div class="overflo">
-                                
+
                                 {{ $g->pendidikan }}
 
                             </div>
@@ -118,7 +118,40 @@
 
                     </td>
                     <td>
-                        {{ $g->tempat_lahir }}, {{ $g->tanggal_lahir }}
+                        <?php
+                        $tanggal = $g->tanggal_lahir;
+                        $hari = substr($tanggal, 8, 2);
+                        $bulan = substr($tanggal, 5, 2);
+                        $tahun = substr($tanggal, 0, 4);
+                        if ($bulan == '01') {
+                            $bulan = 'Januari';
+                        } elseif ($bulan == '02') {
+                            $bulan = 'Februari';
+                        } elseif ($bulan == '03') {
+                            $bulan = 'Maret';
+                        } elseif ($bulan == '04') {
+                            $bulan = 'April';
+                        } elseif ($bulan == '05') {
+                            $bulan = 'Mei';
+                        } elseif ($bulan == '06') {
+                            $bulan = 'Juni';
+                        } elseif ($bulan == '07') {
+                            $bulan = 'Juli';
+                        } elseif ($bulan == '08') {
+                            $bulan = 'Agustus';
+                        } elseif ($bulan == '09') {
+                            $bulan = 'September';
+                        } elseif ($bulan == '10') {
+                            $bulan = 'Oktober';
+                        } elseif ($bulan == '11') {
+                            $bulan = 'November';
+                        } elseif ($bulan == '12') {
+                            $bulan = 'Desember';
+                        }
+
+                        $tanggal_lahir = $hari . " " . $bulan . " " . $tahun;
+                        echo $g->tempat_lahir . ', ' . $tanggal_lahir;
+                        ?>
                     </td>
                     <td>
                         {{ $g->jk }}
@@ -141,7 +174,7 @@
                         <?php
                         }
                         ?>
-                       
+
                     </td>
                     <td>
                         {{ $g->no_hp }}
@@ -150,7 +183,7 @@
                         {{ $g->email }}
                     </td>
                     <td>
-                        <img alt="image" src="{{ asset('imagesguru/'. $g->foto) }}" class="img-fluid" data-toggle="tooltip">
+                        <img alt="image" src="{{ asset('imagesguru/'. $g->foto) }}" class="img-fluid" width="100" data-toggle="tooltip">
                     </td>
                     <td>
                         <a href="{{ route('adminguru.edit', $g->id)}}" class="btn btn-icon btn-info"><i class="fas fa-pencil-alt"></i></a>

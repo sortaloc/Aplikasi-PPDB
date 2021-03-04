@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>PPDB</title>
-    <link rel="icon" href="{{ asset('logo/logomts.png') }}" type="image/gif" sizes="16x16">
+    <link rel="icon" href="{{ asset('logo/favicon.png') }}" type="image/gif" sizes="16x16">
     <!-- General CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -24,7 +24,7 @@
                 <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
                     <div class="p-4 m-3">
 
-                        <img class="img-fluid mx-auto d-block" width="80" src="{{ asset('logo/logomts.png') }}" alt="">
+                        <img class="img-fluid mx-auto d-block" width="200" src="{{ asset('logo/hero-img.png') }}" alt="">
                         <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
                             @csrf
                             <div class="form-group">
@@ -50,17 +50,13 @@
                             </div>
 
                             <div class="form-group text-right">
-                                
+
                                 <a href="{{ route('register') }}" class="float-left mt-3">
                                     Belum punya akun?
                                 </a>
-                                <button type="submit" class="btn btn-primary btn-lg btn-icon icon-right" tabindex="4">
-                                    Login
+                                <button type="submit" class="btn btn-primary btn-lg btn-icon icon-left" tabindex="4">
+                                    <i class="fas fa-sign-out-alt"></i> Masuk
                                 </button>
-                            </div>
-
-                            <div class="mt-5 text-center">
-                                Masukan NISN sebagai password ketika pertama kali mendaftar!
                             </div>
                         </form>
 
@@ -71,8 +67,8 @@
                     <div class="absolute-bottom-left index-2">
                         <div class="text-light p-5 pb-2">
                             <div class="mb-5 pb-3">
-                                <h1 class="mb-2 display-4 font-weight-bold">Selamat Pagi!</h1>
-                                <h5 class="font-weight-normal text-muted-transparent">MTs Ma'arif NU 12 Bulakparen</h5>
+                                <h1 class="mb-2 display-4 font-weight-bold">Selamat Datang!</h1>
+                                <h5 class="font-weight-normal text-muted-transparent">Aplikasi Pendaftaran Peserta Didik Baru</h5>
                             </div>
                         </div>
                     </div>

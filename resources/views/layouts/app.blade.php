@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>PPDB</title>
-    <link rel="icon" href="{{ asset('logo/logomts.png') }}" type="image/gif" sizes="16x16">
+    <link rel="icon" href="{{ asset('logo/favicon.png') }}" type="image/gif" sizes="16x16">
     <!-- General CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{{ asset('template/assets/css/selectric.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/assets/css/select2.min.css') }}">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('template/assets/css/style.css') }}">
@@ -41,7 +43,7 @@
                 <ul class="navbar-nav navbar-right">
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
 
-                            <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div>
+                            <div class="d-sm-none d-lg-inline-block">Heyy, {{ Auth::user()->name }}</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="{{ route('home.edit', Auth::user()->id) }}" class="dropdown-item has-icon">
@@ -61,10 +63,10 @@
             <div class="main-sidebar">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href="{{ url('home') }}">PPDB</a>
+                        <a class="text-primary" href="{{ url('home') }}">PPDB</a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href="{{ url('home') }}">PPDB</a>
+                        <a class="text-primary" href="{{ url('home') }}">PPDB</a>
                     </div>
                     <!-- sidebar -->
                     @include('layouts.sidebar')
@@ -92,6 +94,8 @@
     <script src="{{ asset('template/assets/js/stisla.js') }}"></script>
 
     <!-- JS Libraies -->
+    <script src="{{ asset('template/assets/js/jquery.selectric.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/select2.full.min.js') }}"></script>
 
     <!-- Template JS File -->
     <script src="{{ asset('template/assets/js/scripts.js') }}"></script>

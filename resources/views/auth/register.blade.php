@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>PPDB</title>
-    <link rel="icon" href="{{ asset('logo/logomts.png') }}" type="image/gif" sizes="16x16">
+    <link rel="icon" href="{{ asset('logo/favicon.png') }}" type="image/gif" sizes="16x16">
     <!-- General CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -31,7 +31,7 @@
 
                                 <div class="col-12 col-md-12 col-lg-5" style="padding: 40px;">
                                     <!-- foto -->
-                                    <img class="img-fluid mx-auto d-block" style="width: 250px; height: 250px;" src="{{ asset('logo/logomts.png') }}" alt="">
+                                    <img class="img-fluid mx-auto d-block" style="width: 250px; height: 250px;" src="{{ asset('logo/register.png') }}" alt="">
                                 </div>
                                 <div class="col-12 col-md-12 col-lg-7 p-0">
                                     <div class="card-header text-center">
@@ -77,8 +77,8 @@
                                                 <a href="{{ route('login') }}" class="float-left mt-3">
                                                     Sudah punya akun?
                                                 </a>
-                                                <button type="submit" class="btn btn-round btn-lg btn-primary">
-                                                    Daftar
+                                                <button type="submit" class="btn btn-icon icon-left btn-lg btn-primary">
+                                                    <i class="fas fa-user-plus"></i> Daftar
                                                 </button>
                                             </div>
                                         </form>

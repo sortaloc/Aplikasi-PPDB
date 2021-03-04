@@ -34,11 +34,13 @@
     <div class="card-header">
         <h4>Tampilan Berkas</h4>
         <div class="card-header-action">
-            <a href="{{ route('dokumen.edit', $dokumen->id)}}" class="btn btn-outline-info">
-                Edit Berkas
+            <a href="{{ route('dokumen.edit', $dokumen->id)}}" class="btn btn-icon icon-left btn-info">
+            <i class="fas fa-edit"></i> 
+                Edit
             </a>
-            <button class="btn btn-outline-danger dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Hapus Berkas
+            <button class="btn btn-icon icon-left btn-danger dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-trash"></i> 
+                Hapus
             </button>
             <div class="dropdown-menu">
                 <?php

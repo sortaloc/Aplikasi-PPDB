@@ -16,7 +16,7 @@
     </div>
     <div class="card-body">
         <h4>Selamat Datang, {{ auth()->guard('admin')->user()->nama }}!</h4>
-        <p>Aplikasi PPDB Mts Ma'arif NU 12 Bulakparen</p>
+        <p>Aplikasi PPDB</p>
     </div>
 </div>
 @endsection
