@@ -12,7 +12,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Mapel</label>
                 <div class="col-sm-12 col-md-7">
-                    <input pattern="[A-Za-z0-9 ,.]+" placeholder="masukan nama mapel.." type="text" class="form-control @error('nama_mapel') is-invalid @enderror" required name="nama_mapel" value="{{ $mapel->nama_mapel }}" autocomplete="nama_mapel">
+                    <input pattern="[A-Za-z0-9 ,.]+" placeholder="masukan nama mapel.." type="text" class="form-control @error('nama_mapel') is-invalid @enderror" required name="nama_mapel" value="{{ $mapel->nama_mapel }}" autocomplete="nama_mapel" autofocus>
                     @error('nama_mapel')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>

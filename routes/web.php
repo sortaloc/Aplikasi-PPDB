@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminGuruController;
 use App\Http\Controllers\AdminKelasController;
+use App\Http\Controllers\AdminLatarbelakangController;
 use App\Http\Controllers\AdminMapelController;
 use App\Http\Controllers\AdminMapelUjianController;
 use App\Http\Controllers\AdminPembagianController;
@@ -16,10 +17,13 @@ use App\Http\Controllers\AdminTagihanController;
 use App\Http\Controllers\AdminWaktuController;
 use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\DokumenController;
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\SejarahController;
 use App\Http\Controllers\TagihanController;
 use App\Http\Controllers\UjianController;
+use App\Http\Controllers\VisiMisiController;
 
 //routes login admin
 Route::get('loginadmin', [LoginController::class, 'FormLoginAdmin']);
@@ -46,6 +50,7 @@ Route::post('admintagihan/cari', [AdminTagihanController::class, 'cariData']);
 Route::resource('adminsiswa', AdminSiswaController::class);
 Route::post('adminsiswa/cari', [AdminSiswaController::class, 'cariData']);
 Route::resource('adminpembagian', AdminPembagianController::class);
+Route::resource('adminlatarbelakang', AdminLatarbelakangController::class);
 
 Route::middleware('auth')->group(function () {
     Route::resource('home', HomeController::class);
@@ -57,9 +62,14 @@ Route::middleware('auth')->group(function () {
     Route::resource('tagihan', TagihanController::class);
 });
 
+Route::resource('guru', GuruController::class);
+Route::resource('sejarah', SejarahController::class);
+Route::resource('visimisi', VisiMisiController::class);
+
 Route::get('/', function () {
     return view('index');
 });
+
 
 Auth::routes();
 

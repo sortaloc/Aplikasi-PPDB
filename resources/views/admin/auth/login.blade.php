@@ -61,8 +61,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                                            Masuk
+                                        <button type="submit" class="btn btn-icon icon-left btn-primary btn-lg btn-block" tabindex="4">
+                                        <i class="fas fa-sign-out-alt"></i> Masuk
                                         </button>
                                     </div>
                                 </form>

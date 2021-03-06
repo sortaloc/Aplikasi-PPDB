@@ -24,7 +24,7 @@
                 <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
                     <div class="p-4 m-3">
 
-                        <img class="img-fluid mx-auto d-block" width="200" src="{{ asset('logo/hero-img.png') }}" alt="">
+                        <img class="img-fluid mx-auto d-block" width="200" src="{{ asset('logo/values-2.png') }}" alt="">
                         <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
                             @csrf
                             <div class="form-group">

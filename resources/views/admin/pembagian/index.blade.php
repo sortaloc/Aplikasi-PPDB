@@ -24,7 +24,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">NIS</label>
                 <div class="col-sm-12 col-md-3">
-                    <input placeholder="masukan nis.." type="number" class="form-control @error('nis') is-invalid @enderror" required name="nis" value="{{ old('nis') }}" autocomplete="nis">
+                    <input placeholder="masukan nis.." type="number" class="form-control @error('nis') is-invalid @enderror" required name="nis" value="{{ old('nis') }}" autocomplete="nis" autofocus>
                     @error('nis')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>

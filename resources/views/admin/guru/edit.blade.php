@@ -13,7 +13,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">NIP</label>
                 <div class="col-sm-12 col-md-7">
-                    <input placeholder="masukan nip.." type="number" class="form-control @error('nip') is-invalid @enderror" required name="nip" value="{{ $guru->nip }}" autocomplete="nip">
+                    <input placeholder="masukan nip.." type="number" class="form-control @error('nip') is-invalid @enderror" required name="nip" value="{{ $guru->nip }}" autocomplete="nip" autofocus>
                     @error('nip')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
@@ -119,7 +119,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Alamat Lengkap</label>
                 <div class="col-sm-12 col-md-7">
-                    <textarea name="alamat" class="form-control" id="" cols="30" rows="10">{{ $guru->alamat }}</textarea>
+                    <textarea name="alamat" class="form-control" id="" cols="30" rows="10" required>{{ $guru->alamat }}</textarea>
                 </div>
             </div>
             <div class="form-group row mb-4">

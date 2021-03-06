@@ -21,7 +21,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">NISN</label>
                 <div class="col-sm-12 col-md-7">
-                    <input placeholder="masukan nisn.." type="number" class="form-control @error('nisn') is-invalid @enderror" required name="nisn" value="{{ $nisn }}" autocomplete="nisn">
+                    <input placeholder="masukan nisn.." type="number" class="form-control @error('nisn') is-invalid @enderror" required name="nisn" value="{{ $nisn }}" autocomplete="nisn" autofocus>
                     @error('nisn')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
@@ -86,7 +86,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Alamat Lengkap</label>
                 <div class="col-sm-12 col-md-7">
-                    <textarea name="alamat" class="form-control" id="" cols="30" rows="10"></textarea>
+                    <textarea name="alamat" class="form-control" id="" cols="30" rows="10" required></textarea>
                 </div>
             </div>
             <div class="form-group row mb-4">

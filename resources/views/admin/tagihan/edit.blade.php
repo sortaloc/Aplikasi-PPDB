@@ -12,7 +12,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Tagihan</label>
                 <div class="col-sm-12 col-md-7">
-                    <input pattern="[A-Za-z0-9 ,.]+" placeholder="masukan nama tagihan.." type="text" class="form-control @error('nama_tagihan') is-invalid @enderror" required name="nama_tagihan" value="{{ $tagihan->nama_tagihan }}" autocomplete="nama_tagihan">
+                    <input pattern="[A-Za-z0-9 ,.]+" placeholder="masukan nama tagihan.." type="text" class="form-control @error('nama_tagihan') is-invalid @enderror" required name="nama_tagihan" value="{{ $tagihan->nama_tagihan }}" autocomplete="nama_tagihan" autofocus>
                     @error('nama_tagihan')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>

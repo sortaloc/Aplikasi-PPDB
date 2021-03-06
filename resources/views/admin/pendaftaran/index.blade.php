@@ -146,12 +146,11 @@
                             @method('DELETE')
                         </form>
 
-
-                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Pilih
+                        <button class="btn btn-icon icon-left btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-hand-pointer"></i> Pilih
                         </button>
                         <div class="dropdown-menu">
-                            <button data-id="{{ $p->id_user }}" class="dropdown-item btn-sm has-icon btn-edit" onclick="detailData( <?php echo $p->nisn; ?>, 
+                            <a data-id="{{ $p->id_user }}" class="dropdown-item has-icon btn-edit" onclick="detailData( <?php echo $p->nisn; ?>, 
                             <?php echo $p->tanggal_pendaftaran; ?>, 
                             '{{ $p->nama }}',
                              '{{ $p->tempat_lahir }}',
@@ -176,12 +175,12 @@
                              '{{ $p->kip }}',
                              '{{ $p->kps }}',
                              '{{ $p->id_user }}'
-                             )">Detail</button>
+                             )"><i class="fas fa-info"></i> Detail</a>
                             @if ( $p->status == 'Proses')
-                            <button class="dropdown-item has-icon btn-sm" onclick="terimaSiswa( <?php echo $p->id_user; ?> )">Diterima</button>
-                            <button class="dropdown-item has-icon btn-sm" onclick="tolakSiswa( <?php echo $p->id_user; ?> )">Ditolak</button>
+                            <a class="dropdown-item has-icon" onclick="terimaSiswa( <?php echo $p->id_user; ?> )"><i class="fas fa-check"></i> Diterima</a>
+                            <a class="dropdown-item has-icon" onclick="tolakSiswa( <?php echo $p->id_user; ?> )"><i class="fas fa-times"></i> Ditolak</a>
                             @endif
-                            <button class="dropdown-item has-icon btn-sm" onclick="hapusData( <?php echo $p->id_user; ?> )">Hapus</button>
+                            <a class="dropdown-item has-icon" onclick="hapusData( <?php echo $p->id_user; ?> )"><i class="fas fa-trash"></i> Hapus</a>
                         </div>
                     </td>
                 </tr>
