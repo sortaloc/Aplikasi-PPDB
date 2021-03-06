@@ -6,7 +6,7 @@
     <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-balance-scale"></i><span>Ujian Masuk</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="{{ url('adminwaktu') }}">Pelaksanaan Ujian</a></li>
+            <li><a class="nav-link" href="{{ url('adminwaktuujian') }}">Pelaksanaan Ujian</a></li>
             <li><a class="nav-link" href="{{ url('adminmapelujian') }}">Data Mapel Ujian</a></li>
             <li><a class="nav-link" href="{{ url('adminsoal') }}">Data Soal Ujian</a></li>
 
@@ -15,6 +15,7 @@
     <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i><span>Peserta Didik Baru</span></a>
         <ul class="dropdown-menu">
+            <li><a class="nav-link" href="{{ url('adminwaktupendaftaran') }}">Waktu Pendaftaran</a></li>
             <li><a class="nav-link" href="{{ url('adminpendaftaran') }}">Data Pendaftaran</a></li>
             <li><a class="nav-link" href="{{ url('admintagihan') }}">Data Tagihan</a></li>
             <li><a class="nav-link" href="{{ url('adminpembagian') }}">Pembagian Kelas</a></li>

@@ -9,7 +9,7 @@ class Waktu extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'tahun_akademik',
+        'jenis',
         'buka',
         'tutup'
     ];
