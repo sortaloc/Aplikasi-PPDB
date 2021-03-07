@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pendaftaran;
 use App\Models\User;
+use App\Models\Waktu;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -15,6 +16,20 @@ class DaftarController extends Controller
 
     public function index()
     {
+        //Validasi pendaftaran
+        $ambil_waktu = Waktu::where('jenis', 'pendaftaran')->first();
+        $tanggal_buka = $ambil_waktu['buka'];
+        $tanggal_tutup = $ambil_waktu['tutup'];
+        date_default_timezone_set('Asia/Jakarta');
+        $tanggal_sekarang = date('Y-m-d');
+        if ($tanggal_sekarang < $tanggal_buka) {
+            return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran masih di tutup!');
+        } elseif ($tanggal_sekarang > $tanggal_tutup) {
+            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!'); 
+        }
+
+
+
         $id = Auth::user()->id;
         $nama = Auth::user()->name;
         $nisn = Auth::user()->email;
@@ -119,6 +134,19 @@ class DaftarController extends Controller
 
     public function store(Request $request)
     {
+        //Validasi pendaftaran
+        $ambil_waktu = Waktu::where('jenis', 'pendaftaran')->first();
+        $tanggal_buka = $ambil_waktu['buka'];
+        $tanggal_tutup = $ambil_waktu['tutup'];
+        date_default_timezone_set('Asia/Jakarta');
+        $tanggal_sekarang = date('Y-m-d');
+        if ($tanggal_sekarang < $tanggal_buka) {
+            return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran masih di tutup!');
+        } elseif ($tanggal_sekarang > $tanggal_tutup) {
+            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!'); 
+        }
+
+
         //ambil data user
         $id_user = Auth::user()->id;
         $nisn_user = Auth::user()->email;
@@ -203,6 +231,18 @@ class DaftarController extends Controller
 
     public function edit($id)
     {
+        //Validasi pendaftaran
+        $ambil_waktu = Waktu::where('jenis', 'pendaftaran')->first();
+        $tanggal_buka = $ambil_waktu['buka'];
+        $tanggal_tutup = $ambil_waktu['tutup'];
+        date_default_timezone_set('Asia/Jakarta');
+        $tanggal_sekarang = date('Y-m-d');
+        if ($tanggal_sekarang < $tanggal_buka) {
+            return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran masih di tutup!');
+        } elseif ($tanggal_sekarang > $tanggal_tutup) {
+            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!'); 
+        }
+
         $pendaftaran = Pendaftaran::find($id);
         return view('daftar.edit', compact('pendaftaran'));
     }
@@ -227,6 +267,18 @@ class DaftarController extends Controller
 
     public function update(Request $request, $id)
     {
+        //Validasi pendaftaran
+        $ambil_waktu = Waktu::where('jenis', 'pendaftaran')->first();
+        $tanggal_buka = $ambil_waktu['buka'];
+        $tanggal_tutup = $ambil_waktu['tutup'];
+        date_default_timezone_set('Asia/Jakarta');
+        $tanggal_sekarang = date('Y-m-d');
+        if ($tanggal_sekarang < $tanggal_buka) {
+            return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran masih di tutup!');
+        } elseif ($tanggal_sekarang > $tanggal_tutup) {
+            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!'); 
+        }
+        
         //ambil data user
         $id_user = Auth::user()->id;
         $nisn_user = Auth::user()->email;
@@ -296,6 +348,18 @@ class DaftarController extends Controller
 
     public function ubahFoto(Request $request, $id)
     {
+        //Validasi pendaftaran
+        $ambil_waktu = Waktu::where('jenis', 'pendaftaran')->first();
+        $tanggal_buka = $ambil_waktu['buka'];
+        $tanggal_tutup = $ambil_waktu['tutup'];
+        date_default_timezone_set('Asia/Jakarta');
+        $tanggal_sekarang = date('Y-m-d');
+        if ($tanggal_sekarang < $tanggal_buka) {
+            return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran masih di tutup!');
+        } elseif ($tanggal_sekarang > $tanggal_tutup) {
+            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!'); 
+        }
+        
         $this->validatorFoto($request->all())->validate();
 
         // hapus foto

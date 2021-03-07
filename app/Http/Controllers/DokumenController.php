@@ -15,6 +15,18 @@ class DokumenController extends Controller
 
     public function index()
     {
+        //Validasi pendaftaran
+        $ambil_waktu = Waktu::where('jenis', 'pendaftaran')->first();
+        $tanggal_buka = $ambil_waktu['buka'];
+        $tanggal_tutup = $ambil_waktu['tutup'];
+        date_default_timezone_set('Asia/Jakarta');
+        $tanggal_sekarang = date('Y-m-d');
+        if ($tanggal_sekarang < $tanggal_buka) {
+            return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran masih di tutup!');
+        } elseif ($tanggal_sekarang > $tanggal_tutup) {
+            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!'); 
+        }
+
         $id = Auth::user()->id;
         $nisn = Auth::user()->email;
         $dokumen = Dokumen::where('id_user', $id)->first();
@@ -67,9 +79,21 @@ class DokumenController extends Controller
 
     public function store(Request $request)
     {
+        //Validasi pendaftaran
+        $ambil_waktu = Waktu::where('jenis', 'pendaftaran')->first();
+        $tanggal_buka = $ambil_waktu['buka'];
+        $tanggal_tutup = $ambil_waktu['tutup'];
+        date_default_timezone_set('Asia/Jakarta');
+        $tanggal_sekarang = date('Y-m-d');
+        if ($tanggal_sekarang < $tanggal_buka) {
+            return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran masih di tutup!');
+        } elseif ($tanggal_sekarang > $tanggal_tutup) {
+            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!'); 
+        } 
+
         $id = Auth::user()->id;
         $cek = Dokumen::where('id_user', $id)->first();
-        date_default_timezone_set('Asia/Jakarta');
+    
         $waktu = date('His');
 
         if ($cek == null) {
@@ -163,7 +187,19 @@ class DokumenController extends Controller
 
     public function update(Request $request, $id)
     {
+        //Validasi pendaftaran
+        $ambil_waktu = Waktu::where('jenis', 'pendaftaran')->first();
+        $tanggal_buka = $ambil_waktu['buka'];
+        $tanggal_tutup = $ambil_waktu['tutup'];
         date_default_timezone_set('Asia/Jakarta');
+        $tanggal_sekarang = date('Y-m-d');
+        if ($tanggal_sekarang < $tanggal_buka) {
+            return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran masih di tutup!');
+        } elseif ($tanggal_sekarang > $tanggal_tutup) {
+            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!'); 
+        }
+
+
         $waktu = date('His');
         $ambil_dokumen = Dokumen::find($id);
 

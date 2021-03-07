@@ -7,12 +7,25 @@ use App\Models\Nilai;
 use App\Models\Soal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Waktu;
 
 class UjianController extends Controller
 {
 
     public function index()
     {
+        //Validasi pendaftaran
+        $ambil_waktu = Waktu::where('jenis', 'ujian')->first();
+        $tanggal_buka = $ambil_waktu['buka'];
+        $tanggal_tutup = $ambil_waktu['tutup'];
+        date_default_timezone_set('Asia/Jakarta');
+        $tanggal_sekarang = date('Y-m-d');
+        if ($tanggal_sekarang < $tanggal_buka) {
+            return redirect('home')->with('ujian_belum_di_mulai', 'Ujian masih di tutup!');
+        } elseif ($tanggal_sekarang > $tanggal_tutup) {
+            return redirect('home')->with('ujian_sudah_di_tutup', 'Ujian sudah di tutup!'); 
+        }
+
         $mapelujian = MapelUjian::orderBy('nama_mapel', 'ASC')->get();
 
         return view('ujian.index', compact('mapelujian'));
@@ -27,6 +40,18 @@ class UjianController extends Controller
 
     public function store(Request $request)
     {
+        //Validasi pendaftaran
+        $ambil_waktu = Waktu::where('jenis', 'ujian')->first();
+        $tanggal_buka = $ambil_waktu['buka'];
+        $tanggal_tutup = $ambil_waktu['tutup'];
+        date_default_timezone_set('Asia/Jakarta');
+        $tanggal_sekarang = date('Y-m-d');
+        if ($tanggal_sekarang < $tanggal_buka) {
+            return redirect('home')->with('ujian_belum_di_mulai', 'Ujian masih di tutup!');
+        } elseif ($tanggal_sekarang > $tanggal_tutup) {
+            return redirect('home')->with('ujian_sudah_di_tutup', 'Ujian sudah di tutup!'); 
+        }
+
         $id_user = Auth::user()->id;
         $id_mapel = $request['id_mapel'];
         $ambil_mapel_ujian = MapelUjian::where('id_mapel', $id_mapel)->first();
@@ -78,6 +103,18 @@ class UjianController extends Controller
 
     public function show($id)
     {
+        //Validasi pendaftaran
+        $ambil_waktu = Waktu::where('jenis', 'ujian')->first();
+        $tanggal_buka = $ambil_waktu['buka'];
+        $tanggal_tutup = $ambil_waktu['tutup'];
+        date_default_timezone_set('Asia/Jakarta');
+        $tanggal_sekarang = date('Y-m-d');
+        if ($tanggal_sekarang < $tanggal_buka) {
+            return redirect('home')->with('ujian_belum_di_mulai', 'Ujian masih di tutup!');
+        } elseif ($tanggal_sekarang > $tanggal_tutup) {
+            return redirect('home')->with('ujian_sudah_di_tutup', 'Ujian sudah di tutup!'); 
+        }
+
         $id_user = Auth::user()->id;
         $ambil_nilai = Nilai::where('id_user', $id_user)->where('id_mapel', $id)->count();
         if ($ambil_nilai > 0) {

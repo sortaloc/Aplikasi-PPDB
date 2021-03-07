@@ -10,6 +10,39 @@
     })
 </script>
 @endif
+@if (Session::has('pendaftaran_belum_di_mulai'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Pendaftaran belum dibuka!'
+    })
+</script>
+@endif
+@if (Session::has('pendaftaran_sudah_di_tutup'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Pendaftaran sudah ditutup!'
+    })
+</script>
+@endif
+
+@if (Session::has('ujian_belum_di_mulai'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Ujian belum dibuka!'
+    })
+</script>
+@endif
+@if (Session::has('ujian_sudah_di_tutup'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Ujian sudah ditutup!'
+    })
+</script>
+@endif
 <div class="card">
     <div class="card-header">
         <h4>Halaman Utama</h4>
