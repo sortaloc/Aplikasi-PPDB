@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminGuruController;
 use App\Http\Controllers\AdminKelasController;
+use App\Http\Controllers\AdminKritiksaranController;
 use App\Http\Controllers\AdminLatarbelakangController;
 use App\Http\Controllers\AdminMapelController;
 use App\Http\Controllers\AdminMapelUjianController;
@@ -53,6 +54,8 @@ Route::resource('adminsiswa', AdminSiswaController::class);
 Route::post('adminsiswa/cari', [AdminSiswaController::class, 'cariData']);
 Route::resource('adminpembagian', AdminPembagianController::class);
 Route::resource('adminlatarbelakang', AdminLatarbelakangController::class);
+Route::resource('adminkritiksaran', AdminKritiksaranController::class);
+Route::post('adminkritiksaran/cari', [AdminKritiksaranController::class, 'cariData']);
 
 Route::middleware('auth')->group(function () {
     Route::resource('home', HomeController::class);
@@ -67,10 +70,14 @@ Route::middleware('auth')->group(function () {
 Route::resource('guru', GuruController::class);
 Route::resource('sejarah', SejarahController::class);
 Route::resource('visimisi', VisiMisiController::class);
+Route::resource('kritiksaran', AdminKritiksaranController::class);
+
 
 Route::get('/', function () {
     return view('index');
 });
+
+
 
 
 Auth::routes();

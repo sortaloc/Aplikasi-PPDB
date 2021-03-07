@@ -22,4 +22,5 @@
         </ul>
     </li>
     <li><a class="nav-link" href="{{ url('adminlatarbelakang') }}"><i class="fas fa-info-circle"></i> <span>latar Belakang</span></a></li>
+    <li><a class="nav-link" href="{{ url('adminkritiksaran') }}"><i class="fas fa-info-circle"></i> <span>Kritik dan Saran</span></a></li>
 </ul>
