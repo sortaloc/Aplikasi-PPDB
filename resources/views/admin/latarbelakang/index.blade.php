@@ -33,14 +33,14 @@
     <div class="card-header">
         <h4>Halaman Latar Belakang</h4>
         @if ($latarbelakang != null)
-        
+
         <div class="card-header-action">
             <a href="{{ route('adminlatarbelakang.edit', $latarbelakang->id) }}" class="btn btn-info btn-icon icon-left">
                 <i class="far fa-edit"></i>
                 Edit Latar Belakang
             </a>
         </div>
-  
+
         @else
         <div class="card-header-action">
             <a href="{{ route('adminlatarbelakang.create') }}" class="btn btn-primary btn-icon icon-left">
@@ -54,18 +54,30 @@
     <div class="card-body">
         @if ($latarbelakang != null)
         <h4>Sejarah</h4>
-        <p>{{ $latarbelakang->sejarah }}</p>
+        <ol>
+            <p>{{ $latarbelakang->sejarah }}</p>
+        </ol>
         <h4>Visi</h4>
-        <p>{{ $latarbelakang->visi }}</p>
+        <ol>
+            <p>{{ $latarbelakang->visi }}</p>
+        </ol>
         <h4>Misi</h4>
-        <p>{{ $latarbelakang->misi }}</p>
+        <ol>
+            <p>{{ $latarbelakang->misi }}</p>
+        </ol>
         @else
         <h4>Sejarah</h4>
-        <p>-</p>
+        <ol>
+            <p>-</p>
+        </ol>
         <h4>Visi</h4>
-        <p>-</p>
+        <ol>
+            <p>-</p>
+        </ol>
         <h4>Misi</h4>
-        <p>-</p>
+        <ol>
+            <p>-</p>
+        </ol>
         @endif
     </div>
 </div>

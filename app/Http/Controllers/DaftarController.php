@@ -312,7 +312,7 @@ class DaftarController extends Controller
             }
         }
 
-        if ($request['nama'] === $nama_user) {
+        if ($request['nama'] != $nama_user) {
             User::whereId($id_user)->update([
                 'name' => $request['nama'],
             ]);

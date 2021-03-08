@@ -15,7 +15,7 @@ class AdminPembagianController extends Controller
     public function index()
     {
         if (Auth::guard('admin')->check()) {
-            $pendaftaran = Pendaftaran::orderBy('nama', 'ASC')->get();
+            $pendaftaran = Pendaftaran::orderBy('nama', 'ASC')->where('status', 'Diterima')->get();
             $kelas = Kelas::orderBy('nama_kelas', 'ASC')->get();
             $hitung_siswa = Siswa::orderBy('nis', 'DESC')->first();
             if ($hitung_siswa == null) {

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Dokumen;
 use Illuminate\Support\Facades\Auth;
 use File;
+use App\Models\Waktu;
 
 use Illuminate\Support\Facades\Validator;
 

@@ -14,8 +14,10 @@
             <?php $no = 0; ?>
             @foreach($soal as $s)
             <?php $no++; ?>
+
+            <ol>
+                <span>{{ $no }}. {{ $s->soal }}</span>
             
-            <span>{{ $no }}. {{ $s->soal }}</span>
             <div class="col-md-12">
                 <div class="form-group">
                     <div class="form-check">
@@ -50,6 +52,7 @@
                     </div>
                 </div>
             </div>
+            </ol>
             @endforeach
             @endif
         </div>

@@ -57,6 +57,7 @@ Route::resource('adminlatarbelakang', AdminLatarbelakangController::class);
 Route::resource('adminkritiksaran', AdminKritiksaranController::class);
 Route::post('adminkritiksaran/cari', [AdminKritiksaranController::class, 'cariData']);
 
+
 Route::middleware('auth')->group(function () {
     Route::resource('home', HomeController::class);
     Route::resource('daftar', DaftarController::class);
@@ -72,13 +73,9 @@ Route::resource('sejarah', SejarahController::class);
 Route::resource('visimisi', VisiMisiController::class);
 Route::resource('kritiksaran', AdminKritiksaranController::class);
 
-
 Route::get('/', function () {
     return view('index');
 });
-
-
-
 
 Auth::routes();
 
