@@ -15,6 +15,7 @@ use App\Http\Controllers\AdminPendaftaranController;
 use App\Http\Controllers\AdminSiswaController;
 use App\Http\Controllers\AdminSoalController;
 use App\Http\Controllers\AdminTagihanController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminWaktuPendaftaranController;
 use App\Http\Controllers\AdminWaktuUjianController;
 use App\Http\Controllers\DaftarController;
@@ -56,6 +57,8 @@ Route::resource('adminpembagian', AdminPembagianController::class);
 Route::resource('adminlatarbelakang', AdminLatarbelakangController::class);
 Route::resource('adminkritiksaran', AdminKritiksaranController::class);
 Route::post('adminkritiksaran/cari', [AdminKritiksaranController::class, 'cariData']);
+Route::resource('adminusers', AdminUserController::class);
+Route::post('adminusers/cari', [AdminUserController::class, 'cariData']);
 
 
 Route::middleware('auth')->group(function () {

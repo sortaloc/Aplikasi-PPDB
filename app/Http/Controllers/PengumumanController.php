@@ -15,8 +15,13 @@ class PengumumanController extends Controller
         $id_user = Auth::user()->id;
         $nilai = Nilai::orderBy('tanggal_ujian')->where('id_user', $id_user)->simplePaginate(10);
         $ambil_pendaftaran = Pendaftaran::where('id_user', $id_user)->first();
-        $status = $ambil_pendaftaran['status'];
-        return view('pengumuman.index', compact('nilai', 'status'));
+        
+        if ($ambil_pendaftaran == null) {
+            return redirect('daftar')->with('statuskosong', 'Silahkan daftar terlebih dahulu!');
+        } else {
+            $status = $ambil_pendaftaran['status'];
+            return view('pengumuman.index', compact('nilai', 'status'));
+        }
     }
 
     

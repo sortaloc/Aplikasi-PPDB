@@ -41,7 +41,16 @@
 </head>
 
 <body>
-
+@include('sweet::alert')
+@if (Session::has('keluar'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Sukses!',
+        text: 'Mohon tunggu sampai 1/24 jam, Admin akan memverifikasi NISN anda!'
+    })
+</script>
+@endif
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">

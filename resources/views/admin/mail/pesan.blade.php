@@ -1,0 +1,1 @@
+Hallo Admin.. Ada Siswa baru yang mendaftar dengan nama {{ $nama }} dan NISN {{ $nisn }}.. Segera verifikasi yaa.. Terima kasih

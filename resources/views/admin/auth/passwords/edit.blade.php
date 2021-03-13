@@ -31,6 +31,17 @@
                 </div>
             </div>
             <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Email</label>
+                <div class="col-sm-12 col-md-7">
+                    <input placeholder="masukan email.." type="email" class="form-control @error('email') is-invalid @enderror" required name="email" value="{{ $admin->email }}" autocomplete="email">
+                    @error('email')
+                    <div class="invalid-feedback">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Password Baru</label>
                 <div class="col-sm-12 col-md-7">
                     <input placeholder="masukan password.." type="password" class="form-control @error('password') is-invalid @enderror" required name="password" autocomplete="password">

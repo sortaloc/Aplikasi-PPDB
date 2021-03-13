@@ -11,6 +11,14 @@
     })
 </script>
 @endif
+@if (Session::has('statuskosong'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Silahkan daftar terlebih dahulu!'
+    })
+</script>
+@endif
 <div class="card">
     <div class="card-header">
         <h4>Lengkapi Formulir</h4>
@@ -43,7 +51,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tempat Lahir</label>
                 <div class="col-sm-12 col-md-7">
-                    <input maxlength="40" pattern="[A-Za-z0-9 ,.]+" placeholder="masukan tempat lahir.." type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" required name="tempat_lahir" value="{{ old('tempat_lahir') }}" autocomplete="tempat_lahir">
+                    <input maxlength="40" pattern="[A-Za-z0-9 ,.]+" placeholder="masukan tempat lahir.." type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" required name="tempat_lahir" value="{{ $tempat_lahir_user }}" autocomplete="tempat_lahir">
                     @error('tempat_lahir')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
@@ -54,7 +62,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tanggal Lahir</label>
                 <div class="col-sm-12 col-md-7">
-                    <input placeholder="masukan tanggal lahir.." type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" required name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" autocomplete="tanggal_lahir">
+                    <input placeholder="masukan tanggal lahir.." type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" required name="tanggal_lahir" value="{{ $tanggal_lahir_user }}" autocomplete="tanggal_lahir">
                     @error('tanggal_lahir')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
@@ -103,7 +111,7 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Ibu</label>
                 <div class="col-sm-12 col-md-7">
-                    <input maxlength="40" pattern="[A-Za-z ,.]+" placeholder="masukan nama ibu.." type="text" class="form-control @error('nama_ibu') is-invalid @enderror" required name="nama_ibu" value="{{ old('nama_ibu') }}" autocomplete="nama_ibu">
+                    <input maxlength="40" pattern="[A-Za-z ,.]+" placeholder="masukan nama ibu.." type="text" class="form-control @error('nama_ibu') is-invalid @enderror" required name="nama_ibu" value="{{ $nama_ibu_user }}" autocomplete="nama_ibu">
                     @error('nama_ibu')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>

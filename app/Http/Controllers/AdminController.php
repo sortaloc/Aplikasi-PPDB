@@ -59,14 +59,27 @@ class AdminController extends Controller
         ]);
     }
 
+    protected function validatorEmail(array $data)
+    {
+        return Validator::make($data, [
+            'email' => ['required', 'email', 'unique:admins']
+        ]);
+    }
+
     public function update(Request $request, $id)
     {
         if (Auth::guard('admin')->check()) {
             $this->validator($request->all())->validate();
+            $email =  auth()->guard('admin')->user()->email;
+
+            if ($email != $request['email']) {
+                $this->validatorEmail($request->all())->validate();
+            }
 
             Admin::whereId($id)->update([
                 'nama' => $request['nama'],
                 'username' => $request['username'],
+                'email' => $request['email'],
                 'password' => Hash::make($request['password']),
             ]);
 

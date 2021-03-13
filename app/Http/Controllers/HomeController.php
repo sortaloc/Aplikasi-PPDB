@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,7 +19,16 @@ class HomeController extends Controller
     
     public function index()
     {
-        return view('home');
+        $id = Auth::user()->id;
+        $users = User::find($id);
+        $nisn_verified = $users['email_verified_at'];
+        
+        if ($nisn_verified != null) {
+            return view('home');
+        } else {
+            Auth::logout();
+            return redirect('/')->with('keluar', 'NISN akan diverifikasi oleh Admin!');
+        }
     }
 
     public function edit($id)

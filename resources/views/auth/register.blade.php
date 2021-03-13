@@ -31,7 +31,10 @@
 
                                 <div class="col-12 col-md-12 col-lg-5" style="padding: 40px;">
                                     <!-- foto -->
-                                    <img class="img-fluid mx-auto d-block" style="width: 250px; height: 250px;" src="{{ asset('logo/register.png') }}" alt="">
+                                    <br><br>
+                                    <br><br>
+                                    <br><br>
+                                    <img class="img-fluid mx-auto d-block" style="width: 250px; height: 400px;" src="{{ asset('logo/register.png') }}" alt="">
                                 </div>
                                 <div class="col-12 col-md-12 col-lg-7 p-0">
                                     <div class="card-header text-center">
@@ -71,6 +74,84 @@
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                     @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group floating-addon">
+                                                <label>Tempat Lahir</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <i class="far fa-map"></i>
+                                                        </div>
+                                                    </div>
+                                                    <input placeholder="masukan tempat lahir.." type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" name="tempat_lahir" value="{{ old('tempat_lahir') }}" required autocomplete="tempat_lahir">
+                                                    @error('tempat_lahir')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group floating-addon">
+                                                <label>Tanggal Lahir</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <i class="far fa-calendar"></i>
+                                                        </div>
+                                                    </div>
+                                                    <input placeholder="masukan tanggal lahir.." type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" required autocomplete="tanggal_lahir">
+                                                    @error('tanggal_lahir')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group floating-addon">
+                                                <label>Nama Ibu</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <i class="far fa-user"></i>
+                                                        </div>
+                                                    </div>
+                                                    <input placeholder="masukan nama ibu.." type="text" class="form-control @error('nama_ibu') is-invalid @enderror" name="nama_ibu" value="{{ old('nama_ibu') }}" required autocomplete="nama_ibu">
+                                                    @error('nama_ibu')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="form-group floating-addon">
+                                                <label>Password</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <i class="fas fa-key"></i>
+                                                        </div>
+                                                    </div>
+                                                    <input placeholder="masukan password.." type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="new-password">
+                                                    @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="form-group floating-addon">
+                                                <label>Konfirmasi Password</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <i class="fas fa-key"></i>
+                                                        </div>
+                                                    </div>
+                                                    <input id="password-confirm" type="password" placeholder="masukan konfirmasi password.." class="form-control" name="password_confirmation" required autocomplete="new-password">
                                                 </div>
                                             </div>
                                             <div class="form-group text-right">

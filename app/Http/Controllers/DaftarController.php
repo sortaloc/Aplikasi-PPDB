@@ -33,10 +33,13 @@ class DaftarController extends Controller
         $id = Auth::user()->id;
         $nama = Auth::user()->name;
         $nisn = Auth::user()->email;
+        $tempat_lahir_user = Auth::user()->tempat_lahir;
+        $tanggal_lahir_user = Auth::user()->tanggal_lahir;
+        $nama_ibu_user = Auth::user()->nama_ibu;
         $pendaftaran = Pendaftaran::where('id_user', $id)->first();
 
         if ($pendaftaran == null) {
-            return view('daftar.add', compact('nama', 'nisn'));
+            return view('daftar.add', compact('nama', 'nisn', 'tempat_lahir_user', 'tanggal_lahir_user', 'nama_ibu_user'));
         } else {
             $tanggal = $pendaftaran['tanggal_lahir'];
             $hari = substr($tanggal, 8, 2);
