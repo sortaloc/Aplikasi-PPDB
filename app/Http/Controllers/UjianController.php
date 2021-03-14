@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mapel;
 use App\Models\MapelUjian;
 use App\Models\Nilai;
 use App\Models\Soal;
@@ -23,7 +24,7 @@ class UjianController extends Controller
         if ($tanggal_sekarang < $tanggal_buka) {
             return redirect('home')->with('ujian_belum_di_mulai', 'Ujian masih di tutup!');
         } elseif ($tanggal_sekarang > $tanggal_tutup) {
-            return redirect('home')->with('ujian_sudah_di_tutup', 'Ujian sudah di tutup!'); 
+            return redirect('home')->with('ujian_sudah_di_tutup', 'Ujian sudah di tutup!');
         }
 
         $mapelujian = MapelUjian::orderBy('nama_mapel', 'ASC')->get();
@@ -49,7 +50,7 @@ class UjianController extends Controller
         if ($tanggal_sekarang < $tanggal_buka) {
             return redirect('home')->with('ujian_belum_di_mulai', 'Ujian masih di tutup!');
         } elseif ($tanggal_sekarang > $tanggal_tutup) {
-            return redirect('home')->with('ujian_sudah_di_tutup', 'Ujian sudah di tutup!'); 
+            return redirect('home')->with('ujian_sudah_di_tutup', 'Ujian sudah di tutup!');
         }
 
         $id_user = Auth::user()->id;
@@ -60,9 +61,9 @@ class UjianController extends Controller
         $soal = Soal::where('id_mapel', $id_mapel)->get();
         $jumlahsoal = $soal->count();
 
-         //atur tahun pelajaran
-         date_default_timezone_set('Asia/Jakarta');
-         $now = date("Y-m-d");
+        //atur tahun pelajaran
+        date_default_timezone_set('Asia/Jakarta');
+        $now = date("Y-m-d");
 
         if ($soal->count() > 0) {
             $nomor = 0;
@@ -86,7 +87,6 @@ class UjianController extends Controller
             $hitung_nilai = array_sum($array_nilai);
             $hitung_nilai_akhir = $hitung_nilai / $jumlahsoal * 100;
             $nilai_akhir = substr($hitung_nilai_akhir, 0, 5);
-            
         }
         Nilai::create([
             'id_user' => $id_user,
@@ -101,7 +101,7 @@ class UjianController extends Controller
     }
 
 
-    public function show($id)
+    public function show(Request $request, $id)
     {
         //Validasi pendaftaran
         $ambil_waktu = Waktu::where('jenis', 'ujian')->first();
@@ -122,7 +122,14 @@ class UjianController extends Controller
         }
         $soal = Soal::where('id_mapel', $id)->get();
         $id_mapel = $id;
-        return view('ujian.show', compact('soal', 'id_mapel'));
+        $ambil_mapel = Mapel::where('id', $id_mapel)->first();
+        $nama_mapel = $ambil_mapel['nama_mapel'];
+        
+        $mapelujian = MapelUjian::where('id_mapel', $id)->first();
+        $ambil_waktu = $mapelujian->waktu;
+        $waktu = $ambil_waktu * 60;
+
+        return view('ujian.show', compact('soal', 'id_mapel', 'id_user', 'nama_mapel', 'waktu'));
     }
 
 
