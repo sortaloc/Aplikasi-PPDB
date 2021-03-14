@@ -18,6 +18,11 @@ class DokumenController extends Controller
     {
         //Validasi pendaftaran
         $ambil_waktu = Waktu::where('jenis', 'pendaftaran')->first();
+
+        if ($ambil_waktu == null) {
+            return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran belum dibuka');
+        }
+
         $tanggal_buka = $ambil_waktu['buka'];
         $tanggal_tutup = $ambil_waktu['tutup'];
         date_default_timezone_set('Asia/Jakarta');
@@ -25,7 +30,7 @@ class DokumenController extends Controller
         if ($tanggal_sekarang < $tanggal_buka) {
             return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran masih di tutup!');
         } elseif ($tanggal_sekarang > $tanggal_tutup) {
-            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!'); 
+            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!');
         }
 
         $id = Auth::user()->id;
@@ -82,6 +87,13 @@ class DokumenController extends Controller
     {
         //Validasi pendaftaran
         $ambil_waktu = Waktu::where('jenis', 'pendaftaran')->first();
+
+
+        if ($ambil_waktu == null) {
+            return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran belum dibuka');
+        }
+
+
         $tanggal_buka = $ambil_waktu['buka'];
         $tanggal_tutup = $ambil_waktu['tutup'];
         date_default_timezone_set('Asia/Jakarta');
@@ -89,12 +101,12 @@ class DokumenController extends Controller
         if ($tanggal_sekarang < $tanggal_buka) {
             return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran masih di tutup!');
         } elseif ($tanggal_sekarang > $tanggal_tutup) {
-            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!'); 
-        } 
+            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!');
+        }
 
         $id = Auth::user()->id;
         $cek = Dokumen::where('id_user', $id)->first();
-    
+
         $waktu = date('His');
 
         if ($cek == null) {
@@ -181,6 +193,23 @@ class DokumenController extends Controller
 
     public function edit($id)
     {
+        //Validasi pendaftaran
+        $ambil_waktu = Waktu::where('jenis', 'pendaftaran')->first();
+
+
+        if ($ambil_waktu == null) {
+            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!');
+        }
+
+        $tanggal_buka = $ambil_waktu['buka'];
+        $tanggal_tutup = $ambil_waktu['tutup'];
+        date_default_timezone_set('Asia/Jakarta');
+        $tanggal_sekarang = date('Y-m-d');
+        if ($tanggal_sekarang < $tanggal_buka) {
+            return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran masih di tutup!');
+        } elseif ($tanggal_sekarang > $tanggal_tutup) {
+            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!');
+        }
         $dokumen = Dokumen::find($id);
         return view('dokumen.edit', compact('dokumen'));
     }
@@ -190,6 +219,12 @@ class DokumenController extends Controller
     {
         //Validasi pendaftaran
         $ambil_waktu = Waktu::where('jenis', 'pendaftaran')->first();
+
+
+        if ($ambil_waktu == null) {
+            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!');
+        }
+
         $tanggal_buka = $ambil_waktu['buka'];
         $tanggal_tutup = $ambil_waktu['tutup'];
         date_default_timezone_set('Asia/Jakarta');
@@ -197,7 +232,7 @@ class DokumenController extends Controller
         if ($tanggal_sekarang < $tanggal_buka) {
             return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran masih di tutup!');
         } elseif ($tanggal_sekarang > $tanggal_tutup) {
-            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!'); 
+            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!');
         }
 
 

@@ -34,7 +34,7 @@
                                     <br><br>
                                     <br><br>
                                     <br><br>
-                                    <img class="img-fluid mx-auto d-block" style="width: 250px; height: 400px;" src="{{ asset('logo/register.png') }}" alt="">
+                                    <img class="img-fluid mx-auto d-block" style="width: 300px; height: 400px;" src="{{ asset('logo/register.png') }}" alt="">
                                 </div>
                                 <div class="col-12 col-md-12 col-lg-7 p-0">
                                     <div class="card-header text-center">

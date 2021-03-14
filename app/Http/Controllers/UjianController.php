@@ -17,6 +17,11 @@ class UjianController extends Controller
     {
         //Validasi pendaftaran
         $ambil_waktu = Waktu::where('jenis', 'ujian')->first();
+
+        if ($ambil_waktu == null) {
+            return redirect('home')->with('ujian_belum_di_mulai', 'Ujian belum dibuka');
+        }
+
         $tanggal_buka = $ambil_waktu['buka'];
         $tanggal_tutup = $ambil_waktu['tutup'];
         date_default_timezone_set('Asia/Jakarta');
@@ -43,6 +48,11 @@ class UjianController extends Controller
     {
         //Validasi pendaftaran
         $ambil_waktu = Waktu::where('jenis', 'ujian')->first();
+
+        if ($ambil_waktu == null) {
+            return redirect('home')->with('ujian_belum_di_mulai', 'Ujian belum dibuka');
+        }
+
         $tanggal_buka = $ambil_waktu['buka'];
         $tanggal_tutup = $ambil_waktu['tutup'];
         date_default_timezone_set('Asia/Jakarta');
@@ -105,6 +115,12 @@ class UjianController extends Controller
     {
         //Validasi tanggal pendaftaran
         $ambil_waktu = Waktu::where('jenis', 'ujian')->first();
+
+        if ($ambil_waktu == null) {
+            return redirect('home')->with('ujian_belum_di_mulai', 'Ujian belum dibuka');
+        }
+
+        
         $tanggal_buka = $ambil_waktu['buka'];
         $tanggal_tutup = $ambil_waktu['tutup'];
         date_default_timezone_set('Asia/Jakarta');

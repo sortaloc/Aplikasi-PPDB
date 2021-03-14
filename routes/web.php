@@ -22,6 +22,7 @@ use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\SejarahController;
 use App\Http\Controllers\TagihanController;
@@ -69,6 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('ujian', UjianController::class);
     Route::resource('pengumuman', PengumumanController::class);
     Route::resource('tagihan', TagihanController::class);
+    Route::resource('jadwal', JadwalController::class);
 });
 
 Route::resource('guru', GuruController::class);

@@ -18,6 +18,9 @@ class DaftarController extends Controller
     {
         //Validasi pendaftaran
         $ambil_waktu = Waktu::where('jenis', 'pendaftaran')->first();
+        if ($ambil_waktu == null) {
+            return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran belum dibuka');
+        }
         $tanggal_buka = $ambil_waktu['buka'];
         $tanggal_tutup = $ambil_waktu['tutup'];
         date_default_timezone_set('Asia/Jakarta');
@@ -139,6 +142,11 @@ class DaftarController extends Controller
     {
         //Validasi pendaftaran
         $ambil_waktu = Waktu::where('jenis', 'pendaftaran')->first();
+
+        if ($ambil_waktu == null) {
+            return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran belum dibuka');
+        }
+
         $tanggal_buka = $ambil_waktu['buka'];
         $tanggal_tutup = $ambil_waktu['tutup'];
         date_default_timezone_set('Asia/Jakarta');
@@ -236,6 +244,11 @@ class DaftarController extends Controller
     {
         //Validasi pendaftaran
         $ambil_waktu = Waktu::where('jenis', 'pendaftaran')->first();
+
+        if ($ambil_waktu == null) {
+            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!'); 
+        }
+
         $tanggal_buka = $ambil_waktu['buka'];
         $tanggal_tutup = $ambil_waktu['tutup'];
         date_default_timezone_set('Asia/Jakarta');
@@ -272,6 +285,12 @@ class DaftarController extends Controller
     {
         //Validasi pendaftaran
         $ambil_waktu = Waktu::where('jenis', 'pendaftaran')->first();
+
+        if ($ambil_waktu == null) {
+            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!'); 
+        }
+
+
         $tanggal_buka = $ambil_waktu['buka'];
         $tanggal_tutup = $ambil_waktu['tutup'];
         date_default_timezone_set('Asia/Jakarta');
@@ -353,6 +372,12 @@ class DaftarController extends Controller
     {
         //Validasi pendaftaran
         $ambil_waktu = Waktu::where('jenis', 'pendaftaran')->first();
+
+        if ($ambil_waktu == null) {
+            return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!'); 
+        }
+
+        
         $tanggal_buka = $ambil_waktu['buka'];
         $tanggal_tutup = $ambil_waktu['tutup'];
         date_default_timezone_set('Asia/Jakarta');
