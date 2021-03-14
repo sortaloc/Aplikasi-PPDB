@@ -80,7 +80,7 @@
                         <!-- content -->
                         <div class="card">
                             <div class="card-header">
-                                <h4>Soal Ujian</h4>
+                                <h4>Soal Ujian {{ $nama_mapel }}</h4>
                                 <div class="card-header-form">
                                     <?php
                                     session_start();
@@ -101,20 +101,7 @@
 
                                     <script type="text/javascript">
                                         function waktuHabis() {
-                                            // alert('Waktu Anda telah habis, Terima kasih sudah berkunjung.');
-                                            // var frmSoal = document.getElementById("frmSoal");
-                                            // frmSoal.submit();
-                                            Swal.fire({
-                                                title: 'Waktu Habis!',
-                                                icon: 'success',
-                                                text: 'Terima kasih telah mengikuti test. Silahkan kirim jawaban anda dengan meng klik tombol kirim dibawah!',
-                                                confirmButtonColor: '#6777ef',
-                                                confirmButtonText: 'Kirim'
-                                            }).then((result) => {
-                                                if (result.value) {
-                                                    $('#formsoal').submit();
-                                                }
-                                            })
+                                            $('#formsoal').submit();
                                         }
 
                                         function hampirHabis(periods) {
@@ -128,6 +115,11 @@
                                             var waktu = <?php echo $waktu ?>;
                                             var sisa_waktu = waktu - <?php echo $lewat ?>;
                                             var longWayOff = sisa_waktu;
+
+                                            if (longWayOff < 0) {
+                                                $('#formsoal').submit();
+                                            }
+
                                             $("#timer").countdown({
                                                 until: longWayOff,
                                                 compact: true,
@@ -194,7 +186,7 @@
                                         </div>
                                     </ol>
                                     @endforeach
-                                   
+
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-paper-plane"></i> Kirim Jawaban</button>

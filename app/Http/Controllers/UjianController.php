@@ -118,6 +118,7 @@ class UjianController extends Controller
         //validasi nilai
         $id_user = Auth::user()->id;
         $ambil_nilai = Nilai::where('id_user', $id_user)->where('id_mapel', $id)->count();
+    
         if ($ambil_nilai > 0) {
             return redirect('ujian')->with('errorshow', 'Anda sudah mengikuti ujian ini!');
         }
