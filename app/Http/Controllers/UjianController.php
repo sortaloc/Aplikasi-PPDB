@@ -103,7 +103,7 @@ class UjianController extends Controller
 
     public function show(Request $request, $id)
     {
-        //Validasi pendaftaran
+        //Validasi tanggal pendaftaran
         $ambil_waktu = Waktu::where('jenis', 'ujian')->first();
         $tanggal_buka = $ambil_waktu['buka'];
         $tanggal_tutup = $ambil_waktu['tutup'];
@@ -112,19 +112,28 @@ class UjianController extends Controller
         if ($tanggal_sekarang < $tanggal_buka) {
             return redirect('home')->with('ujian_belum_di_mulai', 'Ujian masih di tutup!');
         } elseif ($tanggal_sekarang > $tanggal_tutup) {
-            return redirect('home')->with('ujian_sudah_di_tutup', 'Ujian sudah di tutup!'); 
+            return redirect('home')->with('ujian_sudah_di_tutup', 'Ujian sudah di tutup!');
         }
 
+        //validasi nilai
         $id_user = Auth::user()->id;
         $ambil_nilai = Nilai::where('id_user', $id_user)->where('id_mapel', $id)->count();
         if ($ambil_nilai > 0) {
             return redirect('ujian')->with('errorshow', 'Anda sudah mengikuti ujian ini!');
         }
+
+        
         $soal = Soal::where('id_mapel', $id)->get();
+
+        //Validasi soal
+        if ($soal->count() == 0) {
+            return redirect('ujian')->with('soalkosong', 'Soal masih kosong!');
+        }
+
         $id_mapel = $id;
         $ambil_mapel = Mapel::where('id', $id_mapel)->first();
         $nama_mapel = $ambil_mapel['nama_mapel'];
-        
+
         $mapelujian = MapelUjian::where('id_mapel', $id)->first();
         $ambil_waktu = $mapelujian->waktu;
         $waktu = $ambil_waktu * 60;

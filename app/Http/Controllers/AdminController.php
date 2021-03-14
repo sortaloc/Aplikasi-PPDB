@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Guru;
+use App\Models\Pendaftaran;
+use App\Models\Siswa;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -14,7 +18,11 @@ class AdminController extends Controller
     public function index()
     {
         if (Auth::guard('admin')->check()) {
-            return view('admin.admin');
+            $users = User::get()->count();
+            $pendaftaran = Pendaftaran::get()->count();
+            $siswa = Siswa::get()->count();
+            $guru = Guru::get()->count();
+            return view('admin.admin', compact('users', 'pendaftaran', 'siswa', 'guru'));
         } else {
             return redirect('loginadmin');
         }

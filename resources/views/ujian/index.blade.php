@@ -8,6 +8,14 @@
     })
 </script>
 @endif
+@if (Session::has('soalkosong'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Soal masih kosong!'
+    })
+</script>
+@endif
 @if (Session::has('errorshow'))
 <script>
     Swal.fire({

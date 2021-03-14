@@ -194,11 +194,12 @@
                                         </div>
                                     </ol>
                                     @endforeach
-                                    @endif
+                                   
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-paper-plane"></i> Kirim Jawaban</button>
                                 </div>
+                                @endif
                             </form>
                         </div>
                     </div>
