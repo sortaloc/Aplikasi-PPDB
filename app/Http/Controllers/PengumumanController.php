@@ -17,7 +17,8 @@ class PengumumanController extends Controller
         $ambil_pendaftaran = Pendaftaran::where('id_user', $id_user)->first();
         
         if ($ambil_pendaftaran == null) {
-            return redirect('daftar')->with('statuskosong', 'Silahkan daftar terlebih dahulu!');
+            $status = '';
+            return view('pengumuman.index', compact('nilai', 'status'));
         } else {
             $status = $ambil_pendaftaran['status'];
             return view('pengumuman.index', compact('nilai', 'status'));

@@ -6,16 +6,22 @@
     </div>
     <div class="card-body text-center">
         <h4>Selamat Datang, {{ Auth::user()->name }}!</h4>
-        <p>Status pendaftaran anda </p>
+        @if ($status == '')
+        <p>Anda belum mendaftar</p>
+        @endif
         @if ($status == 'Proses')
+        <p>Status pendaftaran anda </p>
         <h3><span class="badge badge-warning">Sedang dalam proses</span></h3>
         @endif
         @if ($status == 'Diterima')
+        <p>Status pendaftaran anda </p>
         <h3><span class="badge badge-success">Selamat anda diterima!</span></h3>
         @endif
         @if ($status == 'Ditolak')
+        <p>Status pendaftaran anda </p>
         <h3><span class="badge badge-danger">Sayang sekali anda tidak diterima!</span></h3>
         @endif
+        
     </div>
 </div>
 <div class="card">

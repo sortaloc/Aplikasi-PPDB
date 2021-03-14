@@ -11,14 +11,7 @@
     })
 </script>
 @endif
-@if (Session::has('statuskosong'))
-<script>
-    Swal.fire({
-        icon: 'error',
-        title: 'Silahkan daftar terlebih dahulu!'
-    })
-</script>
-@endif
+
 <div class="card">
     <div class="card-header">
         <h4>Lengkapi Formulir</h4>
