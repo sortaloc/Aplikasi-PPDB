@@ -12,9 +12,10 @@
 
     <!-- CSS Libraries -->
     
+    <link rel="stylesheet" href="{{ asset('template/assets/css/summernote-bs4.css') }}">
     <link rel="stylesheet" href="{{ asset('template/assets/css/selectric.css') }}">
     <link rel="stylesheet" href="{{ asset('template/assets/css/select2.min.css') }}">
-    
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('template/assets/css/style.css') }}">
@@ -98,7 +99,7 @@
     <script src="{{ asset('template/assets/js/stisla.js') }}"></script>
 
     <!-- JS Libraies -->
-    
+    <script src="{{ asset('template/assets/js/summernote-bs4.js') }}"></script>
     <script src="{{ asset('template/assets/js/jquery.selectric.min.js') }}"></script>
     <script src="{{ asset('template/assets/js/select2.full.min.js') }}"></script>
     

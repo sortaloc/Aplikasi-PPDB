@@ -28,37 +28,37 @@
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Soal</label>
                 <div class="col-sm-12 col-md-7">
-                    <textarea name="soal" class="form-control" id="" required>{{ $soal->soal }}</textarea>
+                    <textarea name="soal" class="summernote" required>{{ $soal->soal }}</textarea>
                 </div>
             </div>
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Pilihan A</label>
                 <div class="col-sm-12 col-md-7">
-                    <textarea name="A" class="form-control" id="" required>{{ $soal->A }}</textarea>
+                    <textarea name="A" class="summernote" required>{{ $soal->A }}</textarea>
                 </div>
             </div>
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Pilihan B</label>
                 <div class="col-sm-12 col-md-7">
-                    <textarea name="B" class="form-control" id="" required>{{ $soal->B }}</textarea>
+                    <textarea name="B" class="summernote" required>{{ $soal->B }}</textarea>
                 </div>
             </div>
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Pilihan C</label>
                 <div class="col-sm-12 col-md-7">
-                    <textarea name="C" class="form-control" id="" required>{{ $soal->C }}</textarea>
+                    <textarea name="C" class="summernote" required>{{ $soal->C }}</textarea>
                 </div>
             </div>
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Pilihan D</label>
                 <div class="col-sm-12 col-md-7">
-                    <textarea name="D" class="form-control" id="" required>{{ $soal->D }}</textarea>
+                    <textarea name="D" class="summernote" required>{{ $soal->D }}</textarea>
                 </div>
             </div>
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Pilihan E</label>
                 <div class="col-sm-12 col-md-7">
-                    <textarea name="E" class="form-control" id="" required>{{ $soal->E }}</textarea>
+                    <textarea name="E" class="summernote" required>{{ $soal->E }}</textarea>
                 </div>
             </div>
             <div class="form-group row mb-4">

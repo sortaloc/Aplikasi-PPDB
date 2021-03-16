@@ -69,35 +69,33 @@ class UjianController extends Controller
         $nama_mapel = $ambil_mapel_ujian['nama_mapel'];
         $kkm = $ambil_mapel_ujian['kkm'];
         $soal = Soal::where('id_mapel', $id_mapel)->get();
-        $jumlahsoal = $soal->count();
+        $mapelujian = MapelUjian::where('id_mapel', $id_mapel)->first();
+        $jumlahsoal = $mapelujian['jumlah'];
 
         //atur tahun pelajaran
         date_default_timezone_set('Asia/Jakarta');
         $now = date("Y-m-d");
 
-        if ($soal->count() > 0) {
-            $nomor = 0;
+        $nomor = 0;
+        foreach ($soal as $s) {
+            $nomor++;
+            $ambil_jawaban = $request['jawaban' . $nomor];
 
-            foreach ($soal as $s) {
-                $nomor++;
-                $ambil_jawaban = $request['jawaban' . $nomor];
+            $jawaban = substr($ambil_jawaban, 0, 1);
+            $id_soal = substr($ambil_jawaban, 1);
 
-                $jawaban = substr($ambil_jawaban, 0, 1);
-                $id_soal = substr($ambil_jawaban, 1);
+            $nilai = 0;
 
-                $nilai = 0;
-
-                if ($s->id == $id_soal && $s->jawaban == $jawaban) {
-                    $nilai++;
-                }
-
-                $array_nilai[] = $nilai;
+            if ($s->id == $id_soal && $s->jawaban == $jawaban) {
+                $nilai++;
             }
 
-            $hitung_nilai = array_sum($array_nilai);
-            $hitung_nilai_akhir = $hitung_nilai / $jumlahsoal * 100;
-            $nilai_akhir = substr($hitung_nilai_akhir, 0, 5);
+            $array_nilai[] = $nilai;
         }
+
+        $hitung_nilai = array_sum($array_nilai);
+        $hitung_nilai_akhir = $hitung_nilai / $jumlahsoal * 100;
+        $nilai_akhir = substr($hitung_nilai_akhir, 0, 5);
         Nilai::create([
             'id_user' => $id_user,
             'tanggal_ujian' => $now,
@@ -120,7 +118,7 @@ class UjianController extends Controller
             return redirect('home')->with('ujian_belum_di_mulai', 'Ujian belum dibuka');
         }
 
-        
+
         $tanggal_buka = $ambil_waktu['buka'];
         $tanggal_tutup = $ambil_waktu['tutup'];
         date_default_timezone_set('Asia/Jakarta');
@@ -134,12 +132,12 @@ class UjianController extends Controller
         //validasi nilai
         $id_user = Auth::user()->id;
         $ambil_nilai = Nilai::where('id_user', $id_user)->where('id_mapel', $id)->count();
-    
+
         if ($ambil_nilai > 0) {
             return redirect('ujian')->with('errorshow', 'Anda sudah mengikuti ujian ini!');
         }
 
-        
+
         $soal = Soal::where('id_mapel', $id)->get();
 
         //Validasi soal

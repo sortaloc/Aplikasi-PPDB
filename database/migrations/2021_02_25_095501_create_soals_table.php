@@ -17,12 +17,12 @@ class CreateSoalsTable extends Migration
             $table->id();
             $table->integer('id_mapel');
             $table->string('nama_mapel');
-            $table->text('soal');
-            $table->text('A');
-            $table->text('B');
-            $table->text('C');
-            $table->text('D');
-            $table->text('E');
+            $table->longText('soal');
+            $table->longText('A');
+            $table->longText('B');
+            $table->longText('C');
+            $table->longText('D');
+            $table->longText('E');
             $table->string('jawaban');
             $table->timestamps();
         });

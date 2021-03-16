@@ -85,6 +85,7 @@
                                     <?php
                                     session_start();
                                     $session_ujian = $id_user . $nama_mapel;
+
                                     if (isset($_SESSION[$session_ujian])) {
                                         $lewat = time() - $_SESSION[$session_ujian];
                                     } else {
@@ -148,45 +149,46 @@
                                     <?php $no++; ?>
 
                                     <ol>
-                                        <span>{{ $no }}. {{ $s->soal }}</span>
+                                        {{ $no }}. <?php echo $s->soal; ?>
+
 
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="jawaban{{ $no }}" value="A{{ $s->id }}" id="exampleRadios{{ $no }}">
                                                     <label class="form-check-label" for="exampleRadios{{ $no }}">
-                                                        {{ $s->A }}
+                                                        <?php echo $s->A; ?>
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="jawaban{{ $no }}" value="B{{ $s->id }}" id="exampleRadios{{ $no }}">
                                                     <label class="form-check-label" for="exampleRadios{{ $no }}">
-                                                        {{ $s->B }}
+                                                        <?php echo $s->B; ?>
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="jawaban{{ $no }}" value="C{{ $s->id }}" id="exampleRadios{{ $no }}">
                                                     <label class="form-check-label" for="exampleRadios{{ $no }}">
-                                                        {{ $s->C }}
+                                                        <?php echo $s->C; ?>
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="jawaban{{ $no }}" value="D{{ $s->id }}" id="exampleRadios{{ $no }}">
                                                     <label class="form-check-label" for="exampleRadios{{ $no }}">
-                                                        {{ $s->D }}
+                                                        <?php echo $s->D; ?>
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="jawaban{{ $no }}" value="E{{ $s->id }}" id="exampleRadios{{ $no }}">
                                                     <label class="form-check-label" for="exampleRadios{{ $no }}">
-                                                        {{ $s->E }}
+                                                        <?php echo $s->E; ?>
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
                                     </ol>
                                     @endforeach
-
+                                    
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-paper-plane"></i> Kirim Jawaban</button>
