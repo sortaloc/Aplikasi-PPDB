@@ -10,21 +10,27 @@ use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
-    
+
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    
+
     public function index()
     {
         $id = Auth::user()->id;
         $users = User::find($id);
         $nisn_verified = $users['email_verified_at'];
-        
+        $validasi = $users['validasi'];
+
         if ($nisn_verified != null) {
-            return view('home');
+            if ($validasi == 1) {
+                return view('home');
+            } else {
+                Auth::logout();
+                return redirect('/')->with('nisn tidak valid', 'NISN Anda tidak valid silahkan daftar dengan NISN yang valid!');
+            }
         } else {
             Auth::logout();
             return redirect('/')->with('keluar', 'NISN akan diverifikasi oleh Admin!');
@@ -47,7 +53,7 @@ class HomeController extends Controller
     public function update(Request $request, $id)
     {
         $this->validator($request->all())->validate();
-        
+
         User::whereId($id)->update([
             'password' => Hash::make($request['password']),
         ]);

@@ -14,6 +14,7 @@ class AdminUserController extends Controller
     {
         if (Auth::guard('admin')->check()) {
             $users = User::orderBy('updated_at', 'DESC')->simplePaginate(10);
+            
             return view('admin.users.index', compact('users'));
         } else {
             return redirect('loginadmin');
@@ -51,6 +52,7 @@ class AdminUserController extends Controller
             date_default_timezone_set('Asia/Jakarta');
             $now = date(now());
             User::whereId($id)->update([
+                'validasi' => 1,
                 'email_verified_at' => $now
             ]);
             return redirect('adminusers')->with('verifikasi', 'NISN telah terverifikasi');
@@ -62,7 +64,16 @@ class AdminUserController extends Controller
 
     public function destroy($id)
     {
-        //
+        if (Auth::guard('admin')->check()) {
+            $now = date(now());
+            User::whereId($id)->update([
+                'validasi' => 0,
+                'email_verified_at' => $now
+            ]);
+            return redirect('adminusers')->with('verifikasi', 'NISN telah terverifikasi');
+        } else {
+            return redirect('loginadmin');
+        }
     }
 
     public function cariData(Request $request)

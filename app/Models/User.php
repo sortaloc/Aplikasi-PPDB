@@ -22,7 +22,8 @@ class User extends Authenticatable
         'password',
         'tempat_lahir',
         'tanggal_lahir',
-        'nama_ibu'
+        'nama_ibu',
+        'validasi'
     ];
 
     /**

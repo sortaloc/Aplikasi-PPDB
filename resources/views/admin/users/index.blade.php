@@ -65,14 +65,25 @@
                     </td>
                     <td>
                         @if ($u->email_verified_at == null)
-                        <button class="btn btn-icon btn-primary" onclick="Verifikasi( <?php echo $u->id; ?> )">Verifikasi</button>
-                        <form id="data-{{ $u->id }}" action="{{ route('adminusers.update', $u->id)}}" method="post">
+                        <button class="btn btn-icon btn-primary" onclick="Valid( <?php echo $u->id; ?> )">Valid?</button>
+                        <button class="btn btn-icon btn-danger" onclick="NoValid( <?php echo $u->id; ?> )">Tidak?</button>
+
+                        <form id="valid-{{ $u->id }}" action="{{ route('adminusers.update', $u->id)}}" method="post">
                             @csrf
                             @method('PUT')
                         </form>
+                        
+                        <form id="novalid-{{ $u->id }}" action="{{ route('adminusers.destroy', $u->id)}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                        </form>
+                        @elseif ($u->validasi == 0)
+                        <div class="badge badge-danger">Tidak Valid</div>
                         @else
-                        <div class="badge badge-success">Terverifikasi</div>
+                        <div class="badge badge-success">Valid</div>
                         @endif
+
+
                     </td>
                 </tr>
                 @endforeach
@@ -102,7 +113,7 @@
 </div>
 
 <script>
-    function Verifikasi(id) {
+    function Valid(id) {
         Swal.fire({
             title: 'NISN Valid?',
             icon: 'warning',
@@ -113,7 +124,23 @@
             cancelButtonText: 'Tidak'
         }).then((result) => {
             if (result.value) {
-                $('#data-' + id).submit();
+                $('#valid-' + id).submit();
+            }
+        })
+
+    }
+    function NoValid(id) {
+        Swal.fire({
+            title: 'NISN Tidak Valid?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#6777ef',
+            cancelButtonColor: '#fc544b',
+            confirmButtonText: 'Iya',
+            cancelButtonText: 'Tidak'
+        }).then((result) => {
+            if (result.value) {
+                $('#novalid-' + id).submit();
             }
         })
 

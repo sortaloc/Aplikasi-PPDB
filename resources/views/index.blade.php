@@ -51,6 +51,15 @@
     })
 </script>
 @endif
+@if (Session::has('nisn tidak valid'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Gagal!',
+        text: 'NISN Anda TIDAK VALID silahkan daftar dengan NISN yang valid!'
+    })
+</script>
+@endif
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
