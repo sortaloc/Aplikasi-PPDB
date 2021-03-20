@@ -38,6 +38,7 @@
                     <th>Tanggal Lahir</th>
                     <th>Nama Ibu</th>
                     <th>Status</th>
+                    <th>Aksi</th>
                 </thead>
 
                 @if ($users->count() > 0)
@@ -64,9 +65,16 @@
                         {{ $u->nama_ibu }}
                     </td>
                     <td>
+                        @if ($u->validasi == 0)
+                        <div class="badge badge-danger">Tidak Valid</div>
+                        @else
+                        <div class="badge badge-success">Valid</div>
+                        @endif
+                    </td>
+                    <td>
                         @if ($u->email_verified_at == null)
-                        <button class="btn btn-icon btn-primary" onclick="Valid( <?php echo $u->id; ?> )">Valid?</button>
-                        <button class="btn btn-icon btn-danger" onclick="NoValid( <?php echo $u->id; ?> )">Tidak?</button>
+                        <button class="btn btn-icon btn-primary" onclick="Valid( <?php echo $u->id; ?> )"><i class="fas fa-check"></i></button>
+                        <button class="btn btn-icon btn-danger" onclick="NoValid( <?php echo $u->id; ?> )"><i class="fas fa-times"></i>&nbsp;</button>
 
                         <form id="valid-{{ $u->id }}" action="{{ route('adminusers.update', $u->id)}}" method="post">
                             @csrf
@@ -77,13 +85,9 @@
                             @csrf
                             @method('DELETE')
                         </form>
-                        @elseif ($u->validasi == 0)
-                        <div class="badge badge-danger">Tidak Valid</div>
                         @else
-                        <div class="badge badge-success">Valid</div>
+                        -
                         @endif
-
-
                     </td>
                 </tr>
                 @endforeach
