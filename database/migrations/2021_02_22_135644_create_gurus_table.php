@@ -15,9 +15,9 @@ class CreateGurusTable extends Migration
     {
         Schema::create('gurus', function (Blueprint $table) {
             $table->id();
-            $table->integer('nip')->unique();
-            $table->integer('nuptk')->unique();
-            $table->string('tahun_masuk');
+            $table->bigInteger('nip')->unique();
+            $table->bigInteger('nuptk')->unique();
+            $table->integer('tahun_masuk');
             $table->string('nama');
             $table->string('pendidikan');
             $table->string('tempat_lahir');
@@ -25,7 +25,7 @@ class CreateGurusTable extends Migration
             $table->enum('jk', ['Laki-laki', 'Perempuan']);
             $table->string('agama');
             $table->text('alamat');
-            $table->string('no_hp');
+            $table->bigInteger('no_hp');
             $table->string('email')->unique();
             $table->string('foto');
             $table->timestamps();

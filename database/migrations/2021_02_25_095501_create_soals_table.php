@@ -15,7 +15,7 @@ class CreateSoalsTable extends Migration
     {
         Schema::create('soals', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_mapel');
+            $table->bigInteger('id_mapel');
             $table->string('nama_mapel');
             $table->longText('soal');
             $table->longText('A');

@@ -17,7 +17,7 @@ class CreateKritiksaransTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('email');
-            $table->text('pesan');
+            $table->longText('pesan');
             $table->timestamps();
         });
     }

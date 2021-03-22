@@ -54,6 +54,12 @@ class AdminGuruController extends Controller
     {
         if (Auth::guard('admin')->check()) {
             $this->validator($request->all())->validate();
+            //validasi tahun
+            $tahun_masuk = $request['tahun_masuk'];
+            if ($tahun_masuk > 20) {
+                return back()->with('error_length_tahun_masuk', 'Tahun terlalu panjang');
+            }
+            
             //validasi nomor hp
             $no_hp = $request['no_hp'];
             $hitung_no_hp = strlen($no_hp);
@@ -165,6 +171,11 @@ class AdminGuruController extends Controller
     {
         if (Auth::guard('admin')->check()) {
             $this->validatorEdit($request->all())->validate();
+            //validasi tahun
+            $tahun_masuk = $request['tahun_masuk'];
+            if ($tahun_masuk > 20) {
+                return back()->with('error_length_tahun_masuk', 'Tahun terlalu panjang');
+            }
             //validasi nomor hp
             $no_hp = $request['no_hp'];
             $hitung_no_hp = strlen($no_hp);

@@ -15,9 +15,9 @@ class CreateLatarbelakangsTable extends Migration
     {
         Schema::create('latarbelakangs', function (Blueprint $table) {
             $table->id();
-            $table->text('sejarah');
-            $table->text('visi');
-            $table->text('misi');
+            $table->longText('sejarah');
+            $table->longText('visi');
+            $table->longText('misi');
             $table->timestamps();
         });
     }

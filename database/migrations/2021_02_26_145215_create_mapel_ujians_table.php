@@ -15,7 +15,7 @@ class CreateMapelUjiansTable extends Migration
     {
         Schema::create('mapel_ujians', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_mapel')->unique();
+            $table->bigInteger('id_mapel')->unique();
             $table->string('nama_mapel');
             $table->integer('kkm');
             $table->integer('jumlah');

@@ -15,7 +15,7 @@ class CreatePendaftaransTable extends Migration
     {
         Schema::create('pendaftarans', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user');
+            $table->bigInteger('id_user');
             $table->integer('nisn')->unique();
             $table->date('tanggal_pendaftaran');
             $table->string('nama');

@@ -18,6 +18,14 @@
     })
 </script>
 @endif
+@if (Session::has('error_length_tahun_masuk'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Tahun terlalu panjang!'
+    })
+</script>
+@endif
 
 <div class="card">
     <div class="card-header">

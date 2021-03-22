@@ -15,9 +15,9 @@ class CreateNilaisTable extends Migration
     {
         Schema::create('nilais', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user');
+            $table->bigInteger('id_user');
             $table->date('tanggal_ujian');
-            $table->integer('id_mapel');
+            $table->bigInteger('id_mapel');
             $table->string('nama_mapel');
             $table->integer('kkm');
             $table->double('nilai');
