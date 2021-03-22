@@ -39,7 +39,7 @@ class AdminSoalController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'id_mapel' => ['required', 'numeric|max:20'],
+            'id_mapel' => ['required', 'numeric', 'max:20'],
             'soal' => ['required'],
             'A' => ['required'],
             'B' => ['required'],

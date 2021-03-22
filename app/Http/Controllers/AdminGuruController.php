@@ -34,9 +34,9 @@ class AdminGuruController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'nip' => ['required', 'numeric|max:20', 'unique:gurus'],
-            'nuptk' => ['required', 'numeric|max:20', 'unique:gurus'],
-            'tahun_masuk' => ['required', 'numeric|max:11', 'max:11'],
+            'nip' => ['required', 'numeric', 'unique:gurus', 'max:20'],
+            'nuptk' => ['required', 'numeric', 'unique:gurus', 'max:20'],
+            'tahun_masuk' => ['required', 'numeric', 'max:11'],
             'nama' => ['required', 'string'],
             'pendidikan' => ['required', 'string'],
             'tempat_lahir' => ['required', 'string'],
@@ -124,9 +124,9 @@ class AdminGuruController extends Controller
     protected function validatorEdit(array $data)
     {
         return Validator::make($data, [
-            'nip' => ['required', 'numeric|max:20'],
-            'nuptk' => ['required', 'numeric|max:20'],
-            'tahun_masuk' => ['required', 'numeric|max:11'],
+            'nip' => ['required', 'numeric', 'max:20'],
+            'nuptk' => ['required', 'numeric', 'max:20'],
+            'tahun_masuk' => ['required', 'numeric', 'max:20'],
             'nama' => ['required', 'string'],
             'pendidikan' => ['required', 'string'],
             'tempat_lahir' => ['required', 'string'],
@@ -142,14 +142,14 @@ class AdminGuruController extends Controller
     protected function validatorNIP(array $data)
     {
         return Validator::make($data, [
-            'nip' => ['required', 'numeric|max:20', 'unique:gurus']
+            'nip' => ['required', 'numeric', 'unique:gurus', 'max:20']
         ]);
     }
 
     protected function validatorNUPTK(array $data)
     {
         return Validator::make($data, [
-            'nuptk' => ['required', 'numeric|max:20', 'unique:gurus']
+            'nuptk' => ['required', 'numeric', 'unique:gurus', 'max:20']
         ]);
     }
 
