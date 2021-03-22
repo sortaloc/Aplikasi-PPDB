@@ -34,9 +34,9 @@ class AdminGuruController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'nip' => ['required', 'numeric', 'unique:gurus'],
-            'nuptk' => ['required', 'numeric', 'unique:gurus'],
-            'tahun_masuk' => ['required', 'numeric'],
+            'nip' => ['required', 'numeric|max:20', 'unique:gurus'],
+            'nuptk' => ['required', 'numeric|max:20', 'unique:gurus'],
+            'tahun_masuk' => ['required', 'numeric|max:11', 'max:11'],
             'nama' => ['required', 'string'],
             'pendidikan' => ['required', 'string'],
             'tempat_lahir' => ['required', 'string'],
@@ -44,7 +44,7 @@ class AdminGuruController extends Controller
             'jk' => ['required', 'in:Laki-laki,Perempuan'],
             'agama' => ['required', 'string'],
             'alamat' => ['required'],
-            'no_hp' => ['required', 'string'],
+            'no_hp' => ['required', 'string', 'max:20'],
             'email' => ['required', 'string', 'email', 'unique:gurus'],
             'foto' => ['required', 'max:1024', 'file', 'image', 'mimes:jpeg,png,jpg']
         ]);
@@ -59,7 +59,7 @@ class AdminGuruController extends Controller
             if ($tahun_masuk > 20) {
                 return back()->with('error_length_tahun_masuk', 'Tahun terlalu panjang');
             }
-            
+
             //validasi nomor hp
             $no_hp = $request['no_hp'];
             $hitung_no_hp = strlen($no_hp);
@@ -124,9 +124,9 @@ class AdminGuruController extends Controller
     protected function validatorEdit(array $data)
     {
         return Validator::make($data, [
-            'nip' => ['required', 'numeric'],
-            'nuptk' => ['required', 'numeric'],
-            'tahun_masuk' => ['required', 'numeric'],
+            'nip' => ['required', 'numeric|max:20'],
+            'nuptk' => ['required', 'numeric|max:20'],
+            'tahun_masuk' => ['required', 'numeric|max:11'],
             'nama' => ['required', 'string'],
             'pendidikan' => ['required', 'string'],
             'tempat_lahir' => ['required', 'string'],
@@ -142,14 +142,14 @@ class AdminGuruController extends Controller
     protected function validatorNIP(array $data)
     {
         return Validator::make($data, [
-            'nip' => ['required', 'numeric', 'unique:gurus']
+            'nip' => ['required', 'numeric|max:20', 'unique:gurus']
         ]);
     }
 
     protected function validatorNUPTK(array $data)
     {
         return Validator::make($data, [
-            'nuptk' => ['required', 'numeric', 'unique:gurus']
+            'nuptk' => ['required', 'numeric|max:20', 'unique:gurus']
         ]);
     }
 

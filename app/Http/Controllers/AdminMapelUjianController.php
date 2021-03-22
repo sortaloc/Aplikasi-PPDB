@@ -36,7 +36,7 @@ class AdminMapelUjianController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'id_mapel' => ['required', 'numeric', 'unique:mapel_ujians'],
+            'id_mapel' => ['required', 'numeric|max:20', 'unique:mapel_ujians'],
             'kkm' => ['required', 'numeric'],
             'jumlah' => ['required', 'numeric'],
             'waktu' => ['required', 'numeric'],
@@ -112,7 +112,7 @@ class AdminMapelUjianController extends Controller
     protected function validatorIdMapel(array $data)
     {
         return Validator::make($data, [
-            'id_mapel' => ['required', 'numeric', 'unique:mapel_ujians']
+            'id_mapel' => ['required', 'numeric|max:20', 'unique:mapel_ujians']
         ]);
     }
 

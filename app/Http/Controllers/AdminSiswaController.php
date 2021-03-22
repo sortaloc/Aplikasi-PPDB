@@ -42,8 +42,8 @@ class AdminSiswaController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'nisn' => ['required', 'numeric', 'unique:siswas'],
-            'nis' => ['required', 'numeric', 'unique:siswas'],
+            'nisn' => ['required', 'numeric|max:20', 'unique:siswas'],
+            'nis' => ['required', 'numeric|max:11', 'unique:siswas'],
             'nama' => ['required', 'string'],
             'kelas' => ['required', 'string'],
             'tempat_lahir' => ['required', 'string'],
@@ -107,8 +107,8 @@ class AdminSiswaController extends Controller
     protected function validatorEdit(array $data)
     {
         return Validator::make($data, [
-            'nisn' => ['required', 'numeric'],
-            'nis' => ['required', 'numeric'],
+            'nisn' => ['required', 'numeric|max:20'],
+            'nis' => ['required', 'numeric|max:11'],
             'nama' => ['required', 'string'],
             'kelas' => ['required', 'string'],
             'tempat_lahir' => ['required', 'string'],
@@ -121,14 +121,14 @@ class AdminSiswaController extends Controller
     protected function validatorNISN(array $data)
     {
         return Validator::make($data, [
-            'nisn' => ['required', 'numeric', 'unique:siswas']
+            'nisn' => ['required', 'numeric|max:20', 'unique:siswas']
         ]);
     }
 
     protected function validatorNIS(array $data)
     {
         return Validator::make($data, [
-            'nis' => ['required', 'numeric', 'unique:siswas']
+            'nis' => ['required', 'numeric|max:11', 'unique:siswas']
         ]);
     }
 
