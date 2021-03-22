@@ -177,7 +177,7 @@
 
                     </td>
                     <td>
-                        {{ $g->no_hp }}
+                        +{{ $g->no_hp }}
                     </td>
                     <td>
                         {{ $g->email }}

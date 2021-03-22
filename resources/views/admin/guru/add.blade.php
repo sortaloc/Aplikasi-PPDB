@@ -2,6 +2,23 @@
 
 @section('content')
 
+@if (Session::has('errorno_hp'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Format No HP salah!'
+    })
+</script>
+@endif
+@if (Session::has('error_length_no_hp'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Nomor HP terlalu panjang!'
+    })
+</script>
+@endif
+
 <div class="card">
     <div class="card-header">
         <h4>Tambah Data Guru</h4>
@@ -114,14 +131,19 @@
                 </div>
             </div>
             <div class="form-group row mb-4">
-                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nomor HP</label>
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nomor Hp</label>
                 <div class="col-sm-12 col-md-7">
-                    <input placeholder="masukan nomor hp.." type="number" class="form-control @error('no_hp') is-invalid @enderror" required name="no_hp" value="{{ old('no_hp') }}" autocomplete="no_hp">
-                    @error('no_hp')
-                    <div class="invalid-feedback">
-                        <strong>{{ $message }}</strong>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">+</div>
+                        </div>
+                        <input id="inlineFormInputGroup" placeholder="masukan nomor hp dengan format 6281234xxxx.." type="number" class="form-control @error('no_hp') is-invalid @enderror" required name="no_hp" value="{{ old('no_hp') }}" autocomplete="no_hp">
+                        @error('no_hp')
+                        <div class="invalid-feedback">
+                            <strong>{{ $message }}</strong>
+                        </div>
+                        @enderror
                     </div>
-                    @enderror
                 </div>
             </div>
             <div class="form-group row mb-4">

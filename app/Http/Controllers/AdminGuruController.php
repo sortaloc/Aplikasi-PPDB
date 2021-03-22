@@ -54,6 +54,17 @@ class AdminGuruController extends Controller
     {
         if (Auth::guard('admin')->check()) {
             $this->validator($request->all())->validate();
+            //validasi nomor hp
+            $no_hp = $request['no_hp'];
+            $hitung_no_hp = strlen($no_hp);
+            if ($hitung_no_hp >= 14) {
+                return back()->with('error_length_no_hp', 'Nomor HP terlalu panjang');
+            }
+            $val_no_hp = substr($no_hp, 0, 3);
+            if ($val_no_hp != 628) {
+                return back()->with('errorno_hp', 'Format No Hp salah!');
+            }
+
             //atur waktu
             date_default_timezone_set('Asia/Jakarta');
 
@@ -154,7 +165,17 @@ class AdminGuruController extends Controller
     {
         if (Auth::guard('admin')->check()) {
             $this->validatorEdit($request->all())->validate();
-
+            //validasi nomor hp
+            $no_hp = $request['no_hp'];
+            $hitung_no_hp = strlen($no_hp);
+            if ($hitung_no_hp >= 14) {
+                return back()->with('error_length_no_hp', 'Nomor HP terlalu panjang');
+            }
+            $val_no_hp = substr($no_hp, 0, 3);
+            if ($val_no_hp != 628) {
+                return back()->with('errorno_hp', 'Format No Hp salah!');
+            }
+            
             $ambil_guru = Guru::find($id);
             $ambil_nip = $ambil_guru['nip'];
             $ambil_nuptk = $ambil_guru['nuptk'];
