@@ -158,7 +158,7 @@
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Email</label>
                 <div class="col-sm-12 col-md-7">
                     <input maxlength="40" placeholder="masukan email.." type="email" class="form-control @error('email') is-invalid @enderror" required name="email" value="{{ old('email') }}" autocomplete="email">
-                    @error('nama_ibu')
+                    @error('email')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
                     </div>
