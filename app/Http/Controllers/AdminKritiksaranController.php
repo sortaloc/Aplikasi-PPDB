@@ -14,7 +14,7 @@ class AdminKritiksaranController extends Controller
     public function index()
     {
         if (Auth::guard('admin')->check()) {
-            $ks = Kritiksaran::orderBY('created_at', 'DESC')->simplePaginate(10);
+            $ks = Kritiksaran::orderBY('created_at', 'DESC')->get();
             return view('admin.kritiksaran.index', compact('ks'));
         } else {
             return redirect('loginadmin');
