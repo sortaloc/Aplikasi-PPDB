@@ -56,25 +56,9 @@
         <div class="float-left">
             <a href="{{ route('adminsoal.create') }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
         </div>
-        <div class="float-right">
-            <form action="{{ url('adminsoal/cari') }}" method="post">
-                @csrf
-                <div class="input-group">
-                    <select name="cari" class="form-control selectric" required>
-                        <option value="">-- Pilih Mapel Ujian --</option>
-                        @foreach ($mapelujian as $mu)
-                        <option value="{{ $mu->nama_mapel }}">{{ $mu->nama_mapel }}</option>
-                        @endforeach
-                    </select>
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
         <div class="clearfix mb-3"></div>
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped" id="table-2">
                 <thead>
                     <th>No.</th>
                     <th>Nama Mapel</th>
@@ -105,13 +89,11 @@
                         if ($hitungsoal > 50) {
                         ?>
                             <div class="overflo">
-                                {{ $s->soal }}
+                                <?php echo $s->soal; ?>
                             </div>
                         <?php
                         } else {
-                        ?>
-                            {{ $s->soal }}
-                        <?php
+                            echo $s->soal;
                         }
                         ?>
                     </td>
@@ -121,13 +103,11 @@
                         if ($hitungA > 50) {
                         ?>
                             <div class="overflo">
-                                {{ $s->A }}
+                                <?php echo $s->A; ?>
                             </div>
                         <?php
                         } else {
-                        ?>
-                            {{ $s->A }}
-                        <?php
+                            echo $s->A;
                         }
                         ?>
                     </td>
@@ -137,13 +117,11 @@
                         if ($hitungB > 50) {
                         ?>
                             <div class="overflo">
-                                {{ $s->B }}
+                                <?php echo $s->B; ?>
                             </div>
                         <?php
                         } else {
-                        ?>
-                            {{ $s->B }}
-                        <?php
+                            echo $s->B;
                         }
                         ?>
                     </td>
@@ -153,13 +131,11 @@
                         if ($hitungC > 50) {
                         ?>
                             <div class="overflo">
-                                {{ $s->C }}
+                                <?php echo $s->C; ?>
                             </div>
                         <?php
                         } else {
-                        ?>
-                            {{ $s->C }}
-                        <?php
+                            echo $s->C;
                         }
                         ?>
                     </td>
@@ -169,13 +145,11 @@
                         if ($hitungD > 50) {
                         ?>
                             <div class="overflo">
-                                {{ $s->D }}
+                                <?php echo $s->D; ?>
                             </div>
                         <?php
                         } else {
-                        ?>
-                            {{ $s->D }}
-                        <?php
+                            echo $s->D;
                         }
                         ?>
                     </td>
@@ -185,13 +159,11 @@
                         if ($hitungE > 50) {
                         ?>
                             <div class="overflo">
-                                {{ $s->E }}
+                                <?php echo $s->E; ?>
                             </div>
                         <?php
                         } else {
-                        ?>
-                            {{ $s->E }}
-                        <?php
+                            echo $s->E;
                         }
                         ?>
                     </td>
@@ -223,16 +195,7 @@
                 </tr>
                 @endif
             </table>
-
         </div>
-
-    </div>
-    <div class="card-footer text-right">
-        <nav class="d-inline-block">
-            <ul class="pagination">
-                {{ $soal->links() }}
-            </ul>
-        </nav>
     </div>
 </div>
 

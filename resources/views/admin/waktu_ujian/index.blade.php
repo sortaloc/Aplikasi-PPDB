@@ -50,7 +50,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h4>Tabel Waktu Pelaksanaan Ujian</h4>
+        <h4>Tabel Jadwal Pelaksanaan Ujian</h4>
     </div>
     <div class="card-body">
         @if ($waktu == null)

@@ -13,7 +13,7 @@ class AdminTagihanController extends Controller
     public function index()
     {
         if (Auth::guard('admin')->check()) {
-            $tagihan = Tagihan::orderBy('nama_tagihan')->simplePaginate(10);
+            $tagihan = Tagihan::orderBy('nama_tagihan')->get();
             return view('admin.tagihan.index', compact('tagihan'));
         } else {
             return redirect('loginadmin');
@@ -96,22 +96,6 @@ class AdminTagihanController extends Controller
             Tagihan::findOrFail($id)->delete();
 
             return redirect('admintagihan')->with('hapus', 'Data telah diubah!');
-        } else {
-            return redirect('loginadmin');
-        }
-    }
-
-    public function cariData(Request $request)
-    {
-        if (Auth::guard('admin')->check()) {
-            $cari = $request['cari'];
-            $tagihan = Tagihan::orderBy('nama_tagihan', 'ASC')
-                ->orwhere('nama_tagihan', 'like', "%" . $cari . "%")
-                ->orwhere('jumlah_tagihan', 'like', "%" . $cari . "%")
-                ->orwhere('batas', 'like', "%" . $cari . "%")
-                ->simplePaginate(10);
-
-            return view('admin.tagihan.index', compact('tagihan'));
         } else {
             return redirect('loginadmin');
         }

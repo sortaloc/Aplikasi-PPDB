@@ -50,20 +50,9 @@
         <div class="float-left">
             <a href="{{ route('adminsiswa.create') }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
         </div>
-        <div class="float-right">
-            <form action="{{ url('adminsiswa/cari') }}" method="post">
-                @csrf
-                <div class="input-group">
-                    <input type="text" class="form-control" name="cari" placeholder="cari..">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
         <div class="clearfix mb-3"></div>
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped" id="table-2">
                 <thead>
                     <th>No.</th>
                     <th>NISN</th>
@@ -176,16 +165,7 @@
                 </tr>
                 @endif
             </table>
-
         </div>
-
-    </div>
-    <div class="card-footer text-right">
-        <nav class="d-inline-block">
-            <ul class="pagination mb-0">
-                {{ $siswa->links() }}
-            </ul>
-        </nav>
     </div>
 </div>
 

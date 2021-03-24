@@ -14,7 +14,7 @@ class AdminGuruController extends Controller
     public function index()
     {
         if (Auth::guard('admin')->check()) {
-            $guru = Guru::orderBy('nama', 'ASC')->simplePaginate(10);
+            $guru = Guru::orderBy('nama', 'ASC')->get();
             return view('admin.guru.index', compact('guru'));
         } else {
             return redirect('loginadmin');
@@ -251,31 +251,6 @@ class AdminGuruController extends Controller
             File::delete('imagesguru/' . $foto);
             $guru->delete();
             return redirect('adminguru')->with('hapus', 'Data telah dihapus!');
-        } else {
-            return redirect('loginadmin');
-        }
-    }
-
-    public function cariData(Request $request)
-    {
-        if (Auth::guard('admin')->check()) {
-            $cari = $request['cari'];
-            $guru = Guru::orderBy('nama', 'ASC')
-                ->orwhere('nip', 'like', "%" . $cari . "%")
-                ->orwhere('nuptk', 'like', "%" . $cari . "%")
-                ->orwhere('tahun_masuk', 'like', "%" . $cari . "%")
-                ->orwhere('nama', 'like', "%" . $cari . "%")
-                ->orwhere('pendidikan', 'like', "%" . $cari . "%")
-                ->orwhere('tempat_lahir', 'like', "%" . $cari . "%")
-                ->orwhere('tanggal_lahir', 'like', "%" . $cari . "%")
-                ->orwhere('jk', 'like', "%" . $cari . "%")
-                ->orwhere('agama', 'like', "%" . $cari . "%")
-                ->orwhere('alamat', 'like', "%" . $cari . "%")
-                ->orwhere('no_hp', 'like', "%" . $cari . "%")
-                ->orwhere('email', 'like', "%" . $cari . "%")
-                ->simplePaginate(10);
-
-            return view('admin.guru.index', compact('guru'));
         } else {
             return redirect('loginadmin');
         }

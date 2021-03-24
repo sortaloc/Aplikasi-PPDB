@@ -20,7 +20,7 @@
         <div class="float-left">
             <button href="{{ route('adminkritiksaran.create') }}" onclick="hapusData()" class="btn btn-icon icon-left btn-danger"><i class="fas fa-trash"></i> Hapus semua data</button>
         </div>
-        
+
         <div class="clearfix mb-3"></div>
         <div class="table-responsive">
             <table class="table table-striped" id="table-2">
@@ -67,7 +67,7 @@
         </div>
 
     </div>
-    
+
 </div>
 <script>
     function hapusData() {

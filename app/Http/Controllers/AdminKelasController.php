@@ -14,7 +14,7 @@ class AdminKelasController extends Controller
     public function index()
     {
         if (Auth::guard('admin')->check()) {
-            $kelas = Kelas::orderBy('nama_kelas', 'ASC')->simplePaginate(10);
+            $kelas = Kelas::orderBy('nama_kelas', 'ASC')->get();
             return view('admin.kelas.index', compact('kelas'));
         } else {
             return redirect('loginadmin');
@@ -175,21 +175,6 @@ class AdminKelasController extends Controller
             $kelas = Kelas::findOrFail($id);
             $kelas->delete();
             return redirect('adminkelas')->with('hapus', 'Data telah dihapus!');
-        } else {
-            return redirect('loginadmin');
-        }
-    }
-
-    public function cariData(Request $request)
-    {
-        if (Auth::guard('admin')->check()) {
-            $cari = $request['cari'];
-            $kelas = Kelas::orderBy('nama_kelas', 'ASC')
-                ->orwhere('nama_kelas', 'like', "%" . $cari . "%")
-                ->orwhere('wali_kelas', 'like', "%" . $cari . "%")
-                ->simplePaginate(10);
-
-            return view('admin.kelas.index', compact('kelas'));
         } else {
             return redirect('loginadmin');
         }

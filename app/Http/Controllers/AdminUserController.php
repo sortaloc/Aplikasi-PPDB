@@ -13,7 +13,7 @@ class AdminUserController extends Controller
     public function index()
     {
         if (Auth::guard('admin')->check()) {
-            $users = User::orderBy('updated_at', 'DESC')->simplePaginate(10);
+            $users = User::orderBy('updated_at', 'DESC')->get();
             
             return view('admin.users.index', compact('users'));
         } else {
@@ -71,24 +71,6 @@ class AdminUserController extends Controller
                 'email_verified_at' => $now
             ]);
             return redirect('adminusers')->with('verifikasi', 'NISN telah terverifikasi');
-        } else {
-            return redirect('loginadmin');
-        }
-    }
-
-    public function cariData(Request $request)
-    {
-        if (Auth::guard('admin')->check()) {
-            $cari = $request['cari'];
-            $users = User::orderBy('updated_at', 'DESC')
-                ->orwhere('name', 'like', "%" . $cari . "%")
-                ->orwhere('email', 'like', "%" . $cari . "%")
-                ->orwhere('tempat_lahir', 'like', "%" . $cari . "%")
-                ->orwhere('tanggal_lahir', 'like', "%" . $cari . "%")
-                ->orwhere('nama_ibu', 'like', "%" . $cari . "%")
-                ->simplePaginate(10);
-
-            return view('admin.users.index', compact('users'));
         } else {
             return redirect('loginadmin');
         }

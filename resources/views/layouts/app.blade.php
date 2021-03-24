@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="{{ asset('template/assets/css/selectric.css') }}">
     <link rel="stylesheet" href="{{ asset('template/assets/css/select2.min.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('template/assets/css/datatables/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/assets/css/datatables/datatables/select.bootstrap4.min.css') }}">
+
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('template/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('template/assets/css/components.css') }}">
@@ -96,6 +99,11 @@
     <!-- JS Libraies -->
     <script src="{{ asset('template/assets/js/jquery.selectric.min.js') }}"></script>
     <script src="{{ asset('template/assets/js/select2.full.min.js') }}"></script>
+
+    <script src="{{ asset('template/assets/js/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/datatables/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/datatables/modules-datatables.js') }}"></script>
 
     <!-- Template JS File -->
     <script src="{{ asset('template/assets/js/scripts.js') }}"></script>

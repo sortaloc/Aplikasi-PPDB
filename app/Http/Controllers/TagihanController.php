@@ -11,7 +11,7 @@ class TagihanController extends Controller
     
     public function index()
     {
-        $tagihan = Tagihan::orderBy('batas', 'DESC')->simplePaginate(10);
+        $tagihan = Tagihan::orderBy('batas', 'DESC')->get();
         return view('tagihan.index', compact('tagihan'));
     }
 

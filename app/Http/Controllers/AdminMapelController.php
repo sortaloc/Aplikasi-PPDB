@@ -14,7 +14,7 @@ class AdminMapelController extends Controller
     public function index()
     {
         if (Auth::guard('admin')->check()) {
-            $mapel = Mapel::orderBy('nama_mapel')->simplePaginate(10);
+            $mapel = Mapel::orderBy('nama_mapel')->get();
             return view('admin.mapel.index', compact('mapel'));
         } else {
             return redirect('loginadmin');
@@ -95,21 +95,5 @@ class AdminMapelController extends Controller
     {
         Mapel::findOrFail($id)->delete();
         return redirect('adminmapel')->with('hapus', 'Data telah dihapus');
-    }
-
-    public function cariData(Request $request)
-    {
-        if (Auth::guard('admin')->check()) {
-            $cari = $request['cari'];
-            $mapel = Mapel::orderBy('nama_mapel', 'ASC')
-                ->orwhere('nama_mapel', 'like', "%" . $cari . "%")
-                ->orwhere('kkm', 'like', "%" . $cari . "%")
-                ->orwhere('guru_mapel', 'like', "%" . $cari . "%")
-                ->simplePaginate(10);
-
-            return view('admin.mapel.index', compact('mapel'));
-        } else {
-            return redirect('loginadmin');
-        }
     }
 }

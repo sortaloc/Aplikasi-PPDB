@@ -15,7 +15,7 @@ class AdminMapelUjianController extends Controller
     public function index()
     {
         if (Auth::guard('admin')->check()) {
-            $mapelujian = MapelUjian::orderBy('nama_mapel', 'ASC')->simplePaginate(10);
+            $mapelujian = MapelUjian::orderBy('nama_mapel', 'ASC')->get();
             return view('admin.mapelujian.index', compact('mapelujian'));
         } else {
             return redirect('loginadmin');
@@ -180,22 +180,6 @@ class AdminMapelUjianController extends Controller
             MapelUjian::findOrFail($id)->delete();
 
             return redirect('adminmapelujian')->with('hapus', 'Data telah dihapus!');
-        } else {
-            return redirect('loginadmin');
-        }
-    }
-
-    public function cariData(Request $request)
-    {
-        if (Auth::guard('admin')->check()) {
-            $cari = $request['cari'];
-            $mapelujian = MapelUjian::orderBy('nama_mapel', 'ASC')
-                ->orwhere('kkm', 'like', "%" . $cari . "%")
-                ->orwhere('nama_mapel', 'like', "%" . $cari . "%")
-                ->orwhere('jumlah', 'like', "%" . $cari . "%")
-                ->orwhere('waktu', 'like', "%" . $cari . "%")
-                ->simplePaginate(10);
-            return view('admin.mapelujian.index', compact('mapelujian'));
         } else {
             return redirect('loginadmin');
         }

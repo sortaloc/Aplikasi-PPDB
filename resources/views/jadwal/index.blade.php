@@ -13,7 +13,6 @@
                     <th>Jadwal</th>
                     <th>Tanggal Buka</th>
                     <th>Tanggal Tutup</th>
-
                 </thead>
 
                 @if ($waktu->count() > 0)
@@ -67,9 +66,7 @@
                         $buka = $hari . " " . $bulan . " " . $tahun;
                         echo $buka;
                         ?>
-
                     </td>
-
                     <td>
                         <?php
                         $tutup = $w->tutup;
@@ -105,9 +102,7 @@
                         $tutup = $hari . " " . $bulan . " " . $tahun;
                         echo $tutup;
                         ?>
-
                     </td>
-
                 </tr>
                 @endforeach
                 @else
@@ -116,19 +111,10 @@
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
-
                 </tr>
                 @endif
             </table>
-
         </div>
-    </div>
-    <div class="card-footer text-right">
-        <nav class="d-inline-block">
-            <ul class="pagination">
-                {{ $waktu->links() }}
-            </ul>
-        </nav>
     </div>
 </div>
 @endsection

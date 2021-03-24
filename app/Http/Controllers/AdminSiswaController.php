@@ -14,7 +14,7 @@ class AdminSiswaController extends Controller
     public function index()
     {
         if (Auth::guard('admin')->check()) {
-            $siswa = Siswa::orderBy('kelas', 'ASC')->orderBy('nama', 'ASC')->simplePaginate(10);
+            $siswa = Siswa::orderBy('kelas', 'ASC')->orderBy('nama', 'ASC')->get();
             return view('admin.siswa.index', compact('siswa'));
         } else {
             return redirect('loginadmin');
@@ -173,28 +173,6 @@ class AdminSiswaController extends Controller
         if (Auth::guard('admin')->check()) {
             Siswa::findOrFail($id)->delete();
             return redirect('adminsiswa')->with('hapus', 'Data telah dihapus!');
-        } else {
-            return redirect('loginadmin');
-        }
-    }
-
-    public function cariData(Request $request)
-    {
-        if (Auth::guard('admin')->check()) {
-            $cari = $request['cari'];
-            $siswa = Siswa::orderBy('kelas', 'ASC')
-                ->orderBy('nama', 'ASC')
-                ->orwhere('nisn', 'like', "%" . $cari . "%")
-                ->orwhere('nis', 'like', "%" . $cari . "%")
-                ->orwhere('nama', 'like', "%" . $cari . "%")
-                ->orwhere('kelas', 'like', "%" . $cari . "%")
-                ->orwhere('tempat_lahir', 'like', "%" . $cari . "%")
-                ->orwhere('tanggal_lahir', 'like', "%" . $cari . "%")
-                ->orwhere('jk', 'like', "%" . $cari . "%")
-                ->orwhere('alamat', 'like', "%" . $cari . "%")
-                ->simplePaginate(10);
-
-            return view('admin.siswa.index', compact('siswa'));
         } else {
             return redirect('loginadmin');
         }

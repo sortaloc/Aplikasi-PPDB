@@ -16,7 +16,7 @@ class AdminSoalController extends Controller
     {
         if (Auth::guard('admin')->check()) {
             $mapelujian = MapelUjian::orderBy('nama_mapel', 'ASC')->get();
-            $soal = Soal::orderBy('nama_mapel', 'ASC')->simplePaginate(10);
+            $soal = Soal::orderBy('nama_mapel', 'ASC')->get();
 
             return view('admin.soal.index', compact('mapelujian', 'soal'));
         } else {
@@ -143,23 +143,6 @@ class AdminSoalController extends Controller
             Soal::findOrFail($id)->delete();
 
             return redirect('adminsoal')->with('hapus', 'Data telah dihapus!');
-        } else {
-            return redirect('loginadmin');
-        }
-    }
-
-    public function cariData(Request $request)
-    {
-        if (Auth::guard('admin')->check()) {
-            $cari = $request['cari'];
-
-            $soal = Soal::orderBy('nama_mapel', 'ASC')
-                ->orwhere('nama_mapel', 'like', "%" . $cari . "%")
-                ->paginate(10);
-
-            $mapelujian = MapelUjian::orderBy('nama_mapel', 'ASC')->get();
-
-            return view('admin.soal.index', compact('soal', 'mapelujian'));
         } else {
             return redirect('loginadmin');
         }

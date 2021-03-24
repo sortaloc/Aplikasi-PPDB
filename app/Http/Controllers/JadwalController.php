@@ -10,7 +10,7 @@ class JadwalController extends Controller
     
     public function index()
     {
-        $waktu = Waktu::orderBy('jenis')->simplePaginate(10);
+        $waktu = Waktu::orderBy('jenis')->get();
         return view('jadwal.index', compact('waktu'));
     }
 

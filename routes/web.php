@@ -37,29 +37,28 @@ Route::post('registeradmin', [RegisterController::class, 'RegisterAdmin']);
 
 Route::resource('admin', AdminController::class);
 Route::resource('adminpendaftaran', AdminPendaftaranController::class);
-Route::post('adminpendaftaran/cari', [AdminPendaftaranController::class, 'cariData']);
+
 Route::resource('adminguru', AdminGuruController::class);
-Route::post('adminguru/cari', [AdminGuruController::class, 'cariData']);
+
 Route::resource('adminkelas', AdminKelasController::class);
-Route::post('adminkelas/cari', [AdminKelasController::class, 'cariData']);
+
 Route::resource('adminwaktuujian', AdminWaktuUjianController::class);
 Route::resource('adminwaktupendaftaran', AdminWaktuPendaftaranController::class);
 Route::resource('adminmapel', AdminMapelController::class);
-Route::post('adminmapel/cari', [AdminMapelController::class, 'cariData']);
+
 Route::resource('adminsoal', AdminSoalController::class);
-Route::post('adminsoal/cari', [AdminSoalController::class, 'cariData']);
+
 Route::resource('adminmapelujian', AdminMapelUjianController::class);
-Route::post('adminmapelujian/cari', [AdminMapelUjianController::class, 'cariData']);
+
 Route::resource('admintagihan', AdminTagihanController::class);
-Route::post('admintagihan/cari', [AdminTagihanController::class, 'cariData']);
+
 Route::resource('adminsiswa', AdminSiswaController::class);
-Route::post('adminsiswa/cari', [AdminSiswaController::class, 'cariData']);
+
 Route::resource('adminpembagian', AdminPembagianController::class);
 Route::resource('adminlatarbelakang', AdminLatarbelakangController::class);
 Route::resource('adminkritiksaran', AdminKritiksaranController::class);
-Route::post('adminkritiksaran/cari', [AdminKritiksaranController::class, 'cariData']);
+
 Route::resource('adminusers', AdminUserController::class);
-Route::post('adminusers/cari', [AdminUserController::class, 'cariData']);
 
 
 Route::middleware('auth')->group(function () {

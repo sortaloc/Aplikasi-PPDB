@@ -78,20 +78,4 @@ class AdminKritiksaranController extends Controller
             return redirect('loginadmin');
         }
     }
-
-    public function cariData(Request $request)
-    {
-        if (Auth::guard('admin')->check()) {
-            $cari = $request['cari'];
-            $ks = Kritiksaran::orderBy('created_at', 'DESC')
-                ->orwhere('nama', 'like', "%" . $cari . "%")
-                ->orwhere('email', 'like', "%" . $cari . "%")
-                ->orwhere('pesan', 'like', "%" . $cari . "%")
-                ->simplePaginate(10);
-
-            return view('admin.kritiksaran.index', compact('ks'));
-        } else {
-            return redirect('loginadmin');
-        }
-    }
 }

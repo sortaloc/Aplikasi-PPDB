@@ -12,24 +12,11 @@
 <div class="card">
     <div class="card-header">
         <h4>Tabel Data Users</h4>
-        <div class="card-header-form">
-            <form action="{{ url('adminusers/cari') }}" method="post">
-                @csrf
-                <div class="input-group">
-                    <input type="text" class="form-control" name="cari" placeholder="Cari.." value="{{ old('cari') }}">
-                    <div class="input-group-btn">
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
     </div>
-
-
     <div class="card-body">
         <div class="clearfix mb-3"></div>
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped" id="table-2">
                 <thead>
                     <th>No.</th>
                     <th>Nama</th>
@@ -103,16 +90,7 @@
                 </tr>
                 @endif
             </table>
-
         </div>
-
-    </div>
-    <div class="card-footer text-right">
-        <nav class="d-inline-block">
-            <ul class="pagination mb-0">
-                {{ $users->links() }}
-            </ul>
-        </nav>
     </div>
 </div>
 

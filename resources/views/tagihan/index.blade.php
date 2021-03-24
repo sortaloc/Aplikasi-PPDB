@@ -7,7 +7,7 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped" id="table-2">
                 <thead>
                     <th>No.</th>
                     <th>Nama Tagihan</th>
@@ -76,19 +76,11 @@
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
-
                 </tr>
                 @endif
             </table>
 
         </div>
-    </div>
-    <div class="card-footer text-right">
-        <nav class="d-inline-block">
-            <ul class="pagination">
-                {{ $tagihan->links() }}
-            </ul>
-        </nav>
     </div>
 </div>
 @endsection
