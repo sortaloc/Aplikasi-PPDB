@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="{{ asset('template/assets/css/select2.min.css') }}">
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('datatables/dataTables.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('datatables/select.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/assets/css/datatables/dataTables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('template/assets/css/datatables/datatables/select.bootstrap4.min.css') }}">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('template/assets/css/style.css') }}">
@@ -106,10 +106,10 @@
     <script src="{{ asset('template/assets/js/jquery.selectric.min.js') }}"></script>
     <script src="{{ asset('template/assets/js/select2.full.min.js') }}"></script>
     
-    <script src="{{ asset('datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('datatables/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('datatables/dataTables.select.min.js') }}"></script>
-    <script src="{{ asset('datatables/modules-datatables.js') }}"></script>
+    <script src="{{ asset('template/assets/js/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/datatables/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/datatables/modules-datatables.js') }}"></script>
 
     <!-- Template JS File -->
     <script src="{{ asset('template/assets/js/scripts.js') }}"></script>
