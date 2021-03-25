@@ -1,6 +1,17 @@
 @extends('admin.layouts.app')
 @section('content')
 
+@if (Session::has('soal'))
+<div class="alert alert-danger alert-dismissible show fade">
+    <div class="alert-body">
+        <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        Quota soal untuk MAPEL tersebut sudah penuh!
+    </div>
+</div>
+@endif
+
 <div class="card">
     <div class="card-header">
         <h4>Sunting Data Soal</h4>

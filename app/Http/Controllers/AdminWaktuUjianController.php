@@ -50,7 +50,7 @@ class AdminWaktuUjianController extends Controller
             $buka = $request['buka'];
             $tutup = $request['tutup'];
             if ($tutup < $buka) {
-                return redirect('adminwaktuujian')->with('errorwaktu', 'Waktu ujian salah!');
+                return back()->with('errorwaktu', 'Waktu ujian salah!');
             }
             Waktu::create([
                 'jenis' => 'ujian',
@@ -88,7 +88,7 @@ class AdminWaktuUjianController extends Controller
             $buka = $request['buka'];
             $tutup = $request['tutup'];
             if ($tutup < $buka) {
-                return redirect('adminwaktuujian')->with('errorwaktu', 'Waktu pendaftaran salah!');
+                return back()->with('errorwaktu', 'Waktu pendaftaran salah!');
             }
             Waktu::whereId($id)->update([
                 'buka' => $request['buka'],

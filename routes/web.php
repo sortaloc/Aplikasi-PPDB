@@ -47,7 +47,6 @@ Route::resource('adminwaktupendaftaran', AdminWaktuPendaftaranController::class)
 Route::resource('adminmapel', AdminMapelController::class);
 
 Route::resource('adminsoal', AdminSoalController::class);
-
 Route::resource('adminmapelujian', AdminMapelUjianController::class);
 
 Route::resource('admintagihan', AdminTagihanController::class);

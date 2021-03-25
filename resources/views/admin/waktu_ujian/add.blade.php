@@ -1,6 +1,15 @@
 @extends('admin.layouts.app')
 @section('content')
 
+@if (Session::has('errorwaktu'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Waktu ujian salah!'
+    })
+</script>
+@endif
+
 <div class="card">
     <div class="card-header">
         <h4>Tambah Waktu Pelaksanaan Ujian</h4>

@@ -31,14 +31,7 @@
     })
 </script>
 @endif
-@if (Session::has('soal'))
-<script>
-    Swal.fire({
-        icon: 'error',
-        title: 'Quota soal sudah penuh!'
-    })
-</script>
-@endif
+
 
 <style>
     .overflo {
@@ -48,6 +41,48 @@
         padding: 10px;
     }
 </style>
+
+<div class="row">
+    @foreach ($mapelujian as $mu)
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>{{ $mu->nama_mapel }}</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span>Jumlah Soal</span>
+                    </div>
+                    <div class="col-md-6">
+                        <span>Total Soal</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4><strong class="text-dark mb-2">{{ $mu->jumlah }}</strong></h4>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>
+                            <strong class="text-dark mb-2">
+                                <?php
+                                foreach ($array as $key => $val) {
+                                    if ($mu->id_mapel == $key) {
+                                        echo $val;
+                                    }
+                                }
+                                ?>
+                            </strong>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @endforeach
+</div>
+
 <div class="card">
     <div class="card-header">
         <h4>Tabel Data Soal Ujian</h4>

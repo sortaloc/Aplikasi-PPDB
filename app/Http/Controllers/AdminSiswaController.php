@@ -58,6 +58,21 @@ class AdminSiswaController extends Controller
         if (Auth::guard('admin')->check()) {
             $this->validator($request->all())->validate();
 
+            //validasi nisn
+            $nisn = $request['nisn'];
+            $len_nisn = strlen($nisn);
+            if ($len_nisn > 11) {
+                return back()->with('error_length_nisn', 'NISN terlalu panjang!');
+            }
+
+            //validasi nis
+            $nis = $request['nis'];
+            $len_nis = strlen($nis);
+            if ($len_nis > 11) {
+                return back()->with('error_length_nis', 'NIS terlalu panjang!');
+            }
+
+
             Siswa::create([
                 'nisn' => $request['nisn'],
                 'nis' => $request['nis'],
@@ -136,8 +151,20 @@ class AdminSiswaController extends Controller
     {
         if (Auth::guard('admin')->check()) {
             $this->validatorEdit($request->all())->validate();
+            //validasi nisn
             $nisn = $request['nisn'];
+            $len_nisn = strlen($nisn);
+            if ($len_nisn > 11) {
+                return back()->with('error_length_nisn', 'NISN terlalu panjang!');
+            }
+
+            //validasi nis
             $nis = $request['nis'];
+            $len_nis = strlen($nis);
+            if ($len_nis > 11) {
+                return back()->with('error_length_nis', 'NIS terlalu panjang!');
+            }
+
             $ambil_data_siswa = Siswa::where('id', $id)->first();
             $ambil_nisn = $ambil_data_siswa['nisn'];
             $ambil_nis = $ambil_data_siswa['nis'];

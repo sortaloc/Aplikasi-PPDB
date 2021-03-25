@@ -1,6 +1,39 @@
 @extends('admin.layouts.app')
 @section('content')
 
+@if (Session::has('error_length_kmm'))
+<div class="alert alert-danger alert-dismissible show fade">
+    <div class="alert-body">
+        <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        KKM terlalu panjang!
+    </div>
+</div>
+@endif
+
+@if (Session::has('error_length_jumlah'))
+<div class="alert alert-danger alert-dismissible show fade">
+    <div class="alert-body">
+        <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        Jumlah soal terlalu panjang!
+    </div>
+</div>
+@endif
+
+@if (Session::has('error_length_waktu'))
+<div class="alert alert-danger alert-dismissible show fade">
+    <div class="alert-body">
+        <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        Waktu ujian terlalu panjang!
+    </div>
+</div>
+@endif
+
 <div class="card">
     <div class="card-header">
         <h4>Sunting Data Mapel Ujian</h4>

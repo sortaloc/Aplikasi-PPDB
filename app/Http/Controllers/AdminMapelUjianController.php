@@ -48,6 +48,28 @@ class AdminMapelUjianController extends Controller
     {
         if (Auth::guard('admin')->check()) {
             $this->validator($request->all())->validate();
+
+            //validasi kkm
+            $kkm = $request['kkm'];
+            $len_kkm = strlen($kkm);
+            if ($len_kkm > 11) {
+                return back()->with('error_length_kkm', 'KKM terlalu panjang!');
+            }
+
+            //validasi jumlah
+            $jumlah = $request['jumlah'];
+            $len_jumlah = strlen($jumlah);
+            if ($len_jumlah > 11) {
+                return back()->with('error_length_jumlah', 'Jumlah soal terlalu panjang!');
+            }
+
+            //validasi kkm
+            $waktu = $request['waktu'];
+            $len_waktu = strlen($waktu);
+            if ($len_waktu > 11) {
+                return back()->with('error_length_waktu', 'Waktu ujian terlalu panjang!');
+            }
+
             //atur waktu
             date_default_timezone_set('Asia/Jakarta');
 
@@ -127,6 +149,28 @@ class AdminMapelUjianController extends Controller
     {
         if (Auth::guard('admin')->check()) {
             $this->validatorEdit($request->all())->validate();
+
+            //validasi kkm
+            $kkm = $request['kkm'];
+            $len_kkm = strlen($kkm);
+            if ($len_kkm > 11) {
+                return back()->with('error_length_kkm', 'KKM terlalu panjang!');
+            }
+
+            //validasi jumlah
+            $jumlah = $request['jumlah'];
+            $len_jumlah = strlen($jumlah);
+            if ($len_jumlah > 11) {
+                return back()->with('error_length_jumlah', 'Jumlah soal terlalu panjang!');
+            }
+
+            //validasi kkm
+            $waktu = $request['waktu'];
+            $len_waktu = strlen($waktu);
+            if ($len_waktu > 11) {
+                return back()->with('error_length_waktu', 'Waktu ujian terlalu panjang!');
+            }
+            
             //atur waktu
             date_default_timezone_set('Asia/Jakarta');
 

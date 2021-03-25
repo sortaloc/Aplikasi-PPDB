@@ -39,14 +39,7 @@
     })
 </script>
 @endif
-@if (Session::has('errorwaktu'))
-<script>
-    Swal.fire({
-        icon: 'error',
-        title: 'Waktu ujian salah!'
-    })
-</script>
-@endif
+
 
 <div class="card">
     <div class="card-header">

@@ -17,7 +17,7 @@
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('template/assets/css/datatables/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('template/assets/css/datatables/datatables/select.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/assets/css/datatables/select.bootstrap4.min.css') }}">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('template/assets/css/style.css') }}">
