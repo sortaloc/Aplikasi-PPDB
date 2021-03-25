@@ -3,28 +3,54 @@
 @section('content')
 
 @if (Session::has('errorno_hp'))
-<script>
-    Swal.fire({
-        icon: 'error',
-        title: 'Format No HP salah!'
-    })
-</script>
+<div class="alert alert-danger alert-dismissible show fade">
+    <div class="alert-body">
+        <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        Format No HP salah!
+    </div>
+</div>
 @endif
 @if (Session::has('error_length_no_hp'))
-<script>
-    Swal.fire({
-        icon: 'error',
-        title: 'Nomor HP terlalu panjang!'
-    })
-</script>
+<div class="alert alert-danger alert-dismissible show fade">
+    <div class="alert-body">
+        <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        No HP terlalu panjang!
+    </div>
+</div>
 @endif
 @if (Session::has('error_length_tahun_masuk'))
-<script>
-    Swal.fire({
-        icon: 'error',
-        title: 'Tahun terlalu panjang!'
-    })
-</script>
+<div class="alert alert-danger alert-dismissible show fade">
+    <div class="alert-body">
+        <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        Tahun terlalu panjang!
+    </div>
+</div>
+@endif
+@if (Session::has('error_length_nip'))
+<div class="alert alert-danger alert-dismissible show fade">
+    <div class="alert-body">
+        <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        NIP terlalu panjang!
+    </div>
+</div>
+@endif
+@if (Session::has('error_length_nuptk'))
+<div class="alert alert-danger alert-dismissible show fade">
+    <div class="alert-body">
+        <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        NUPTK terlalu panjang!
+    </div>
+</div>
 @endif
 
 <div class="card">
@@ -165,7 +191,7 @@
                     @enderror
                 </div>
             </div>
-            
+
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Foto</label>
                 <div class="col-sm-12 col-md-7">

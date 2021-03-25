@@ -34,9 +34,9 @@ class AdminGuruController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'nip' => ['required', 'numeric', 'unique:gurus', 'max:20'],
-            'nuptk' => ['required', 'numeric', 'unique:gurus', 'max:20'],
-            'tahun_masuk' => ['required', 'numeric', 'max:11'],
+            'nip' => ['required', 'numeric', 'unique:gurus'],     
+            'nuptk' => ['required', 'numeric', 'unique:gurus'], 
+            'tahun_masuk' => ['required', 'numeric'],
             'nama' => ['required', 'string'],
             'pendidikan' => ['required', 'string'],
             'tempat_lahir' => ['required', 'string'],
@@ -44,7 +44,7 @@ class AdminGuruController extends Controller
             'jk' => ['required', 'in:Laki-laki,Perempuan'],
             'agama' => ['required', 'string'],
             'alamat' => ['required'],
-            'no_hp' => ['required', 'string', 'max:20'],
+            'no_hp' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'unique:gurus'],
             'foto' => ['required', 'max:1024', 'file', 'image', 'mimes:jpeg,png,jpg']
         ]);
@@ -54,17 +54,33 @@ class AdminGuruController extends Controller
     {
         if (Auth::guard('admin')->check()) {
             $this->validator($request->all())->validate();
+            
+            //validasi nip
+            $nip = $request['nip'];
+            $len_nip = strlen($nip);
+            if ($len_nip > 20) {
+                return back()->with('error_length_nip', 'NIP terlalu panjang!');
+            }
+
+            //validasi nuptk
+            $nuptk = $request['nuptk'];
+            $len_nuptk = strlen($nuptk);
+            if ($len_nuptk > 20) {
+                return back()->with('error_length_nuptk', 'NUPTK terlalu panjang!');
+            }
+
             //validasi tahun
             $tahun_masuk = $request['tahun_masuk'];
-            if ($tahun_masuk > 20) {
-                return back()->with('error_length_tahun_masuk', 'Tahun terlalu panjang');
+            $len_tahun_masuk = strlen($tahun_masuk);
+            if ($len_tahun_masuk > 20) {
+                return back()->with('error_length_tahun_masuk', 'Tahun terlalu panjang!');
             }
 
             //validasi nomor hp
             $no_hp = $request['no_hp'];
             $hitung_no_hp = strlen($no_hp);
-            if ($hitung_no_hp >= 14) {
-                return back()->with('error_length_no_hp', 'Nomor HP terlalu panjang');
+            if ($hitung_no_hp > 20) {
+                return back()->with('error_length_no_hp', 'Nomor HP terlalu panjang!');
             }
             $val_no_hp = substr($no_hp, 0, 3);
             if ($val_no_hp != 628) {
@@ -124,9 +140,9 @@ class AdminGuruController extends Controller
     protected function validatorEdit(array $data)
     {
         return Validator::make($data, [
-            'nip' => ['required', 'numeric', 'max:20'],
-            'nuptk' => ['required', 'numeric', 'max:20'],
-            'tahun_masuk' => ['required', 'numeric', 'max:20'],
+            'nip' => ['required', 'numeric'],
+            'nuptk' => ['required', 'numeric'],
+            'tahun_masuk' => ['required', 'numeric'],
             'nama' => ['required', 'string'],
             'pendidikan' => ['required', 'string'],
             'tempat_lahir' => ['required', 'string'],
@@ -142,14 +158,14 @@ class AdminGuruController extends Controller
     protected function validatorNIP(array $data)
     {
         return Validator::make($data, [
-            'nip' => ['required', 'numeric', 'unique:gurus', 'max:20']
+            'nip' => ['required', 'numeric', 'unique:gurus']
         ]);
     }
 
     protected function validatorNUPTK(array $data)
     {
         return Validator::make($data, [
-            'nuptk' => ['required', 'numeric', 'unique:gurus', 'max:20']
+            'nuptk' => ['required', 'numeric', 'unique:gurus']
         ]);
     }
 
@@ -171,16 +187,33 @@ class AdminGuruController extends Controller
     {
         if (Auth::guard('admin')->check()) {
             $this->validatorEdit($request->all())->validate();
+            
+            //validasi nip
+            $nip = $request['nip'];
+            $len_nip = strlen($nip);
+            if ($len_nip > 20) {
+                return back()->with('error_length_nip', 'NIP terlalu panjang!');
+            }
+
+            //validasi nuptk
+            $nuptk = $request['nuptk'];
+            $len_nuptk = strlen($nuptk);
+            if ($len_nuptk > 20) {
+                return back()->with('error_length_nuptk', 'NUPTK terlalu panjang!');
+            }
+
             //validasi tahun
             $tahun_masuk = $request['tahun_masuk'];
-            if ($tahun_masuk > 20) {
-                return back()->with('error_length_tahun_masuk', 'Tahun terlalu panjang');
+            $len_tahun_masuk = strlen($tahun_masuk);
+            if ($len_tahun_masuk > 20) {
+                return back()->with('error_length_tahun_masuk', 'Tahun terlalu panjang!');
             }
+
             //validasi nomor hp
             $no_hp = $request['no_hp'];
             $hitung_no_hp = strlen($no_hp);
-            if ($hitung_no_hp >= 14) {
-                return back()->with('error_length_no_hp', 'Nomor HP terlalu panjang');
+            if ($hitung_no_hp > 20) {
+                return back()->with('error_length_no_hp', 'Nomor HP terlalu panjang!');
             }
             $val_no_hp = substr($no_hp, 0, 3);
             if ($val_no_hp != 628) {

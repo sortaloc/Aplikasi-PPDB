@@ -120,7 +120,7 @@ class DaftarController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'nisn' => ['required', 'numeric', 'unique:pendaftarans', 'max:20'],
+            'nisn' => ['required', 'numeric', 'unique:pendaftarans'],
             'nama' => ['required', 'string'],
             'tempat_lahir' => ['required', 'string'],
             'tanggal_lahir' => ['required', 'date'],
@@ -266,7 +266,7 @@ class DaftarController extends Controller
     protected function validatorEdit(array $data)
     {
         return Validator::make($data, [
-            'nisn' => ['required', 'numeric', 'max:20'],
+            'nisn' => ['required', 'numeric'],
             'nama' => ['required', 'string'],
             'tempat_lahir' => ['required', 'string'],
             'tanggal_lahir' => ['required', 'date'],

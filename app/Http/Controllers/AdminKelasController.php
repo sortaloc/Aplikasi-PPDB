@@ -38,7 +38,7 @@ class AdminKelasController extends Controller
         return Validator::make($data, [
             'angka' => ['required', 'numeric'],
             'huruf' => ['required', 'string'],
-            'id_guru' => ['required', 'numeric', 'unique:kelas', 'max:20'],
+            'id_guru' => ['required', 'numeric', 'unique:kelas'],
         ]);
     }
 
@@ -101,14 +101,14 @@ class AdminKelasController extends Controller
         return Validator::make($data, [
             'angka' => ['required', 'numeric'],
             'huruf' => ['required', 'string'],
-            'id_guru' => ['required', 'numeric', 'max:20'],
+            'id_guru' => ['required', 'numeric'],
         ]);
     }
 
     protected function validatorIdguru(array $data)
     {
         return Validator::make($data, [
-            'id_guru' => ['required', 'numeric', 'unique:kelas', 'max:20'],
+            'id_guru' => ['required', 'numeric', 'unique:kelas'],
         ]);
     }
 

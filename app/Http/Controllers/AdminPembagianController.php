@@ -39,7 +39,7 @@ class AdminPembagianController extends Controller
     protected function validatorNIS(array $data)
     {
         return Validator::make($data, [
-            'nis' => ['required', 'numeric', 'unique:siswas', 'max:11']
+            'nis' => ['required', 'numeric', 'unique:siswas']
         ]);
     }
 
