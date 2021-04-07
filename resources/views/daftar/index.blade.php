@@ -30,14 +30,7 @@
     })
 </script>
 @endif
-@if (Session::has('nisnuserama'))
-<script>
-    Swal.fire({
-        icon: 'error',
-        title: 'NISN telah terdaftar di akun lain!'
-    })
-</script>
-@endif
+
 <div class="card author-box card-primary">
     <div class="card-header">
         <h4>Formulir</h4>

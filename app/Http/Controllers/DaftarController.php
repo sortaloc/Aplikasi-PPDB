@@ -151,10 +151,19 @@ class DaftarController extends Controller
         $tanggal_tutup = $ambil_waktu['tutup'];
         date_default_timezone_set('Asia/Jakarta');
         $tanggal_sekarang = date('Y-m-d');
+
+        //validasi jadwal
         if ($tanggal_sekarang < $tanggal_buka) {
             return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran masih di tutup!');
         } elseif ($tanggal_sekarang > $tanggal_tutup) {
             return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!'); 
+        }
+
+        //validasi length nisn
+        $nisn = $request['nisn'];
+        $len_nisn = strlen($nisn);
+        if ($len_nisn > 20) {
+            return back()->with('error_length_nisn', 'NISN terlalu panjang!');
         }
 
 
@@ -193,22 +202,23 @@ class DaftarController extends Controller
 
             if ($hasil == 'nisn tidak ada yang sama') {
                 User::whereId($id_user)->update([
-                    'email' => $request['nisn'],
-                    'password' => Hash::make($request['nisn']),
+                    'email' => $request['nisn']
                 ]);
             } else {
-                return redirect('daftar')->with('nisnusersama', 'NISN Sudah Terdaftar!');
+                return back()->with('nisnusersama', 'NISN Sudah Terdaftar!');
             }
         }
 
-        if ($request['nama'] === $nama_user) {
+        if ($request['nama'] != $nama_user) {
             User::whereId($id_user)->update([
-                'name' => $request['nama'],
+                'name' => $request['nama']
             ]);
         }
 
         $imageName = $id_user . $waktu . '.' . $request['foto']->extension();
         $request['foto']->move(public_path('images'), $imageName);
+
+
         Pendaftaran::create([
             'id_user' => $id_user,
             'nisn' => $request['nisn'],
@@ -295,10 +305,19 @@ class DaftarController extends Controller
         $tanggal_tutup = $ambil_waktu['tutup'];
         date_default_timezone_set('Asia/Jakarta');
         $tanggal_sekarang = date('Y-m-d');
+
+        //validasi jadwal
         if ($tanggal_sekarang < $tanggal_buka) {
             return redirect('home')->with('pendaftaran_belum_di_mulai', 'Pendaftaran masih di tutup!');
         } elseif ($tanggal_sekarang > $tanggal_tutup) {
             return redirect('home')->with('pendaftaran_sudah_di_tutup', 'Pendaftaran sudah di tutup!'); 
+        }
+
+        //validasi length nisn
+        $nisn = $request['nisn'];
+        $len_nisn = strlen($nisn);
+        if ($len_nisn > 20) {
+            return back()->with('error_length_nisn', 'NISN terlalu panjang!');
         }
         
         //ambil data user
@@ -326,17 +345,16 @@ class DaftarController extends Controller
 
             if ($hasil == 'nisn tidak ada yang sama') {
                 User::whereId($id_user)->update([
-                    'email' => $request['nisn'],
-                    'password' => Hash::make($request['nisn']),
+                    'email' => $request['nisn']
                 ]);
             } else {
-                return redirect('daftar')->with('nisnusersama', 'NISN Sudah Terdaftar!');
+                return back()->with('nisnusersama', 'NISN Sudah Terdaftar!');
             }
         }
 
         if ($request['nama'] != $nama_user) {
             User::whereId($id_user)->update([
-                'name' => $request['nama'],
+                'name' => $request['nama']
             ]);
         }
 

@@ -1,6 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if (Session::has('error_length_nisn'))
+<div class="alert alert-danger alert-dismissible show fade">
+    <div class="alert-body">
+        <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        NISN terlalu panjang!
+    </div>
+</div>
+@endif
+
+@if (Session::has('nisnusersama'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'NISN telah terdaftar pada akun lain!',
+        showConfirmButton: false,
+        timer: 2000
+    })
+</script>
+@endif
+
 <div class="card">
     <div class="card-header">
         <h4>Sunting Formulir</h4>

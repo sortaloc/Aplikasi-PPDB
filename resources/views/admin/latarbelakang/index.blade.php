@@ -37,7 +37,7 @@
         <div class="card-header-action">
             <a href="{{ route('adminlatarbelakang.edit', $latarbelakang->id) }}" class="btn btn-info btn-icon icon-left">
                 <i class="far fa-edit"></i>
-                Edit Latar Belakang
+                Sunting
             </a>
         </div>
 

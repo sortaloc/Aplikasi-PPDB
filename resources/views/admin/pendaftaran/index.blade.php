@@ -40,7 +40,7 @@
             <table class="table table-striped" id="table-2">
                 <thead>
                     <th>No.</th>
-                    <th>Tahun Pendaftaran</th>
+                    <th>Tanggal Pendaftaran</th>
                     <th>NISN</th>
                     <th>Nama</th>
                     <th>Jenis Kelamin</th>
@@ -140,7 +140,7 @@
                         </button>
                         <div class="dropdown-menu">
                             <a data-id="{{ $p->id_user }}" class="dropdown-item has-icon btn-edit" onclick="detailData( <?php echo $p->nisn; ?>, 
-                            <?php echo $p->tanggal_pendaftaran; ?>, 
+                            '{{ $p->tanggal_pendaftaran }}', 
                             '{{ $p->nama }}',
                              '{{ $p->tempat_lahir }}',
                              '{{ $p->tanggal_lahir }}',

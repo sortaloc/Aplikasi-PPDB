@@ -36,12 +36,14 @@
         <div class="card-header-action">
             <a href="{{ route('dokumen.edit', $dokumen->id)}}" class="btn btn-icon icon-left btn-info">
             <i class="fas fa-edit"></i> 
-                Edit
+                Sunting
             </a>
+            @if ($dokumen->pkh != "-" && $dokumen->pkh != "-" && $dokumen->pkh != "-")
             <button class="btn btn-icon icon-left btn-danger dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-trash"></i> 
                 Hapus
             </button>
+            @endif
             <div class="dropdown-menu">
                 <?php
                 if ($dokumen->pkh != '-') {
@@ -78,6 +80,7 @@
                 }
                 ?>
             </div>
+            
             <script>
                 function hapusPKH(id) {
                     Swal.fire({

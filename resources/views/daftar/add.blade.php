@@ -12,6 +12,17 @@
 </script>
 @endif
 
+@if (Session::has('error_length_nisn'))
+<div class="alert alert-danger alert-dismissible show fade">
+    <div class="alert-body">
+        <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        NISN terlalu panjang!
+    </div>
+</div>
+@endif
+
 <div class="card">
     <div class="card-header">
         <h4>Lengkapi Formulir</h4>
