@@ -48,6 +48,38 @@
                     </ul>
                 </form>
                 <ul class="navbar-nav navbar-right">
+                    <?php
+
+                    $notifikasi = App\Models\Notifikasi::where('status', 0)->get();
+                    ?>
+                    <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg <?php if ($notifikasi->count() > 0) {
+                                                                                                                                                        echo 'beep';
+                                                                                                                                                    } ?>"><i class="far fa-bell"></i></a>
+                        <div class="dropdown-menu dropdown-list dropdown-menu-right">
+                            <div class="dropdown-header">Pendaftar Baru
+                            </div>
+
+                            <div class="dropdown-list-content dropdown-list-icons">
+                                @if ($notifikasi->count() > 0)
+                                @foreach ($notifikasi as $n)
+                                <a href="{{ route('adminusers.show', $n->nisn) }}" class="dropdown-item dropdown-item-unread">
+
+                                    <div class="dropdown-item-desc">
+                                        ({{ $n->nisn }}) {{ $n->nama }}
+                                    </div>
+                                </a>
+                                @endforeach
+                                @else
+                                <a href="#" class="dropdown-item dropdown-item-unread">
+                                    <div class="dropdown-item-desc">
+                                        Belum ada pendaftar baru!
+                                    </div>
+                                </a>
+                                @endif
+                            </div>
+
+                        </div>
+                    </li>
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
 
                             <div class="d-sm-none d-lg-inline-block">Heyy, {{ auth()->guard('admin')->user()->nama }}</div>

@@ -92,12 +92,12 @@
                     <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
                         <div class="member">
                             <div class="member-img">
-                                <img src="{{ asset('imagesguru/'. $g->foto) }}" class="img-fluid" alt="">
+                                <img style="max-width: 500px; height: 300px;" src="{{ asset('imagesguru/'. $g->foto) }}" class="img-fluid" alt="">
                             </div>
                             <div class="member-info">
                                 <h4>{{ $g->nama }}</h4>
-                                <span>{{ $g->email }}</span>
-                                <p>{{ $g->alamat }}</p>
+                                <p>{{ $g->email }}</p>
+                                <a href="{{ route('guru.show', $g->id) }}" style="background-color: #4154f1;" class="btn btn-primary">Detail</a>
                             </div>
                         </div>
                     </div>

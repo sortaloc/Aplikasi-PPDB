@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminKritiksaranController;
 use App\Http\Controllers\AdminLatarbelakangController;
 use App\Http\Controllers\AdminMapelController;
 use App\Http\Controllers\AdminMapelUjianController;
+use App\Http\Controllers\AdminNISController;
 use App\Http\Controllers\AdminPembagianController;
 use App\Http\Controllers\AdminPendaftaranController;
 use App\Http\Controllers\AdminSiswaController;
@@ -40,7 +41,7 @@ Route::resource('adminpendaftaran', AdminPendaftaranController::class);
 
 Route::resource('adminguru', AdminGuruController::class);
 
-Route::resource('adminkelas', AdminKelasController::class);
+// Route::resource('adminkelas', AdminKelasController::class);
 
 Route::resource('adminwaktuujian', AdminWaktuUjianController::class);
 Route::resource('adminwaktupendaftaran', AdminWaktuPendaftaranController::class);
@@ -53,11 +54,12 @@ Route::resource('admintagihan', AdminTagihanController::class);
 
 Route::resource('adminsiswa', AdminSiswaController::class);
 
-Route::resource('adminpembagian', AdminPembagianController::class);
+// Route::resource('adminpembagian', AdminPembagianController::class);
 Route::resource('adminlatarbelakang', AdminLatarbelakangController::class);
 Route::resource('adminkritiksaran', AdminKritiksaranController::class);
 
 Route::resource('adminusers', AdminUserController::class);
+Route::resource('adminnis', AdminNISController::class);
 
 
 Route::middleware('auth')->group(function () {

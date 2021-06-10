@@ -14,7 +14,7 @@ class AdminSiswaController extends Controller
     public function index()
     {
         if (Auth::guard('admin')->check()) {
-            $siswa = Siswa::orderBy('kelas', 'ASC')->orderBy('nama', 'ASC')->get();
+            $siswa = Siswa::orderBy('nama', 'ASC')->get();
             return view('admin.siswa.index', compact('siswa'));
         } else {
             return redirect('loginadmin');
@@ -45,7 +45,6 @@ class AdminSiswaController extends Controller
             'nisn' => ['required', 'numeric', 'unique:siswas'],
             'nis' => ['required', 'numeric', 'unique:siswas'],
             'nama' => ['required', 'string'],
-            'kelas' => ['required', 'string'],
             'tempat_lahir' => ['required', 'string'],
             'tanggal_lahir' => ['required', 'date'],
             'jk' => ['required', 'in:Laki-laki,Perempuan'],
@@ -77,7 +76,6 @@ class AdminSiswaController extends Controller
                 'nisn' => $request['nisn'],
                 'nis' => $request['nis'],
                 'nama' => $request['nama'],
-                'kelas' => $request['kelas'],
                 'tempat_lahir' => $request['tempat_lahir'],
                 'tanggal_lahir' => $request['tanggal_lahir'],
                 'jk' => $request['jk'],
@@ -125,7 +123,6 @@ class AdminSiswaController extends Controller
             'nisn' => ['required', 'numeric'],
             'nis' => ['required', 'numeric'],
             'nama' => ['required', 'string'],
-            'kelas' => ['required', 'string'],
             'tempat_lahir' => ['required', 'string'],
             'tanggal_lahir' => ['required', 'date'],
             'jk' => ['required', 'in:Laki-laki,Perempuan'],
@@ -181,7 +178,6 @@ class AdminSiswaController extends Controller
                 'nisn' => $request['nisn'],
                 'nis' => $request['nis'],
                 'nama' => $request['nama'],
-                'kelas' => $request['kelas'],
                 'tempat_lahir' => $request['tempat_lahir'],
                 'tanggal_lahir' => $request['tanggal_lahir'],
                 'jk' => $request['jk'],

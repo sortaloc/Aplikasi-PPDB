@@ -53,32 +53,32 @@ class DokumenController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'akta' => ['required', 'max:1024', 'file', 'image', 'mimes:jpeg,png,jpg'],
-            'skhun' => ['required', 'max:1024', 'file', 'image', 'mimes:jpeg,png,jpg'],
-            'ijazah' => ['required', 'max:1024', 'file', 'image', 'mimes:jpeg,png,jpg'],
-            'kk' => ['required', 'max:1024', 'file', 'image', 'mimes:jpeg,png,jpg'],
-            'ktp' => ['required', 'max:1024', 'file', 'image', 'mimes:jpeg,png,jpg'],
+            'akta' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg'],
+            'skhun' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg'],
+            'ijazah' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg'],
+            'kk' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg'],
+            'ktp' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg'],
         ]);
     }
 
     protected function validatorPKH(array $data)
     {
         return Validator::make($data, [
-            'pkh' => ['required', 'max:1024', 'file', 'image', 'mimes:jpeg,png,jpg'],
+            'pkh' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg'],
         ]);
     }
 
     protected function validatorKIP(array $data)
     {
         return Validator::make($data, [
-            'kip' => ['required', 'max:1024', 'file', 'image', 'mimes:jpeg,png,jpg'],
+            'kip' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg'],
         ]);
     }
 
     protected function validatorKPS(array $data)
     {
         return Validator::make($data, [
-            'kps' => ['required', 'max:1024', 'file', 'image', 'mimes:jpeg,png,jpg'],
+            'kps' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg'],
         ]);
     }
 
@@ -275,7 +275,7 @@ class DokumenController extends Controller
         //akta
         if ($request['akta'] != null) {
             $request->validate([
-                'akta' => ['required', 'max:1024', 'file', 'image', 'mimes:jpeg,png,jpg'],
+                'akta' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg'],
             ]);
             File::delete('files/' . $ambil_dokumen['akta']);
             $akta = 'akta' . $id . $waktu . '.' . $request['akta']->extension();
@@ -288,7 +288,7 @@ class DokumenController extends Controller
         //skhun
         if ($request['skhun'] != null) {
             $request->validate([
-                'skhun' => ['required', 'max:1024', 'file', 'image', 'mimes:jpeg,png,jpg'],
+                'skhun' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg'],
             ]);
             File::delete('files/' . $ambil_dokumen['skhun']);
             $skhun = 'skhun' . $id . $waktu . '.' . $request['skhun']->extension();
@@ -301,7 +301,7 @@ class DokumenController extends Controller
         //ijazah
         if ($request['ijazah'] != null) {
             $request->validate([
-                'ijazah' => ['required', 'max:1024', 'file', 'image', 'mimes:jpeg,png,jpg'],
+                'ijazah' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg'],
             ]);
             File::delete('files/' . $ambil_dokumen['ijazah']);
             $ijazah = 'ijazah' . $id . $waktu . '.' . $request['ijazah']->extension();
@@ -314,7 +314,7 @@ class DokumenController extends Controller
         //kk
         if ($request['kk'] != null) {
             $request->validate([
-                'kk' => ['required', 'max:1024', 'file', 'image', 'mimes:jpeg,png,jpg'],
+                'kk' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg'],
             ]);
             File::delete('files/' . $ambil_dokumen['kk']);
             $kk = 'kk' . $id . $waktu . '.' . $request['kk']->extension();
@@ -327,7 +327,7 @@ class DokumenController extends Controller
         //ktp
         if ($request['ktp'] != null) {
             $request->validate([
-                'ktp' => ['required', 'max:1024', 'file', 'image', 'mimes:jpeg,png,jpg'],
+                'ktp' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg'],
             ]);
             File::delete('files/' . $ambil_dokumen['ktp']);
             $ktp = 'ktp' . $id . $waktu . '.' . $request['ktp']->extension();

@@ -58,7 +58,6 @@
                     <th>NISN</th>
                     <th>NIS</th>
                     <th>Nama</th>
-                    <th>Kelas</th>
                     <th>Tempat, Tanggal Lahir</th>
                     <th>Jenis Kelamin</th>
                     <th>Alamat</th>
@@ -81,9 +80,6 @@
                     </td>
                     <td>
                         {{ $s->nama }}
-                    </td>
-                    <td>
-                        {{ $s->kelas }}
                     </td>
                     <td>
                         <?php

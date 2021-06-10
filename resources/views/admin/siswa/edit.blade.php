@@ -71,22 +71,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="form-group row mb-4">
-                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kelas</label>
-                <div class="col-sm-12 col-md-7">
-                    <select name="kelas" class="form-control selectric" required>
-                        <?php
-
-                        foreach ($kelas as $key => $val) {
-                            $selected = $siswa['kelas'] == $val ? ' selected = "selected" ' : '';
-
-                            echo '<option value=" ' . $val . ' " ' . $selected . ' > ' . $val . ' </option>';
-                        }
-
-                        ?>
-                    </select>
-                </div>
-            </div>
+            
             <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tempat Lahir</label>
                 <div class="col-sm-12 col-md-7">

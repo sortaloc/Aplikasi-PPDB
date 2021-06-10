@@ -29,7 +29,8 @@ class GuruController extends Controller
     
     public function show($id)
     {
-        //
+        $guru = Guru::find($id);
+        return view('details_guru', compact('guru'));
     }
 
    

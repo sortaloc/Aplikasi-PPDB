@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notifikasi;
 use App\Models\User;
 use Illuminate\Database\DBAL\TimestampType;
 use Illuminate\Http\Request;
@@ -36,7 +37,15 @@ class AdminUserController extends Controller
 
     public function show($id)
     {
-        //
+        if (Auth::guard('admin')->check()) {
+            $users = User::orderBy('updated_at', 'DESC')->where('email', $id)->get();
+            Notifikasi::where('nisn', $id)->update([
+                'status' => 1
+            ]);
+            return view('admin.users.index', compact('users'));
+        } else {
+            return redirect('loginadmin');
+        }
     }
 
 

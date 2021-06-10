@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Pendaftaran;
 use App\Models\Dokumen;
 use App\Models\Nilai;
+use App\Models\NIS;
+use App\Models\Siswa;
 use File;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,12 +59,41 @@ class AdminPendaftaranController extends Controller
     {
         if (Auth::guard('admin')->check()) {
 
-            Pendaftaran::where('id_user', $id)->update([
-                'status' => $request['status']
-            ]);
             if ($request['status'] == 'Diterima') {
+                //data pendaftaran
+                $pendaftaran = Pendaftaran::where('id_user', $id)->first();
+
+                //ambil data siswa
+                $siswa = Siswa::orderBy('id', 'DESC')->first();
+                if ($siswa == null) {
+                    //ambil nis
+                    $nis = NIS::first();
+                    if ($nis == null) {
+                        return redirect('adminpendaftaran')->with('nis_kosong', 'Acuan NIS masih kosong!');
+                    }
+                    $nis_siswa = intval($nis['nis']) + 1;
+                } else {
+                    $nis_siswa = $siswa['nis'] + 1;
+                }
+
+                //create Data siswa
+                Siswa::create([
+                    'nisn' => $pendaftaran['nisn'],
+                    'nis' => $nis_siswa,
+                    'nama' => $pendaftaran['nama'],
+                    'tempat_lahir' => $pendaftaran['tempat_lahir'],
+                    'tanggal_lahir' => $pendaftaran['tanggal_lahir'],
+                    'jk' => $pendaftaran['jk'],
+                    'alamat' => $pendaftaran['alamat']
+                ]);
+                Pendaftaran::where('id_user', $id)->update([
+                    'status' => $request['status']
+                ]);
                 return redirect('adminpendaftaran')->with('terima', 'Siswa telah diterima');
             } else {
+                Pendaftaran::where('id_user', $id)->update([
+                    'status' => $request['status']
+                ]);
                 return redirect('adminpendaftaran')->with('tolak', 'Siswa telah ditolak');
             }
         } else {

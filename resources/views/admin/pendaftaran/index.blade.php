@@ -30,6 +30,14 @@
     })
 </script>
 @endif
+@if (Session::has('nis_kosong'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Acuan NIS masih kosong!'
+    })
+</script>
+@endif
 
 <div class="card">
     <div class="card-header">
@@ -517,17 +525,17 @@
         document.getElementById("tempat_tinggal").innerHTML = tempat_tinggal;
         document.getElementById("asal_sekolah").innerHTML = asal_sekolah;
         document.getElementById("transportasi").innerHTML = transportasi;
-        document.getElementById("foto").src = "http://localhost/ppdb/public/images/" + foto;
-        document.getElementById("akta").src = "http://localhost/ppdb/public/files/" + akta;
-        document.getElementById("skhun").src = "http://localhost/ppdb/public/files/" + skhun;
-        document.getElementById("ijazah").src = "http://localhost/ppdb/public/files/" + ijazah;
-        document.getElementById("kk").src = "http://localhost/ppdb/public/files/" + kk;
-        document.getElementById("ktp").src = "http://localhost/ppdb/public/files/" + ktp;
+        document.getElementById("foto").src = `images/` + foto;
+        document.getElementById("akta").src = `files/` + akta;
+        document.getElementById("skhun").src = `files/` + skhun;
+        document.getElementById("ijazah").src = `files/` + ijazah;
+        document.getElementById("kk").src = `files/` + kk;
+        document.getElementById("ktp").src = `files/` + ktp;
         if (pkh == '-') {
             document.getElementById("pkh").style.display = "none";
             document.getElementById("span_pkh").style.display = "none";
         } else {
-            document.getElementById("pkh").src = "http://localhost/ppdb/public/files/" + pkh;
+            document.getElementById("pkh").src = `files/` + pkh;
             document.getElementById("pkh").style.display = "block";
             document.getElementById("span_pkh").style.display = "block";
         }
@@ -536,7 +544,7 @@
             document.getElementById("kip").style.display = "none";
             document.getElementById("span_kip").style.display = "none";
         } else {
-            document.getElementById("kip").src = "http://localhost/ppdb/public/files/" + kip;
+            document.getElementById("kip").src = `files/` + kip;
             document.getElementById("kip").style.display = "block";
             document.getElementById("span_kip").style.display = "block";
         }
@@ -545,7 +553,7 @@
             document.getElementById("kps").style.display = "none";
             document.getElementById("span_kps").style.display = "none";
         } else {
-            document.getElementById("kps").src = "http://localhost/ppdb/public/files/" + kps;
+            document.getElementById("kps").src = `files/` + kps;
             document.getElementById("kps").style.display = "block";
             document.getElementById("span_kps").style.display = "block";
         }

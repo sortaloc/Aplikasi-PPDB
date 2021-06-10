@@ -7,6 +7,7 @@ use App\Mail\Userbaru;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Notifikasi;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -57,6 +58,12 @@ class RegisterController extends Controller
         $nisn = $data['email'];
         Mail::to($email)->send(new Userbaru($nama, $nisn));
 
+        Notifikasi::create([
+            'nisn' => $data['email'],
+            'nama' => $data['name'],
+            'status' => 0
+        ]);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -67,7 +74,7 @@ class RegisterController extends Controller
             'validasi' => 0
         ]);
 
-        
+
         
     }
 

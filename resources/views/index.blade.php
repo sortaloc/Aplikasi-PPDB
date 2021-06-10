@@ -45,8 +45,17 @@
 @if (Session::has('keluar'))
 <script>
     Swal.fire({
-        icon: 'success',
-        title: 'Sukses!',
+        icon: 'info',
+        title: 'Info Penting!',
+        text: 'Mohon tunggu sampai 1/24 jam, Admin akan memverifikasi NISN anda!'
+    })
+</script>
+@endif
+@if (Session::has('tidak valid'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Gagal!',
         text: 'Mohon tunggu sampai 1/24 jam, Admin akan memverifikasi NISN anda!'
     })
 </script>
@@ -80,7 +89,7 @@
           </li>
           <li><a class="nav-link scrollto" href="{{ url('guru') }}">Guru</a></li>
 
-          <li><a class="getstarted scrollto" target="_blank" href="{{ route('register') }}">Daftar PPDB</a></li>
+          <li><a class="getstarted scrollto" href="{{ route('register') }}">Daftar PPDB</a></li>
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -100,7 +109,7 @@
           <h2 data-aos="fade-up" data-aos-delay="400">SMP Harapan Bersama Tegal</h2>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
-              <a href="{{ route('login') }}" target="_blank" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="{{ route('login') }}" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                 <span>Masuk</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
